@@ -163,6 +163,10 @@ class Piece {
         }
     }
 
+    __resetNextPieceId__() {
+        next_piece_id = 0;
+    }
+
 }
 
 module.exports = Piece;

@@ -33,13 +33,8 @@ class Dungeon extends Generator {
 
         super(options);
 
-        const sample = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';
-        this.hash = _.sampleSize(sample, this.options.room_count);
-
-        this.pDungeon = {
-            hash: _.join(this.hash, ''),
-            dungeon: {}
-        };
+        this.sample = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';
+        this.reset();
 
         this.room_tags = Object.keys(this.rooms).filter(tag => (tag !== 'any' && tag !== 'initial'));
 
@@ -47,8 +42,17 @@ class Dungeon extends Generator {
             this.room_tags.push('any');
         }
 
+    }
+
+    reset() {
+        this.hash = _.sampleSize(this.sample, this.options.room_count);
+        this.pDungeon = {
+            hash: _.join(this.hash, ''),
+            dungeon: {}
+        };
         this.rooms = [];
         this.corridors = [];
+        this.__resetNextPieceId__();
     }
 
     add_room(room, exit, add_to_room = null) {
@@ -219,6 +223,12 @@ class Dungeon extends Generator {
         });
 
         return this.pDungeon;
+    }
+
+    persistAndReset() {
+        let persistedDungeon = this.persist();
+        this.reset();
+        return persistedDungeon;
     }
 
     generate() {

@@ -2,16 +2,40 @@ const express = require('express');
 const router = express.Router();
 const Dungeon = require('../src/dungeon-generator/');
 
-/* GET home page. */
-router.get('/', (req, res, next) => {
-  res.render('index', { title: 'Express' });
-});
+module.exports = (passport) => {
+    /* GET home page. */
+    router.get('/', (req, res, next) => {
+        res.redirect('/auth/google');
+    });
 
+    router.get('/generate', isLoggedIn, (req, res) => {
+        let dungeon = new Dungeon().generate().persistAndReset();
+        let response = {
+            hash: dungeon.hash,
+            dungeon: dungeon.dungeon,
+            user: req.user
+        };
+        res.send(response);
+    });
 
-router.get('/generate', (req, res) => {
-    let dungeon = new Dungeon();
+    router.get('/logout', function(req, res){
+        req.logout();
+        res.redirect('/');
+    });
 
-    res.send(dungeon.generate().persist());
-});
+    router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+    router.get('/auth/google/callback', passport.authenticate('google', {
+        successRedirect: '/generate',
+        failureRedirect: '/'
+    }));
 
-module.exports = router;
+    function isLoggedIn(req, res, next) {
+        if (req.isAuthenticated()) {
+            return next();
+        }
+
+        res.redirect('/');
+    }
+
+    return router;
+};
