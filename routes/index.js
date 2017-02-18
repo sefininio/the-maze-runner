@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Dungeon = require('../src/dungeon-generator/');
+const dGen = require('../src/dungeon-generator/');
 
 module.exports = (passport) => {
     /* GET home page. */
@@ -15,14 +15,27 @@ module.exports = (passport) => {
     });
 
     router.get('/generate', isLoggedIn, (req, res) => {
-        let dungeon = new Dungeon().generate().persistAndReset();
-        req.user.tikalId = `${req.user.id}_${req.user.provider}`;
-        let response = {
-            hash: dungeon.hash,
-            dungeon: dungeon.dungeon,
-            user: req.user
-        };
-        res.send(response);
+        dGen.generate(req.user)
+            .then(pDungeonObj => res.send(pDungeonObj))
+            .catch(err => res.send(err));
+    });
+
+    router.get('/room/:roomId/describe', isLoggedIn, (req, res) => {
+        dGen.getRoomDescription(req.user.tikalId ,req.params.roomId)
+            .then(description => res.send({description: description}))
+            .catch(err => res.send(err));
+    });
+
+    router.get('/room/:roomId/exits', isLoggedIn, (req, res) => {
+        dGen.getRoomExitDirections(req.user.tikalId ,req.params.roomId)
+            .then(exits => res.send({exits: exits}))
+            .catch(err => res.send(err));
+    });
+
+    router.get('/room/:roomId/exit/:direction', isLoggedIn, (req, res) => {
+        dGen.exitRoom(req.user.tikalId, req.params.roomId, req.params.direction)
+            .then(nextRoomId => res.send({nextRoomId: nextRoomId}))
+            .catch(err => res.send(err));
     });
 
     router.get('/logout', function(req, res){

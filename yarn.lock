@@ -9,9 +9,29 @@ accepts@~1.3.3:
     mime-types "~2.1.11"
     negotiator "0.6.1"
 
+acorn@^1.0.3:
+  version "1.2.2"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/acorn/-/acorn-1.2.2.tgz#c8ce27de0acc76d896d2b1fad3df588d9e82f014"
+
+amdefine@>=0.0.4:
+  version "1.0.1"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
+
 array-flatten@1.1.1:
   version "1.1.1"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/array-flatten/-/array-flatten-1.1.1.tgz#9a5f699051b1e7073328f2a008968b64ea2955d2"
+
+ast-types@0.8.15:
+  version "0.8.15"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/ast-types/-/ast-types-0.8.15.tgz#8eef0827f04dff0ec8857ba925abe3fea6194e52"
+
+async@0.2.10:
+  version "0.2.10"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/async/-/async-0.2.10.tgz#b6bbe0b0674b9d719708ca38de8c237cb526c3d1"
+
+base62@0.1.1:
+  version "0.1.1"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/base62/-/base62-0.1.1.tgz#7b4174c2f94449753b11c2651c083da841a7b084"
 
 base64-url@1.3.3:
   version "1.3.3"
@@ -20,6 +40,12 @@ base64-url@1.3.3:
 basic-auth@~1.0.3:
   version "1.0.4"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/basic-auth/-/basic-auth-1.0.4.tgz#030935b01de7c9b94a824b29f3fccb750d3a5290"
+
+binary-search-tree@0.2.5:
+  version "0.2.5"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/binary-search-tree/-/binary-search-tree-0.2.5.tgz#7dbb3b210fdca082450dad2334c304af39bdc784"
+  dependencies:
+    underscore "~1.4.4"
 
 body-parser@~1.16.0:
   version "1.16.1"
@@ -63,6 +89,10 @@ cookie@0.3.1:
   version "0.3.1"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/cookie/-/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
 
+core-util-is@~1.0.0:
+  version "1.0.2"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
+
 crc@3.4.4:
   version "3.4.4"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/crc/-/crc-3.4.4.tgz#9da1e980e3bd44fc5c93bf5ab3da3378d85e466b"
@@ -99,9 +129,29 @@ encodeurl@~1.0.1:
   version "1.0.1"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/encodeurl/-/encodeurl-1.0.1.tgz#79e3d58655346909fe6f0f45a5de68103b294d20"
 
+es3ify@^0.1.3:
+  version "0.1.4"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/es3ify/-/es3ify-0.1.4.tgz#ad9fa5df1ae34f3f31e1211b5818b2d51078dfd1"
+  dependencies:
+    esprima-fb "~3001.0001.0000-dev-harmony-fb"
+    jstransform "~3.0.0"
+    through "~2.3.4"
+
 escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
+
+esmangle-evaluator@^1.0.0:
+  version "1.0.1"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/esmangle-evaluator/-/esmangle-evaluator-1.0.1.tgz#620d866ef4861b3311f75766d52a8572bb3c6336"
+
+esprima-fb@~15001.1001.0-dev-harmony-fb:
+  version "15001.1001.0-dev-harmony-fb"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/esprima-fb/-/esprima-fb-15001.1001.0-dev-harmony-fb.tgz#43beb57ec26e8cf237d3dd8b33e42533577f2659"
+
+esprima-fb@~3001.0001.0000-dev-harmony-fb, esprima-fb@~3001.1.0-dev-harmony-fb:
+  version "3001.1.0-dev-harmony-fb"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/esprima-fb/-/esprima-fb-3001.0001.0000-dev-harmony-fb.tgz#b77d37abcd38ea0b77426bb8bc2922ce6b426411"
 
 etag@~1.7.0:
   version "1.7.0"
@@ -152,6 +202,15 @@ express@~4.14.1:
     utils-merge "1.0.0"
     vary "~1.1.0"
 
+falafel@^1.0.1:
+  version "1.2.0"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/falafel/-/falafel-1.2.0.tgz#c18d24ef5091174a497f318cd24b026a25cddab4"
+  dependencies:
+    acorn "^1.0.3"
+    foreach "^2.0.5"
+    isarray "0.0.1"
+    object-keys "^1.0.6"
+
 finalhandler@0.5.1:
   version "0.5.1"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/finalhandler/-/finalhandler-0.5.1.tgz#2c400d8d4530935bc232549c5fa385ec07de6fcd"
@@ -161,6 +220,10 @@ finalhandler@0.5.1:
     on-finished "~2.3.0"
     statuses "~1.3.1"
     unpipe "~1.0.0"
+
+foreach@^2.0.5:
+  version "2.0.5"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/foreach/-/foreach-2.0.5.tgz#0bee005018aeb260d0a3af3ae658dd0136ec1b99"
 
 forwarded@~0.1.0:
   version "0.1.0"
@@ -182,17 +245,55 @@ iconv-lite@0.4.15:
   version "0.4.15"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/iconv-lite/-/iconv-lite-0.4.15.tgz#fe265a218ac6a57cfe854927e9d04c19825eddeb"
 
-inherits@2.0.3:
+immediate@~3.0.5:
+  version "3.0.6"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/immediate/-/immediate-3.0.6.tgz#9db1dbd0faf8de6fbe0f5dd5e56bb606280de69b"
+
+inherits@2.0.3, inherits@~2.0.1:
   version "2.0.3"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
+
+inline-process-browser@^1.0.0:
+  version "1.0.0"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/inline-process-browser/-/inline-process-browser-1.0.0.tgz#46a61b153dd3c9b1624b1a00626edb4f7f414f22"
+  dependencies:
+    falafel "^1.0.1"
+    through2 "^0.6.5"
 
 ipaddr.js@1.2.0:
   version "1.2.0"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/ipaddr.js/-/ipaddr.js-1.2.0.tgz#8aba49c9192799585bdd643e0ccb50e8ae777ba4"
 
+isarray@0.0.1:
+  version "0.0.1"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/isarray/-/isarray-0.0.1.tgz#8a18acfca9a8f4177e09abfc6038939b05d1eedf"
+
 json-stringify-safe@^5.0.1:
   version "5.0.1"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
+
+jstransform@~3.0.0:
+  version "3.0.0"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/jstransform/-/jstransform-3.0.0.tgz#a2591ab6cee8d97bf3be830dbfa2313b87cd640b"
+  dependencies:
+    base62 "0.1.1"
+    esprima-fb "~3001.1.0-dev-harmony-fb"
+    source-map "0.1.31"
+
+lie@3.0.2:
+  version "3.0.2"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/lie/-/lie-3.0.2.tgz#ffda21d7bba26f377cad865d3649b2fc8ce39fea"
+  dependencies:
+    es3ify "^0.1.3"
+    immediate "~3.0.5"
+    inline-process-browser "^1.0.0"
+    unreachable-branch-transform "^0.3.0"
+
+localforage@^1.3.0:
+  version "1.4.3"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/localforage/-/localforage-1.4.3.tgz#a212543c39c7c76424edd12bf474c489aaca494c"
+  dependencies:
+    lie "3.0.2"
 
 lodash@^4.17.4:
   version "4.17.4"
@@ -224,6 +325,16 @@ mime@1.3.4:
   version "1.3.4"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/mime/-/mime-1.3.4.tgz#115f9e3b6b3daf2959983cb38f149a2d40eb5d53"
 
+minimist@0.0.8:
+  version "0.0.8"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
+
+mkdirp@~0.5.1:
+  version "0.5.1"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
+  dependencies:
+    minimist "0.0.8"
+
 morgan@~1.7.0:
   version "1.7.0"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/morgan/-/morgan-1.7.0.tgz#eb10ca8e50d1abe0f8d3dad5c0201d052d981c62"
@@ -242,6 +353,16 @@ ms@0.7.2:
   version "0.7.2"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/ms/-/ms-0.7.2.tgz#ae25cf2512b3885a1d95d7f037868d8431124765"
 
+nedb@^1.8.0:
+  version "1.8.0"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/nedb/-/nedb-1.8.0.tgz#0e3502cd82c004d5355a43c9e55577bd7bd91d88"
+  dependencies:
+    async "0.2.10"
+    binary-search-tree "0.2.5"
+    localforage "^1.3.0"
+    mkdirp "~0.5.1"
+    underscore "~1.4.4"
+
 negotiator@0.6.1:
   version "0.6.1"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
@@ -249,6 +370,10 @@ negotiator@0.6.1:
 oauth@0.9.x:
   version "0.9.15"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/oauth/-/oauth-0.9.15.tgz#bd1fefaf686c96b75475aed5196412ff60cfb9c1"
+
+object-keys@^1.0.6:
+  version "1.0.11"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/object-keys/-/object-keys-1.0.11.tgz#c54601778ad560f1142ce0e01bcca8b56d13426d"
 
 on-finished@~2.3.0:
   version "2.3.0"
@@ -331,6 +456,10 @@ pause@0.0.1:
   version "0.0.1"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/pause/-/pause-0.0.1.tgz#1d408b3fdb76923b9543d96fb4c9dfd535d9cb5d"
 
+private@~0.1.5:
+  version "0.1.7"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/private/-/private-0.1.7.tgz#68ce5e8a1ef0a23bb570cc28537b5332aba63ef1"
+
 proxy-addr@~1.1.3:
   version "1.1.3"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/proxy-addr/-/proxy-addr-1.1.3.tgz#dc97502f5722e888467b3fa2297a7b1ff47df074"
@@ -367,6 +496,24 @@ raw-body@~2.2.0:
     bytes "2.4.0"
     iconv-lite "0.4.15"
     unpipe "1.0.0"
+
+"readable-stream@>=1.0.33-1 <1.1.0-0":
+  version "1.0.34"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/readable-stream/-/readable-stream-1.0.34.tgz#125820e34bc842d2f2aaafafe4c2916ee32c157c"
+  dependencies:
+    core-util-is "~1.0.0"
+    inherits "~2.0.1"
+    isarray "0.0.1"
+    string_decoder "~0.10.x"
+
+recast@^0.10.1:
+  version "0.10.43"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/recast/-/recast-0.10.43.tgz#b95d50f6d60761a5f6252e15d80678168491ce7f"
+  dependencies:
+    ast-types "0.8.15"
+    esprima-fb "~15001.1001.0-dev-harmony-fb"
+    private "~0.1.5"
+    source-map "~0.5.0"
 
 send@0.14.2:
   version "0.14.2"
@@ -408,9 +555,34 @@ setprototypeof@1.0.2:
   version "1.0.2"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/setprototypeof/-/setprototypeof-1.0.2.tgz#81a552141ec104b88e89ce383103ad5c66564d08"
 
+source-map@0.1.31:
+  version "0.1.31"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/source-map/-/source-map-0.1.31.tgz#9f704d0d69d9e138a81badf6ebb4fde33d151c61"
+  dependencies:
+    amdefine ">=0.0.4"
+
+source-map@~0.5.0:
+  version "0.5.6"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/source-map/-/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
+
 "statuses@>= 1.3.1 < 2", statuses@~1.3.1:
   version "1.3.1"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/statuses/-/statuses-1.3.1.tgz#faf51b9eb74aaef3b3acf4ad5f61abf24cb7b93e"
+
+string_decoder@~0.10.x:
+  version "0.10.31"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/string_decoder/-/string_decoder-0.10.31.tgz#62e203bc41766c6c28c9fc84301dab1c5310fa94"
+
+through2@^0.6.2, through2@^0.6.5:
+  version "0.6.5"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/through2/-/through2-0.6.5.tgz#41ab9c67b29d57209071410e1d7a7a968cd3ad48"
+  dependencies:
+    readable-stream ">=1.0.33-1 <1.1.0-0"
+    xtend ">=4.0.0 <4.1.0-0"
+
+through@~2.3.4:
+  version "2.3.8"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
 
 type-is@~1.6.14:
   version "1.6.14"
@@ -430,9 +602,21 @@ uid2@0.0.x:
   version "0.0.3"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/uid2/-/uid2-0.0.3.tgz#483126e11774df2f71b8b639dcd799c376162b82"
 
+underscore@~1.4.4:
+  version "1.4.4"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/underscore/-/underscore-1.4.4.tgz#61a6a32010622afa07963bf325203cf12239d604"
+
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/unpipe/-/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
+
+unreachable-branch-transform@^0.3.0:
+  version "0.3.0"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/unreachable-branch-transform/-/unreachable-branch-transform-0.3.0.tgz#d99cc4c6e746d264928845b611db54b0f3474caa"
+  dependencies:
+    esmangle-evaluator "^1.0.0"
+    recast "^0.10.1"
+    through2 "^0.6.2"
 
 utils-merge@1.0.0, utils-merge@1.x.x:
   version "1.0.0"
@@ -441,3 +625,7 @@ utils-merge@1.0.0, utils-merge@1.x.x:
 vary@~1.1.0:
   version "1.1.0"
   resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/vary/-/vary-1.1.0.tgz#e1e5affbbd16ae768dd2674394b9ad3022653140"
+
+"xtend@>=4.0.0 <4.1.0-0":
+  version "4.0.1"
+  resolved "https://csp-artifactory.eng.vmware.com:443/artifactory/api/npm/registry-npmjs-org/xtend/-/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
