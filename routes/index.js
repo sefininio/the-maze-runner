@@ -17,25 +17,37 @@ module.exports = (passport) => {
     router.get('/generate', isLoggedIn, (req, res) => {
         db.generate(req.user)
             .then(pDungeonObj => res.send(pDungeonObj))
-            .catch(err => res.send(err));
+            .catch(err => {
+                console.log(err);
+                res.status(500).send(err);
+            });
     });
 
     router.get('/room/:roomId/describe', isLoggedIn, (req, res) => {
         db.getRoomDescription(req.user.tikalId ,req.params.roomId)
             .then(description => res.send({description: description}))
-            .catch(err => res.send(err));
+            .catch(err => {
+                console.log(err);
+                res.status(500).send(err);
+            });
     });
 
     router.get('/room/:roomId/exits', isLoggedIn, (req, res) => {
         db.getRoomExitDirections(req.user.tikalId ,req.params.roomId)
             .then(exits => res.send({exits: exits}))
-            .catch(err => res.send(err));
+            .catch(err => {
+                console.log(err);
+                res.status(500).send(err);
+            });
     });
 
     router.get('/room/:roomId/exit/:direction', isLoggedIn, (req, res) => {
         db.exitRoom(req.user.tikalId, req.params.roomId, req.params.direction)
-            .then(nextRoomId => res.send({nextRoomId: nextRoomId}))
-            .catch(err => res.send(err));
+            .then(newRoomId => res.send({newRoomId: newRoomId}))
+            .catch(err => {
+                console.log(err);
+                res.status(500).send(err);
+            });
     });
 
     router.get('/logout', function(req, res){
