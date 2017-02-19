@@ -29,6 +29,8 @@ module.exports.generate = (user) => {
 };
 
 module.exports.getRoomDescription = (key, roomId) => {
+    // TODO - Sefi: verify 'lastVisitedRoom' on DB equals this roomId
+    // (you can't get description for a room you are not currently in!).
     return new Promise((resolve, reject) => {
         db.findOne(key)
             .then(doc => {
@@ -47,6 +49,8 @@ module.exports.getRoomDescription = (key, roomId) => {
 };
 
 module.exports.getRoomExits = (key, roomId) => {
+    // TODO - Sefi: verify 'lastVisitedRoom' on DB equals this roomId
+    // (you can't get exits for a room you are not currently in!).
     return new Promise((resolve, reject) => {
         db.findOne(key)
             .then(doc => {
@@ -63,6 +67,8 @@ module.exports.getRoomExits = (key, roomId) => {
 };
 
 module.exports.getRoomExitDirections = (key, roomId) => {
+    // TODO - Sefi: verify 'lastVisitedRoom' on DB equals this roomId
+    // (you can't get available exit directions for a room you are not currently in!).
     return new Promise((resolve, reject) => {
         this.getRoomExits(key, roomId)
             .then(exits => {
@@ -77,6 +83,9 @@ module.exports.getRoomExitDirections = (key, roomId) => {
 };
 
 module.exports.exitRoom = (key, roomId, direction) => {
+    // TODO - Sefi: verify 'lastVisitedRoom' on DB equals this roomId
+    // (you can't exit a room you are not currently in!).
+    // TODO - Sefi: Update the 'lastVisitedRoom' on DB.
     return new Promise((resolve, reject) => {
 
         this.getRoomExits(key, roomId)
