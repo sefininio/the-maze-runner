@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../src/db');
+const dGenUtils = require('../src/dungeon-generator');
 
 module.exports = (passport) => {
     /* GET home page. */
@@ -15,8 +15,8 @@ module.exports = (passport) => {
     });
 
     router.get('/generate', isLoggedIn, (req, res) => {
-        db.generate(req.user)
-            .then(pDungeonObj => res.send(pDungeonObj))
+        dGenUtils.generate(req.user)
+            .then(firstRoomId => res.send(firstRoomId))
             .catch(err => {
                 console.log(err);
                 res.status(500).send(err);
@@ -24,8 +24,8 @@ module.exports = (passport) => {
     });
 
     router.get('/room/:roomId/describe', isLoggedIn, (req, res) => {
-        db.getRoomDescription(req.user.tikalId ,req.params.roomId)
-            .then(description => res.send({description: description}))
+        dGenUtils.getRoomDescription(req.user.tikalId ,req.params.roomId)
+            .then(description => res.send(description))
             .catch(err => {
                 console.log(err);
                 res.status(500).send(err);
@@ -33,8 +33,8 @@ module.exports = (passport) => {
     });
 
     router.get('/room/:roomId/exits', isLoggedIn, (req, res) => {
-        db.getRoomExitDirections(req.user.tikalId ,req.params.roomId)
-            .then(exits => res.send({exits: exits}))
+        dGenUtils.getRoomExits(req.user.tikalId ,req.params.roomId)
+            .then(exits => res.send(exits))
             .catch(err => {
                 console.log(err);
                 res.status(500).send(err);
@@ -42,8 +42,8 @@ module.exports = (passport) => {
     });
 
     router.get('/room/:roomId/exit/:direction', isLoggedIn, (req, res) => {
-        db.exitRoom(req.user.tikalId, req.params.roomId, req.params.direction)
-            .then(newRoomId => res.send({newRoomId: newRoomId}))
+        dGenUtils.exitRoom(req.user.tikalId, req.params.roomId, req.params.direction)
+            .then(newRoomId => res.send(newRoomId))
             .catch(err => {
                 console.log(err);
                 res.status(500).send(err);
