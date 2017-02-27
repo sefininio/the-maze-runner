@@ -27,16 +27,48 @@ module.exports.saveDungeon = (dungeon) => {
 
 module.exports.updateLastVisitedRoom = (key, roomId) => {
     return new Promise((resolve, reject) => {
-        db.update({key: key}, {$set: { lastVisitedRoomId: roomId }}, {}, (err, numReplaced) => {
+        db.update({key: key}, {$set: { lastVisitedRoomId: roomId }}, {}, (err, numUpdated) => {
             if (err) {
                 reject(err);
             }
 
-            if (numReplaced !== 1) {
+            if (numUpdated !== 1) {
                 reject(new Error(`Key + RoomId combination not unique!`));
             }
 
             resolve(roomId);
+        });
+    });
+};
+
+module.exports.updateNumberOfTries = (key) => {
+    return new Promise((resolve, reject) => {
+        db.update({key: key}, {$inc: {numOfValidationTries: 1}}, {returnUpdatedDocs: true}, (err, numUpdated, doc) => {
+            if (err) {
+                reject(err);
+            }
+
+            if (numUpdated !== 1) {
+                reject(new Error(`Number of tries not incremented`));
+            }
+
+            resolve(doc.numOfValidationTries);
+        });
+    });
+};
+
+module.exports.updateItem = (key, item) => {
+    return new Promise((resolve, reject) => {
+         db.update({key: key}, { $addToSet: {"dungeon.items": item} }, {returnUpdatedDocs: true}, (err, numUpdated, doc) => {
+             if (err) {
+                 reject(err);
+             }
+
+             if (numUpdated !== 1) {
+                 reject(new Error(`Could not update item`));
+             }
+
+             resolve(doc.dungeon.items);
         });
     });
 };

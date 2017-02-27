@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const dGenUtils = require('../src/dungeon-generator');
+const quests = require('../quests.json').quests;
 
 module.exports = (passport) => {
     /* GET home page. */
@@ -15,7 +16,7 @@ module.exports = (passport) => {
     });
 
     router.get('/generate', isLoggedIn, (req, res) => {
-        dGenUtils.generate(req.user)
+        dGenUtils.generate(req.user, quests)
             .then(firstRoomId => res.send(firstRoomId))
             .catch(err => {
                 console.log(err);
@@ -44,6 +45,15 @@ module.exports = (passport) => {
     router.get('/room/:roomId/exit/:direction', isLoggedIn, (req, res) => {
         dGenUtils.exitRoom(req.user.tikalId, req.params.roomId, req.params.direction)
             .then(newRoomId => res.send(newRoomId))
+            .catch(err => {
+                console.log(err);
+                res.status(500).send(err);
+            });
+    });
+
+    router.get('/validate/:hash', isLoggedIn, (req, res) => {
+        dGenUtils.validate(req.user.tikalId, req.params.hash)
+            .then(verified => res.send(verified))
             .catch(err => {
                 console.log(err);
                 res.status(500).send(err);

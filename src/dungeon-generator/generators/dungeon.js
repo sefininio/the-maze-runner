@@ -179,14 +179,28 @@ class Dungeon extends Generator {
         key = key || this.random.choose(this.room_tags, false);
 
         let opts = this.options.rooms[key];
+        const tikalTag = this.hash.shift();
 
+        this.questItemCounter--;
+        let item;
+        if (this.questItemCounter === 0) {
+            item = this.getRoomItem();
+            this.questItemCounter = this.QUEST_PROBABILITY;
+
+            if (item.encoding) {
+                let descStr = JSON.stringify({description: {hashLetter: tikalTag}});
+                let encoded = Buffer.from(descStr, 'utf8');
+                item.action = encoded.toString(item.encoding);
+            }
+        }
 
         let room = new Room({
             size: this.random.vec(opts.min_size, opts.max_size),
             max_exits: opts.max_exits,
             symmetric: this.symmetric_rooms,
             tag: key,
-            tikalTag: this.hash.shift()
+            tikalTag: tikalTag,
+            item: item
         });
 
         this.room_tags.splice(this.room_tags.indexOf(key), 1);
@@ -203,8 +217,8 @@ class Dungeon extends Generator {
             size: room.size,
             position: room.position,
             tikalTag: room.options.tikalTag,
+            item: room.item,
             exits: []
-
         };
 
         for (let exit of room.exits) {
@@ -222,6 +236,8 @@ class Dungeon extends Generator {
             this.pDungeon.dungeon[room.id] = this.persistRoom(room);
         });
 
+        this.pDungeon.dungeon.items = [];
+
         return this.pDungeon;
     }
 
@@ -231,10 +247,22 @@ class Dungeon extends Generator {
         return persistedDungeon;
     }
 
-    generate() {
-        let no_rooms = this.options.room_count - 1,
-            room = this.new_room(this.options.rooms.initial ? 'initial' : undefined),
-            no_corridors = Math.round(this.corridor_density * no_rooms);
+    getRoomItem() {
+        let item;
+        if (this.quests.length) {
+            item = _.pullAt(this.quests, this.random.int(0, this.quests.length - 1))[0];
+        }
+        return item;
+    }
+
+    generate(quests) {
+        let no_rooms = this.options.room_count - 1;
+        this.quests = quests;
+        this.QUEST_PROBABILITY = Math.floor((no_rooms) / quests.length);
+        this.questItemCounter = this.QUEST_PROBABILITY;
+
+        let room = this.new_room(this.options.rooms.initial ? 'initial' : undefined);
+        let no_corridors = Math.round(this.corridor_density * no_rooms);
 
         this.add_piece(room, this.options.rooms.initial && this.options.rooms.initial.position ? this.options.rooms.initial.position : this.get_center_pos());
         this.rooms.push(room);

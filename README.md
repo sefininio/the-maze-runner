@@ -3,70 +3,92 @@ MazeRunner is Tikal's JS code challenge.
 
 **_If you are joining the development effort on this project, please join the `#maze-runner` channel on `Slack` and enable all notifications._**
 
-Candidates should write code that traverse the maze and figure out the maze hash.
+####Authentication
+Authentication is done over `Passport.js` (currently supporting Google, Facebook and Github).
 
-Once the candidate logs into the system (with an email, using Passport) - the server will generate a maze for the
-candidate and store it on a local DB (`nedb`), as well as the history of his server requests for future analysis when
-reviewing the solution code.
+####Purpose
+Once a Challenger logs into the system, the server will generate a random dungeon for the Challenger and store it 
+on a local DB (`nedb`).
 
-In some of the maze rooms there will be a letter written on the wall.  
-Further more, in some (or all) of the rooms there will be a monster to defeat. The combat is automatic and candidate always wins so there's no real battle here, but it will introduce a delay in each room (each monster can take a different time to beat). The purpose of this delay is to be able to measure candidate solution run time compared to optimum solution and thus measure candidate solution efficiency.
+Each dungeon room will have a letter written on the wall.  
+Challengers should implement an algorithm that traverses the dungeon, track the letters on the wall and figure out how those letters combine to a dungeon hash.  
 
-Candidate should implement code that will traverse the maze, track the letters on the wall and figure out how those letters combine to a maze hash.  
-On the UI perspective, the code should draw the maze on screen as it is being discovered as well as log the monster kills and how long it took to defeat.  
-The candidate should send his code and the hash as the solution.  
-Once submitted, candidate will receive an email that the solution was received and under review, as well as send a notification to the review team via `Slack`.
+####Quests
+Some of the rooms will be part of a quest.  
+Some quests span across a single room, while some span across multiple rooms.  
+In these rooms, the letter on the wall will only be revealed once you solve the room puzzle.  
 
-The candidate can choose what to use to implement the code on the FrontEnd -  
+####Solution
+The Challenger should send his code and the dungeon hash as the solution.  
+Once submitted, Challenger will receive an email that the solution was received and under review.
+
+####Technology
+The Challenger can choose the technology used to implement the code.  
+
+FrontEnd  
 * Using `ES5` or `ES6`  
 * With a framework of choice - `Angular 1.x`, `Angular 2`, `React`, `Vue.js`  etc.  
 * Using any JavaScript superset - `TypeScript`, `CoffeeScript` etc.  
-* Draw the maze on screen using - `DOM manipulation`, `JQuery`, `svg.js` etc.
+* Draw the dungeon on screen using - `DOM manipulation`, `JQuery`, `svg.js` etc.
+
+Backend 
+* JavaScript
+* Java
+* Python
+* Ruby
+* etc.
 
 
 ## Rest API:
-* **start()**  
-result will be an object that contains the first `roomId`. The adventure begins!  
+* **/generate**  
+Result will be an object that contains the first `roomId`. The adventure begins!  
 ```javascript
 {
-    roomId: string
-
+    firstRoomId: string
 }
 ```
 
-* **getRoomExits(roomId)**  
-given a `roomId`, the result will be an object that contains the array of one or more exit directions.  
+* **/room/:roomId/describe**  
+Given a `roomId`, the result will be an object that contains the room description.  
+The quest property will only appear if the room is part of a quest.  
+Until the quest is complete, the hashLetter property will not be provided.  
+_You can only do this operation if you are currently inside the `roomId`._  
 ```javascript
 {
-    exits: [S, W, N, E, SW, SE, NW, NE]
-
+    description: {
+        hashLetter: string,
+        quest: {
+            questId: string,
+            itemId: string,
+            description: string
+        }
+    }
+}
+```
+* **/room/:roomId/exits**  
+Given a `roomId`, the result will be an object that contains the possible exits from the room.  
+0 = N, 90 = E, 180 = S, 270 = W  
+_You can only do this operation if you are currently inside the `roomId`._  
+```javascript
+{
+    exits: [0, 90, 180, 270]
+}
+```
+* **/room/:roomId/exit/:direction**  
+Given a `roomId` and the `direction` to exit, the result will be the next `roomId`.  
+_You can only do this operation if you are currently inside the `roomId`._  
+```javascript
+{
+    newRoomId: string
 }
 ```
 
-* **getWritingOnTheWall(roomId)**  
-given a `roomId`, the result will be an object that contains the writing  
+* **/validate/:hash**  
+Given the `hash`, the result will be if the hash is correct or not.  
+_Be careful! There is a limit to the number of times you can validate!_ 
 ```javascript
 {
-    writing: string
-    id: string
-}
-```
-* **defeatMonster(roomId)**  
-given a `roomId`, the result will be returned(void), but delayed by the monster delay period.
-
-* **exitRoom(roomId, direction)**  
-given a `roomId` and the `direction` to exit, the result will be the next `roomId`.  
-```javascript
-{
-    roomId: string
-}
-```
-
-* **checkMazeHash(hash)**  
-given the `hash`, the result will be if it is correct or not.  
-```javascript
-{
-    correct: boolean
+    validated: boolean
 }
 ```
 
@@ -80,9 +102,30 @@ Requirements: docker installed on localhost
 git clone <this repo>
 ```
 
-2. Create the oauth.js file in the .dev directory [ note on what should be in it ?]
+2. Create the oauth.js file in the conf directory
+oauth.js is a configuration file for social login. It should be in the format: 
 ```
-mkdir .dev
+    google: {
+        "client_id": "",
+        "client_secret": "",
+        "redirect_uri":""
+    },
+    facebook: {
+        "client_id": "",
+        "client_secret": "",
+        "redirect_uri": ""
+    },
+    github: {
+        "client_id": "",
+        "client_secret": "",
+        "redirect_uri": ""
+    }
+
+```
+Please contact repo owner for the maze-runner app oauth.js file.
+
+```
+mkdir conf
 ```
 
 3. Build Docker Container from Docekrfile
