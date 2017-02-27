@@ -17,7 +17,7 @@ module.exports.generate = (user, quests) => {
                         key: user.tikalId,
                         hash: dungeon.hash,
                         numOfValidationTries: 0,
-                        lastVisitedRoomId: dungeon.dungeon[0].id,
+                        lastVisitedRoomId: [dungeon.dungeon[0].id],
                         dungeon: dungeon.dungeon,
                         user: user
                     };
@@ -64,8 +64,10 @@ module.exports.getRoom = (key, roomId) => {
                     reject(new Error(`Room ${roomId} not found in Dungeon`));
                 }
 
-                if (Number(doc.lastVisitedRoomId) !== Number(roomId)) {
-                    reject(new Error(`You are currently in room ${doc.lastVisitedRoomId}, you cannot make this operation on room ${roomId}, you are not there!`));
+                const lastVisitedRoom = Number(_.last(doc.lastVisitedRoomId));
+
+                if (lastVisitedRoom !== Number(roomId)) {
+                    reject(new Error(`You are currently in room ${lastVisitedRoom}, you cannot make this operation on room ${roomId}, you are not there!`));
                 }
 
                 resolve({

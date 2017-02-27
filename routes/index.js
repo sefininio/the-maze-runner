@@ -19,7 +19,7 @@ module.exports = (passport) => {
         dGenUtils.generate(req.user, quests)
             .then(firstRoomId => res.send(firstRoomId))
             .catch(err => {
-                console.log(err);
+                console.log(`[${req.user.tikalId}]: ${err}`);
                 res.status(500).send(err);
             });
     });
@@ -28,7 +28,7 @@ module.exports = (passport) => {
         dGenUtils.getRoomDescription(req.user.tikalId ,req.params.roomId)
             .then(description => res.send(description))
             .catch(err => {
-                console.log(err);
+                console.log(`[${req.user.tikalId}]: ${err}`);
                 res.status(500).send(err);
             });
     });
@@ -37,7 +37,7 @@ module.exports = (passport) => {
         dGenUtils.getRoomExits(req.user.tikalId ,req.params.roomId)
             .then(exits => res.send(exits))
             .catch(err => {
-                console.log(err);
+                console.log(`[${req.user.tikalId}]: ${err}`);
                 res.status(500).send(err);
             });
     });
@@ -46,7 +46,7 @@ module.exports = (passport) => {
         dGenUtils.exitRoom(req.user.tikalId, req.params.roomId, req.params.direction)
             .then(newRoomId => res.send(newRoomId))
             .catch(err => {
-                console.log(err);
+                console.log(`[${req.user.tikalId}]: ${err}`);
                 res.status(500).send(err);
             });
     });
@@ -55,7 +55,7 @@ module.exports = (passport) => {
         dGenUtils.validate(req.user.tikalId, req.params.hash)
             .then(verified => res.send(verified))
             .catch(err => {
-                console.log(err);
+                console.log(`[${req.user.tikalId}]: ${err}`);
                 res.status(500).send(err);
             });
     });

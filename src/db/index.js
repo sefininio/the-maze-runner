@@ -27,7 +27,7 @@ module.exports.saveDungeon = (dungeon) => {
 
 module.exports.updateLastVisitedRoom = (key, roomId) => {
     return new Promise((resolve, reject) => {
-        db.update({key: key}, {$set: { lastVisitedRoomId: roomId }}, {}, (err, numUpdated) => {
+        db.update({key: key}, {$push: { lastVisitedRoomId: roomId }}, {}, (err, numUpdated) => {
             if (err) {
                 reject(err);
             }
