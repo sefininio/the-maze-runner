@@ -1,6 +1,8 @@
 const Datastore = require('nedb');
 const db = new Datastore({ filename: './dungeon.db', autoload: true });
 
+db.persistence.setAutocompactionInterval(1800000);
+
 module.exports.getDungeon = (key) => {
     return new Promise((resolve, reject) => {
         db.findOne({key: key}, (err, doc) => {
