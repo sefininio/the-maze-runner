@@ -1,6 +1,7 @@
 const Datastore = require('nedb');
 const db = new Datastore({ filename: './dungeon.db', autoload: true });
 
+// auto compact db every 30 minutes
 db.persistence.setAutocompactionInterval(1800000);
 
 module.exports.getDungeon = (key) => {
