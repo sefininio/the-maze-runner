@@ -1,0 +1,3 @@
+- src: https://github.com/shelleg/ansible-role-simple-docker-daemon.git
+  version: master
+  name: simple-docker-daemon

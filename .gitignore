@@ -33,3 +33,13 @@ jspm_packages
 
 .idea
 dungeon.db
+galaxy-roles/simple-docker-daemon/
+site-roles/ansible-role-maze-runner/.travis.yml
+site-roles/ansible-role-maze-runner/README.md
+site-roles/ansible-role-maze-runner/defaults/
+site-roles/ansible-role-maze-runner/handlers/
+site-roles/ansible-role-maze-runner/meta/
+site-roles/ansible-role-maze-runner/tasks/
+site-roles/ansible-role-maze-runner/tests/
+site-roles/ansible-role-maze-runner/vars/
+site-roles/key.pub

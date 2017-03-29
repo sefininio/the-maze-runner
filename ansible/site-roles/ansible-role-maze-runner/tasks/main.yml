@@ -1,0 +1,54 @@
+---
+# tasks file for ansible-role-maze-runner
+
+- name: "crate dirs"
+  file:
+    state: directory
+    path: "{{ item }}"
+    owner: ubuntu
+    group: ubuntu
+    mode: 0755
+    recurse: true
+  with_items:
+    - "{{ mr_build_dir }}"
+    - "{{ mr_build_dir }}/.dev"
+    - "{{ mr_runtime_dir }}"
+    - "{{ mr_conf_dir }}"
+
+- name: "create dungeon.db"
+  file:
+    state: touch
+    path: "{{ mr_db }}"
+    mode: 0755
+    owner: ubuntu
+    group: ubuntu
+    mode: 0755
+
+- block:
+
+  - name: "Git clone from github"
+    git:
+      repo: "{{ mr_git_url }}"
+      dest: "{{ mr_build_dir }}"
+      accept_hostkey: yes
+      key_file: "/home/ubuntu/.ssh/id_rsa"
+      force: yes
+      version: "{{ mr_branch | d('master') }}"
+
+
+
+  - name: "build container"
+    shell: docker build -t tikalk/maze-runner .
+    args:
+      chdir: "{{ mr_build_dir }}"
+
+  - name: "copy oauth.js"
+    copy:
+      src: oauth.js
+      dest: "{{ mr_build_dir }}/.dev/oauth.js"
+
+  - name: "Deploy container"
+    shell: "docker run -d  -v {{ mr_db }}:/{{ mr_db_file }} -p 8080:3000 tikalk/maze-runner"
+
+  become: yes
+  become_user: ubuntu
