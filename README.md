@@ -128,7 +128,7 @@ Please contact repo owner for the maze-runner app oauth.js file.
 mkdir conf
 ```
 
-3. Build Docker Container from Docekrfile
+3. Build Docker Container from Dockerfile
 
 ```
 cd maze-runner
