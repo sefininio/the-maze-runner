@@ -141,3 +141,5 @@ docker run -d -p 3000:3000 <yourname>/maze-runner
 ```
 
 5. visit the app at `http://localhost:3000`
+
+# adding a line to test git access - ignore
