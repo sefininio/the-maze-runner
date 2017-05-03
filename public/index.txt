@@ -1,0 +1,1397 @@
+<html>
+   <head>
+      <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+      <style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}</style>
+      <style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style>
+      <style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}</style>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Who Are We? | Tikal</title>
+      <meta name="viewport" content="width=device-width">
+      <link rel="alternate" type="application/rss+xml" title="Tikal RSS" href="/feed.xml">
+      <link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+      <meta property="description" content="Who Are We? | Tikal">
+      <meta property="og:type" content="article">
+      <meta property="og:title" content="Who Are We? | Tikal">
+      <meta property="og:image" content="http://www.tikalk.com/images/logo.png">
+      <meta property="og:url" content="http://www.tikalk.com/">
+      <!-- syntax highlighting CSS -->
+      <!--link rel="stylesheet" href="/css/syntax.css"-->
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="/assets/application-052d4ae1223448f8ca6ea40b7d48ca28.css">
+      <!-- Custom JS -->
+      <script async="" src="//cse.google.com/adsense/search/async-ads.js"></script><script type="text/javascript" src="http://www.google.com/cse/cse.js?cx=012617499894110201007:qu0yvmmzksu"></script><script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script type="text/javascript" src="http://w.sharethis.com/button/p.js" async=""></script><script type="text/javascript" id="async-buttons" src="http://w.sharethis.com/button/async-buttons.js"></script><script src="/assets/vendor/jquery-2.1.1-454fdb77098847ba39187f08787c8662.js"></script>
+      <script src="/assets/vendor/jquery.validate-dee143c8639ece97954057c602a369bb.js"></script>
+      <script src="/assets/vendor/scrollup/jquery.scrollUp-419ba30beed0ea6b491a1d99f5e2a873.js"></script>
+      <script src="/assets/vendor/drupal_legacy-c7f6ca2616e6d5bdddbd5bd3ac23628d.js"></script>
+      <script src="/assets/vendor/angular.min-54e829a085399e3a19ef9c035293174b.js"></script>
+      <script src="/assets/events-8a428f8cc57bb55874ca5b6794ad7126.js"></script>
+      <script src="/assets/contact-fd69791f35970f10372a0625e6bb445e.js"></script>
+      <script src="/assets/vendor/jquery.jcarousel-core-94e354fbae4d90cd90d3d153cdd9af00.js"></script>
+      <script src="/assets/vendor/jquery.jcarousel-autoscroll-ad1ce0c221c2a07624c892ab518f7e34.js"></script>
+      <script src="/assets/vendor/jquery.form.min-12c39d52f6090189f442518803f543da.js"></script>
+      <script src="/assets/vendor/colorbox-master/jquery.colorbox-6be16a6ee2561464c0d14d0bef263603.js"></script>
+      <script src="/assets/prism-0fb5538a8926351ab8bfaac5fa694efe.js"></script>
+      <script src="/assets/application-45dcee16e7843e71e59a6e32a34d7b0e.js"></script>
+      <!-- ShareThis JS for posts section -->
+      <script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
+      <script src="//connect.facebook.net/en_US/all.js"></script>
+      <script type="text/javascript">stLight.options({publisher: "6ae64a50-63a5-4021-a8de-b0adce0ce99b", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+      <script type="text/javascript">
+         <!--//--><![CDATA[//><!--
+         var _gaq = _gaq || [];_gaq.push(["_setAccount", "UA-1365497-6"]);_gaq.push(["_trackPageview"]);(function() {var ga = document.createElement("script");ga.type = "text/javascript";ga.async = true;ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga, s);})();
+         //--><!]]>
+      </script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+      <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/28/14/common.js"></script><script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/28/14/map.js"></script><script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/28/14/util.js"></script><script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/28/14/marker.js"></script>
+      <style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+         .fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+         .fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+      </style>
+      <iframe id="stSegmentFrame" name="stSegmentFrame" frameborder="0" scrolling="no" width="0px" height="0px" sandbox="allow-scripts allow-same-origin" style="display:none;"></iframe>
+      <link rel="stylesheet" type="text/css" href="http://w.sharethis.com/button/css/buttons.e80452d5e7cc382dad89d10f50bde247.css">
+      <style type="text/css">.gm-style {
+         font: 400 11px Roboto, Arial, sans-serif;
+         text-decoration: none;
+         }
+         .gm-style img { max-width: none; }
+      </style>
+      <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/28/14/onion.js"></script><script type="text/javascript" charset="UTF-8" src="http://maps.googleapis.com/maps/api/js/ViewportInfoService.GetViewportInfo?1m6&amp;1m2&amp;1d32.10369569822656&amp;2d34.828377011533576&amp;2m2&amp;1d32.12623174964399&amp;2d34.86036366515839&amp;2u15&amp;4sen-US&amp;5e0&amp;6sm%40378000000&amp;7b0&amp;8e0&amp;callback=_xdc_._yqxpui&amp;token=4262"></script><script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/28/14/stats.js"></script><script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/28/14/controls.js"></script><script src="https://www.google.com/jsapi?autoload=%7B%22modules%22%3A%5B%7B%22name%22%3A%22search%22%2C%22version%22%3A%221.0%22%2C%22callback%22%3A%22__gcse.scb%22%2C%22style%22%3A%22https%3A%2F%2Fwww.google.com%2Fcse%2Fstatic%2Fstyle%2Flook%2Fv2%2Fdefault.css%22%2C%22language%22%3A%22en%22%7D%5D%7D" type="text/javascript"></script>
+      <link type="text/css" href="https://www.google.com/uds/api/search/1.0/584853a42cc2f90f5533642697d97114/default+en.css" rel="stylesheet">
+      <link type="text/css" href="https://www.google.com/cse/static/style/look/v2/default.css" rel="stylesheet">
+      <script type="text/javascript" src="https://www.google.com/uds/api/search/1.0/584853a42cc2f90f5533642697d97114/default+en.I.js"></script><script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps/vt?pb=!1m4!1m3!1i15!2i19555!3i13294!1m4!1m3!1i15!2i19556!3i13294!2m3!1e0!2sm!3i378068136!3m9!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e3!12m1!5b1&amp;callback=_xdc_._tlvodb&amp;token=22095"></script><script type="text/javascript" charset="UTF-8" src="http://maps.googleapis.com/maps/api/js/AuthenticationService.Authenticate?1shttp%3A%2F%2Fwww.tikalk.com%2F&amp;callback=_xdc_._kocamq&amp;token=46401"></script>
+      <style type="text/css"></style>
+      <style type="text/css">.gscb_a{display:inline-block;font:27px/13px arial,sans-serif}.gsst_a .gscb_a{color:#a1b9ed;cursor:pointer}.gsst_a:hover .gscb_a,.gsst_a:focus .gscb_a{color:#36c}.gsst_a{display:inline-block}.gsst_a{cursor:pointer;padding:0 4px}.gsst_a:hover{text-decoration:none!important}.gsst_b{font-size:16px;padding:0 2px;position:relative;user-select:none;-webkit-user-select:none;white-space:nowrap}.gsst_e{opacity:0.55;}.gsst_a:hover .gsst_e,.gsst_a:focus .gsst_e{opacity:0.72;}.gsst_a:active .gsst_e{opacity:1;}.gsst_f{background:white;text-align:left}.gsst_g{background-color:white;border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);margin:-1px -3px;padding:0 6px}.gsst_h{background-color:white;height:1px;margin-bottom:-1px;position:relative;top:-1px}.gsib_a{width:100%;padding:4px 6px 0}.gsib_a,.gsib_b{vertical-align:top}.gssb_c{border:0;position:absolute;z-index:989}.gssb_e{border:1px solid #ccc;border-top-color:#d9d9d9;box-shadow:0 2px 4px rgba(0,0,0,0.2);-webkit-box-shadow:0 2px 4px rgba(0,0,0,0.2);cursor:default}.gssb_f{visibility:hidden;white-space:nowrap}.gssb_k{border:0;display:block;position:absolute;top:0;z-index:988}.gsdd_a{border:none!important}.gsq_a{padding:0}.gsq_a{padding:0}.gscsep_a{display:none}.gssb_a{padding:0 7px}.gssb_a,.gssb_a td{white-space:nowrap;overflow:hidden;line-height:22px}#gssb_b{font-size:11px;color:#36c;text-decoration:none}#gssb_b:hover{font-size:11px;color:#36c;text-decoration:underline}.gssb_g{text-align:center;padding:8px 0 7px;position:relative}.gssb_h{font-size:15px;height:28px;margin:0.2em;-webkit-appearance:button}.gssb_i{background:#eee}.gss_ifl{visibility:hidden;padding-left:5px}.gssb_i .gss_ifl{visibility:visible}a.gssb_j{font-size:13px;color:#36c;text-decoration:none;line-height:100%}a.gssb_j:hover{text-decoration:underline}.gssb_l{height:1px;background-color:#e5e5e5}.gssb_m{color:#000;background:#fff}.gsfe_a{border:1px solid #b9b9b9;border-top-color:#a0a0a0;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.1);}.gsfe_b{border:1px solid #4d90fe;outline:none;box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-moz-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);-webkit-box-shadow:inset 0px 1px 2px rgba(0,0,0,0.3);}.gssb_a{padding:0 9px}.gsib_a{padding-right:8px;padding-left:8px}.gsst_a{padding-top:3px}.gssb_e{border:0}.gssb_l{margin:5px 0}#gsc-i-id1::-webkit-input-placeholder{font-size:14px}#gsc-i-id1:-moz-placeholder{font-size:14px}#gsc-i-id1::-moz-placeholder{font-size:14px}#gsc-i-id1:-ms-input-placeholder{font-size:14px}#gsc-i-id1:focus::-webkit-input-placeholder{color:transparent}#gsc-i-id1:focus:-moz-placeholder{color:transparent}#gsc-i-id1:focus::-moz-placeholder{color:transparent}#gsc-i-id1:focus:-ms-input-placeholder{color:transparent}.gssb_c .gsc-completion-container{position:static}.gssb_c{z-index:5000}.gsc-completion-container table{background:transparent;font-size:inherit;font-family:inherit}.gssb_c > tbody > tr,.gssb_c > tbody > tr > td,.gssb_d,.gssb_d > tbody > tr,.gssb_d > tbody > tr > td,.gssb_e,.gssb_e > tbody > tr,.gssb_e > tbody > tr > td{padding:0;margin:0;border:0}.gssb_a table,.gssb_a table tr,.gssb_a table tr td{padding:0;margin:0;border:0}</style>
+      <script type="text/javascript" charset="UTF-8" src="http://maps.googleapis.com/maps/api/js/QuotaService.RecordEvent?1shttp%3A%2F%2Fwww.tikalk.com%2F&amp;5e0&amp;6u1&amp;7s9djsp0&amp;callback=_xdc_._br3iko&amp;token=124096"></script>
+   </head>
+   <body class="html front not-logged-in no-sidebars page-node page-node-27 node-type-page all-pages with-navigation with-subnav featured dir-ltr">
+      <div id="header-first">
+         <div class="region region-header-first">
+            <div id="block-search-form" class="block block-search block-odd">
+               <div class="content">
+                  <form id="search-block-form" accept-charset="UTF-8">
+                     <div>
+                        <div class="container-inline">
+                           <h2 class="element-invisible">Search form</h2>
+                           <div class="form-item form-type-textfield form-item-search-block-form">
+                              <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+                              <input title="Enter the terms you wish to search for." placeholder="Search" type="search" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text">
+                           </div>
+                           <div class="form-actions form-wrapper" id="edit-actions"><input type="submit" id="edit-submit" name="op" value="Search" class="form-submit"></div>
+                           <input type="hidden" name="form_build_id" value="form-hCEJ23kB0sHlr4dB3Yv5-2cDcH10yNwGSUn69WjCjF4">
+                           <input type="hidden" name="form_id" value="search_block_form">
+                        </div>
+                     </div>
+                  </form>
+               </div>
+               <!-- /.content -->
+            </div>
+            <!-- /.block -->
+            <div id="block-menu-menu-top-links" class="block block-menu block-even">
+            </div>
+            <!-- /.block -->
+            <div id="block-menu-menu-language" class="block block-menu block-odd">
+               <div class="content">
+                  <ul class="menu clearfix">
+                     <li class="first last leaf עברית"><a href="/hebrew" title="">עברית</a></li>
+                  </ul>
+               </div>
+               <!-- /.content -->
+            </div>
+            <!-- /.block -->
+         </div>
+      </div>
+      <div id="google-search-form" style="visibility:hidden; height: 1px; float:right;">
+         <script>
+            (function() {
+                var cx = '012617499894110201007:qu0yvmmzksu';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = false;
+                gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                        '//www.google.com/cse/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+            })();
+         </script>
+         <div id="___gcse_0">
+            <div class="gsc-control-cse gsc-control-cse-en">
+               <div class="gsc-control-wrapper-cse" dir="ltr" style="visibility: hidden;">
+                  <form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8" style="display: none;">
+                     <table cellspacing="0" cellpadding="0" class="gsc-search-box">
+                        <tbody>
+                           <tr>
+                              <td class="gsc-input">
+                                 <div class="gsc-input-box" id="gsc-iw-id1">
+                                    <table cellspacing="0" cellpadding="0" id="gs_id50" class="gstl_50 " style="width: 100%; padding: 0px;">
+                                       <tbody>
+                                          <tr>
+                                             <td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" id="gsc-i-id1" style="width: 100%; padding: 0px; border: none; margin: -0.0625em 0px 0px; height: 1.25em; outline: none; background: url(&quot;http://www.google.com/cse/static/images/1x/googlelogo_lightgrey_46x16dp.png&quot;) left center no-repeat rgb(255, 255, 255); text-indent: 48px;" x-webkit-speech="" x-webkit-grammar="builtin:search" lang="en" dir="ltr" spellcheck="false" placeholder="Custom Search"></td>
+                                             <td class="gsib_b">
+                                                <div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a" href="javascript:void(0)" style="display: none;"><span class="gscb_a" id="gs_cb50">×</span></a></div>
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </div>
+                                 <input type="hidden" name="bgresponse" id="bgresponse">
+                              </td>
+                              <td class="gsc-search-button"><input type="image" src="https://www.google.com/uds/css/v2/search_box_icon.png" class="gsc-search-button gsc-search-button-v2" title="search"></td>
+                              <td class="gsc-clear-button">
+                                 <div class="gsc-clear-button" title="clear results">&nbsp;</div>
+                              </td>
+                           </tr>
+                        </tbody>
+                     </table>
+                     <table cellspacing="0" cellpadding="0" class="gsc-branding">
+                        <tbody>
+                           <tr>
+                              <td class="gsc-branding-user-defined"></td>
+                              <td class="gsc-branding-text">
+                                 <div class="gsc-branding-text">powered by</div>
+                              </td>
+                              <td class="gsc-branding-img"><img src="https://www.google.com/cse/static/images/1x/googlelogo_grey_46x15dp.png" class="gsc-branding-img" srcset="https://www.google.com/cse/static/images/2x/googlelogo_grey_46x15dp.png 2x"></td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </form>
+                  <div class="gsc-results-wrapper-overlay">
+                     <div class="gsc-results-close-btn" tabindex="0"></div>
+                     <div class="gsc-tabsAreaInvisible">
+                        <div class="gsc-tabHeader gsc-inline-block gsc-tabhActive">Custom Search</div>
+                        <span class="gs-spacer"> </span>
+                     </div>
+                     <div class="gsc-tabsAreaInvisible"></div>
+                     <div class="gsc-above-wrapper-area-invisible">
+                        <table cellspacing="0" cellpadding="0" class="gsc-above-wrapper-area-container">
+                           <tbody>
+                              <tr>
+                                 <td class="gsc-result-info-container">
+                                    <div class="gsc-result-info-invisible"></div>
+                                 </td>
+                                 <td class="gsc-orderby-container">
+                                    <div class="gsc-orderby-invisible">
+                                       <div class="gsc-orderby-label gsc-inline-block">Sort by:</div>
+                                       <div class="gsc-option-menu-container gsc-inline-block">
+                                          <div class="gsc-selected-option-container gsc-inline-block">
+                                             <div class="gsc-selected-option">Relevance</div>
+                                             <div class="gsc-option-selector"></div>
+                                          </div>
+                                          <div class="gsc-option-menu-invisible">
+                                             <div class="gsc-option-menu-item gsc-option-menu-item-highlighted">
+                                                <div class="gsc-option">Relevance</div>
+                                             </div>
+                                             <div class="gsc-option-menu-item">
+                                                <div class="gsc-option">Date</div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                     <div class="gsc-adBlockInvisible"></div>
+                     <div class="gsc-wrapper">
+                        <div class="gsc-adBlockInvisible"></div>
+                        <div class="gsc-resultsbox-invisible">
+                           <div class="gsc-resultsRoot gsc-tabData gsc-tabdActive">
+                              <table cellspacing="0" cellpadding="0" class="gsc-resultsHeader">
+                                 <tbody>
+                                    <tr>
+                                       <td class="gsc-twiddleRegionCell">
+                                          <div class="gsc-twiddle">
+                                             <div class="gsc-title">Web</div>
+                                          </div>
+                                          <div class="gsc-stats"></div>
+                                          <div class="gsc-results-selector gsc-all-results-active">
+                                             <div class="gsc-result-selector gsc-one-result" title="show one result">&nbsp;</div>
+                                             <div class="gsc-result-selector gsc-more-results" title="show more results">&nbsp;</div>
+                                             <div class="gsc-result-selector gsc-all-results" title="show all results">&nbsp;</div>
+                                          </div>
+                                       </td>
+                                       <td class="gsc-configLabelCell"></td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                              <div>
+                                 <div class="gsc-expansionArea"></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="gsc-modal-background-image" tabindex="0"></div>
+               </div>
+            </div>
+         </div>
+         <script>
+            $(document).ready(function() {
+                $('#search-block-form').submit(function (e) {
+                    e.preventDefault();
+
+                    //find google search form
+                    var form = $('.gsc-control-wrapper-cse').find('form');
+                    var input = form.find("input[name='search']");
+                    var btn = form.find("input[type='image']");
+                    var tikalSearch = $('#edit-search-block-form--2');
+                    tikalSearch.blur();
+                    $("#bg").show();
+                    input.val(tikalSearch.val());
+                    //form.submit();
+                    btn.click();
+
+                });
+
+            });
+
+
+         </script>
+      </div>
+      <header id="header" role="banner">
+         <div class="logo-and-region-header">
+            <div class="background-logo"></div>
+            <a href="/" title="Home" rel="home" id="logo">
+            <img src="/assets/logo-1bb9a466c9d195c148557434c3437446.png" alt="Home">
+            </a>
+            <div class="region region-header">
+               <section id="block-menu-menu-header-menu" class="block block-menu block-even">
+                  <h2 class="block-title element-invisible">Header menu</h2>
+                  <div class="content">
+                     <ul class="menu clearfix">
+                        <li class="leaf"><a href="/about" class="">About</a></li>
+                        <li class="leaf"><a href="/solutions" class="">Solutions</a></li>
+                        <li class="leaf"><a href="/careers" class="">Careers</a></li>
+                        <li class="leaf"><a href="/events" class="">Events</a></li>
+                        <li class="leaf"><a href="/contact" class="">Contact</a></li>
+                     </ul>
+                  </div>
+                  <!-- /.content -->
+               </section>
+               <!-- /.block -->
+               <section id="block-menu-menu-domains" class="block block-menu block-odd">
+                  <h2 class="block-title element-invisible">Domains</h2>
+                  <div class="content">
+                     <ul class="menu clearfix">
+                        <li class="first leaf devops"><a href="/devops" title="">DevOps</a></li>
+                        <li class="leaf java"><a href="/java" title="">JAVA</a></li>
+                        <li class="leaf js"><a href="/js" title="">JS</a></li>
+                        <li class="leaf ruby"><a href="/ruby" title="">Ruby</a></li>
+                        <li class="last leaf android"><a href="/android" title="">Android</a></li>
+                     </ul>
+                  </div>
+                  <!-- /.content -->
+               </section>
+               <!-- /.block -->
+            </div>
+         </div>
+         <!-- /#logo-and-region-header -->
+      </header>
+      <div id="featured">
+         <div class="jcarousel">
+            <ul>
+               <li class="">
+                  <img width="1900" height="282" alt="" src="/assets/pages/events/background-e3afb4e94802909879b3c7d4ad220775.jpg" typeof="foaf:Image">
+                  <div class="subtitle">
+                     <p dir="ltr">Stay tuned with Tikal's Fullstack community upcoming Meetup events</p>
+                  </div>
+               </li>
+               <li class="hidden">
+                  <img width="1900" height="282" alt="" src="/assets/pages/careers/background-b5a41f528c7c4b1ee25edbd39d6dc287.jpg" typeof="foaf:Image">
+                  <div class="subtitle">
+                     <p dir="ltr">We're always looking for new talent, Think you got what it takes?</p>
+                  </div>
+               </li>
+               <li class="hidden">
+                  <img width="1900" height="282" alt="" src="/assets/pages/solutions/background-c62c57592c74dd3681183d0b755a0769.jpg" typeof="foaf:Image">
+                  <div class="subtitle">
+                     <p dir="ltr">Consultancy, Workshops and Support. Delivered by leading experts and customized to meet the needs of your organization.</p>
+                  </div>
+               </li>
+            </ul>
+         </div>
+      </div>
+      <div class="shadow-page"></div>
+      <div id="page">
+         <div id="main">
+            <div class="tabs"></div>
+            <div class="region region-content-top">
+               <section id="block-views-clients-block" class="block block-views block-odd">
+                  <h2 class="block-title">We Work With:</h2>
+                  <div class="content">
+                     <div class="view view-clients view-id-clients view-display-id-block">
+                        <div class="view-content">
+                           <div class="view-content-limit">
+                              <div class="view-content-limit-content">
+                                 <div class="views-row views-row-1 views-row-odd views-row-first">
+                                    <div class="views-field views-field-field-logo">
+                                       <div class="field-content">
+                                          <a href="/solutions/#testimonies">
+                                          <img typeof="foaf:Image" src="/assets/clients/ironsource-4651f3c3aa4b043d60548c69618ba320.png" alt="">
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="views-row views-row-2 views-row-even ">
+                                    <div class="views-field views-field-field-logo">
+                                       <div class="field-content">
+                                          <a href="/solutions/#testimonies">
+                                          <img typeof="foaf:Image" src="/assets/clients/paypal-daac6728d63c5e1d4e984344a02c89ae.png" alt="">
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="views-row views-row-3 views-row-odd ">
+                                    <div class="views-field views-field-field-logo">
+                                       <div class="field-content">
+                                          <a href="/solutions/#testimonies">
+                                          <img typeof="foaf:Image" src="/assets/clients/sapiens-logo-e9496164317ca39741509a29b20a0be1.jpg" alt="">
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="views-row views-row-4 views-row-even ">
+                                    <div class="views-field views-field-field-logo">
+                                       <div class="field-content">
+                                          <a href="/solutions/#testimonies">
+                                          <img typeof="foaf:Image" src="/assets/clients/Hellaruim_0-17f5a901c4cfb84220a3f076389bd2ea.png" alt="">
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="views-row views-row-5 views-row-odd views-row-last">
+                                    <div class="views-field views-field-field-logo">
+                                       <div class="field-content">
+                                          <a href="/solutions/#testimonies">
+                                          <img typeof="foaf:Image" src="/assets/clients/VMWare-fad43fb1b8a9c2771c6256bedbdef84a.png" alt="">
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- /.content -->
+               </section>
+               <!-- /.block -->
+            </div>
+            <h1 class="title" id="page-title">Who Are We?</h1>
+            <div class="region region-content">
+               <div id="block-system-main" class="block block-system block-even">
+                  <div class="content">
+                     <article id="node-27" class="node node-page node-odd published with-comments node-full" about="/content/who-are-we" typeof="foaf:Document">
+                        <div class="content">
+                           <div class="field field-name-body field-type-text-with-summary field-label-hidden">
+                              <div class="field-items">
+                                 <div class="field-item  field-item-1 even" property="content:encoded">
+                                    <p>
+                                       We are a global software company founded by experts in the open-source community.
+                                       Our open-source approach provides our clients with value added services, assuring rapid development and easy customization,
+                                       while eliminating the risk of being held captive by a specific vendor.
+                                    </p>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- /.content -->
+                        <footer>
+                        </footer>
+                     </article>
+                     <!-- /.node -->
+                  </div>
+                  <!-- /.content -->
+               </div>
+               <!-- /.block -->
+            </div>
+            <div class="region region-content-bottom">
+               <div id="block-menu-block-1" class="block block-menu-block block-domains-home-page block-odd">
+                  <div class="content">
+                     <div class="menu-block-wrapper menu-block-3 menu-name-menu-domains parent-mlid-0 menu-level-1">
+                        <ul class="menu clearfix">
+                           <li class="leaf devops"><a href="/devops" title="">DevOps</a></li>
+                           <li class="leaf java"><a href="/java" title="">Java</a></li>
+                           <li class="leaf js"><a href="/js" title="">Javascript</a></li>
+                           <li class="leaf ruby"><a href="/ruby" title="">Ruby</a></li>
+                           <li class="leaf android"><a href="/android" title="">Android</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+               <section id="block-views-article-latest-articles" class="block block-views block-even">
+                  <h2 class="block-title">Latest Articles</h2>
+                  <div class="content">
+                     <div class="view view-article view-id-article view-display-id-latest_articles">
+                        <div class="view-content">
+                           <div class="view-content-limit">
+                              <div class="view-content-limit-content">
+                                 <div class="views-row views-row-1 views-row-even views-row-first">
+                                    <div class="fields">
+                                       <div class="views-field views-field-term-node-tid">
+                                          <span class="field-content">
+                                             <a href="devops">
+                                                <div class="DEVOPS">devops</div>
+                                             </a>
+                                          </span>
+                                       </div>
+                                       <div class="views-field views-field-title">
+                                          <span class="field-content">
+                                          <a href="/devops/ciwithawsonly">
+                                          Continuous Integration with AWS tools only
+                                          </a>
+                                          </span>
+                                       </div>
+                                       <div class="views-field views-field-view-user">
+                                          <span class="views-label views-label-view-user">by</span>
+                                          <span class="field-content">
+                                          <a href="/devops/giladj" title="View user profile." class="username" xml:lang="" about="/js/shavit" typeof="sioc:UserAccount" property="foaf:name" datatype="">gilad</a>
+                                          </span>
+                                       </div>
+                                       <div class="views-field views-field-body">
+                                          <div class="field-content">
+                                             <p>
+                                                The Goal Working in a professional service organization, one might be called to the helm to help out with a task for the common good, in this case setting a build process for a straight forward node.js project. Being familiar with setting up a build and deploy process with Jenkins,...
+                                             </p>
+                                          </div>
+                                       </div>
+                                       <div class="views-field views-field-created">
+                                          <span class="field-content">
+                                             <time pubdate="" datetime="2017-05-01 00:00:00 +0000">
+                                                <div class="day">01</div>
+                                                May. 2017
+                                             </time>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="views-row views-row-2 views-row-odd ">
+                                    <div class="fields">
+                                       <div class="views-field views-field-term-node-tid">
+                                          <span class="field-content">
+                                             <a href="js">
+                                                <div class="JS">JS</div>
+                                             </a>
+                                          </span>
+                                       </div>
+                                       <div class="views-field views-field-title">
+                                          <span class="field-content">
+                                          <a href="/js/remove-duplicates-from-an-array">
+                                          Remove Array duplicates
+                                          </a>
+                                          </span>
+                                       </div>
+                                       <div class="views-field views-field-view-user">
+                                          <span class="views-label views-label-view-user">by</span>
+                                          <span class="field-content">
+                                          <a href="/js/alonv" title="View user profile." class="username" xml:lang="" about="/js/shavit" typeof="sioc:UserAccount" property="foaf:name" datatype="">alonv</a>
+                                          </span>
+                                       </div>
+                                       <div class="views-field views-field-body">
+                                          <div class="field-content">
+                                             <p>
+                                                As a JavaScript consultant, I meet with a lot of clients. In some cases, it’s like having a programmer’s job interview. At one of this clients, I got a JavaScript test and one of the questions was to implement a removeDuplicates function that accepts an Array and return a new...
+                                             </p>
+                                          </div>
+                                       </div>
+                                       <div class="views-field views-field-created">
+                                          <span class="field-content">
+                                             <time pubdate="" datetime="2017-04-26 00:00:00 +0000">
+                                                <div class="day">26</div>
+                                                Apr. 2017
+                                             </time>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="views-row views-row-3 views-row-even views-row-last">
+                                    <div class="fields">
+                                       <div class="views-field views-field-term-node-tid">
+                                          <span class="field-content">
+                                             <a href="js">
+                                                <div class="JS">JS</div>
+                                             </a>
+                                          </span>
+                                       </div>
+                                       <div class="views-field views-field-title">
+                                          <span class="field-content">
+                                          <a href="/js/introduction-to-micro-frontends">
+                                          Introduction to Micro Frontends
+                                          </a>
+                                          </span>
+                                       </div>
+                                       <div class="views-field views-field-view-user">
+                                          <span class="views-label views-label-view-user">by</span>
+                                          <span class="field-content">
+                                          <a href="/js/assafg" title="View user profile." class="username" xml:lang="" about="/js/shavit" typeof="sioc:UserAccount" property="foaf:name" datatype="">assafg</a>
+                                          </span>
+                                       </div>
+                                       <div class="views-field views-field-body">
+                                          <div class="field-content">
+                                             <p>
+                                                "Micro frontends" is a new trend in large single page applications (SPA). Single page applications have become increasingly large and resemble in behavior and life-cycle the server side monolith. Just as there is a movement to split server side monolithic applications into multiple robust micro-services, there is also a movement...
+                                             </p>
+                                          </div>
+                                       </div>
+                                       <div class="views-field views-field-created">
+                                          <span class="field-content">
+                                             <time pubdate="" datetime="2017-04-23 00:00:00 +0000">
+                                                <div class="day">23</div>
+                                                Apr. 2017
+                                             </time>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="view-footer">
+                           <a href="latest-articles" class="read-more">Read More »</a>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- /.content -->
+               </section>
+               <section id="block-tikal-meetup-meetup-domain-pages-events" class="block block-tikal-meetup block-odd">
+                  <h2 class="block-title">Events</h2>
+                  <div class="content ng-scope" ng-app="events-module">
+                     <div ng-controller="Sn.MainCtrl as mainCtrl" class="ng-scope">
+                        <div class="meetup-logo"></div>
+                        <div class="buttons-container">
+                           <div ng-class="{'active': mainCtrl.isUpComing}" class="switch-events button button-upcoming active" ng-click="mainCtrl.displayUpComing()">Upcoming</div>
+                           <div ng-class="{'active': mainCtrl.isPast}" class="switch-events button button-past" ng-click="mainCtrl.displayPast()">Past</div>
+                        </div>
+                        <div id="meetups" ng-controller="Sn.MeetupsCtrl as meetupsCtrl" class="ng-scope">
+                           <div ng-show="mainCtrl.isUpComing" class="">
+                              <!-- ngRepeat: meetup in meetups track by meetup.id -->
+                              <div style="display:block !important;display:block !important" class="field-item events-upcoming ng-scope ng-hide" data-ng-repeat="meetup in meetups track by meetup.id" title="Upcoming Events" meetups="meetupsCtrl.meetupsByStatus.upcoming" ng-show="meetupsCtrl.meetupsByStatus.upcoming.length" is-upcoming-event="true" rsvps="meetupsCtrl.meetupsRsvps">
+                                 <a style="display:block !important" class="field-title ng-binding" data-ng-href="https://www.meetup.com/full-stack-developer-il/events/237926577/" target="_blank" href="https://www.meetup.com/full-stack-developer-il/events/237926577/"> Infrastructure TDD with Chef workshop </a>
+                                 <div style="display:block !important" class="field-date">
+                                    <div style="display:block !important" class="date ng-binding">
+                                       Wednesday, May 10 , 17:00  @
+                                    </div>
+                                    <div style="display:block !important" class="name ng-binding">
+                                       Kiryat Atidim, building 7, 3rd floor ,  Tel Aviv-Yafo
+                                    </div>
+                                 </div>
+                                 <div style="display:block !important" class="field-photos">
+                                    <div style="display:block !important" class="photo">
+                                       <div style="display:block !important" class="photo">
+                                          <!-- ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/9/7/7/c/member_264338780.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/2/9/0/9/member_259630505.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/7/a/9/3/member_253831379.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/7/8/3/e/member_244170782.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/8/f/a/4/member_264516772.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- end ngRepeat: meetup in meetups track by meetup.id -->
+                              <div style="display:block !important;display:block !important" class="field-item events-upcoming ng-scope ng-hide" data-ng-repeat="meetup in meetups track by meetup.id" title="Upcoming Events" meetups="meetupsCtrl.meetupsByStatus.upcoming" ng-show="meetupsCtrl.meetupsByStatus.upcoming.length" is-upcoming-event="true" rsvps="meetupsCtrl.meetupsRsvps">
+                                 <a style="display:block !important" class="field-title ng-binding" data-ng-href="https://www.meetup.com/full-stack-developer-il/events/239450818/" target="_blank" href="https://www.meetup.com/full-stack-developer-il/events/239450818/"> Sledgehammers and nuts: smash it with the right tool - Lecture &amp;Beer </a>
+                                 <div style="display:block !important" class="field-date">
+                                    <div style="display:block !important" class="date ng-binding">
+                                       Monday, May 22 , 17:45  @
+                                    </div>
+                                    <div style="display:block !important" class="name ng-binding">
+                                       Kiryat Atidim, building 7, 3rd floor ,  Tel Aviv-Yafo
+                                    </div>
+                                 </div>
+                                 <div style="display:block !important" class="field-photos">
+                                    <div style="display:block !important" class="photo">
+                                       <div style="display:block !important" class="photo">
+                                          <!-- ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/9/b/e/8/member_117219912.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/3/2/0/2/member_137592802.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/4/5/5/8/member_230837752.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/c/d/4/6/member_256072550.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/6/d/7/8/member_266308024.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- end ngRepeat: meetup in meetups track by meetup.id -->
+                              <div style="display:block !important;display:block !important" class="field-item events-upcoming ng-scope ng-hide" data-ng-repeat="meetup in meetups track by meetup.id" title="Upcoming Events" meetups="meetupsCtrl.meetupsByStatus.upcoming" ng-show="meetupsCtrl.meetupsByStatus.upcoming.length" is-upcoming-event="true" rsvps="meetupsCtrl.meetupsRsvps">
+                                 <a style="display:block !important" class="field-title ng-binding" data-ng-href="https://www.meetup.com/full-stack-developer-il/events/239478632/" target="_blank" href="https://www.meetup.com/full-stack-developer-il/events/239478632/"> Software architecture in the age of code components - Lecture &amp; Beer </a>
+                                 <div style="display:block !important" class="field-date">
+                                    <div style="display:block !important" class="date ng-binding">
+                                       Monday, June 12 , 17:45  @
+                                    </div>
+                                    <div style="display:block !important" class="name ng-binding">
+                                       Kiryat Atidim, building 7, 3rd floor ,  Tel Aviv-Yafo
+                                    </div>
+                                 </div>
+                                 <div style="display:block !important" class="field-photos">
+                                    <div style="display:block !important" class="photo">
+                                       <div style="display:block !important" class="photo">
+                                          <!-- ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/5/f/7/a/member_120204442.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/3/2/0/2/member_137592802.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/c/d/4/6/member_256072550.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/a/0/8/4/member_173501092.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- end ngRepeat: meetup in meetups track by meetup.id -->
+                              <div style="display:block !important;display:block !important" class="field-item events-upcoming ng-scope ng-hide" data-ng-repeat="meetup in meetups track by meetup.id" title="Upcoming Events" meetups="meetupsCtrl.meetupsByStatus.upcoming" ng-show="meetupsCtrl.meetupsByStatus.upcoming.length" is-upcoming-event="true" rsvps="meetupsCtrl.meetupsRsvps">
+                                 <a style="display:block !important" class="field-title ng-binding" data-ng-href="https://www.meetup.com/full-stack-developer-il/events/238356446/" target="_blank" href="https://www.meetup.com/full-stack-developer-il/events/238356446/"> "Micro frontends" -  The new trend in large single page applications (SPA). </a>
+                                 <div style="display:block !important" class="field-date">
+                                    <div style="display:block !important" class="date ng-binding">
+                                       Thursday, June 29 , 16:45  @
+                                    </div>
+                                    <div style="display:block !important" class="name ng-binding">
+                                       98 Yigal Alon st. ,  Tel-Aviv
+                                    </div>
+                                 </div>
+                                 <div style="display:block !important" class="field-photos">
+                                    <div style="display:block !important" class="photo">
+                                       <div style="display:block !important" class="photo">
+                                          <!-- ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/6/5/6/1/member_264685953.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/1/c/f/1/member_256867409.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/2/d/a/c/member_243131692.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/b/7/f/e/member_220067102.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- end ngRepeat: meetup in meetups track by meetup.id -->
+                           </div>
+                           <div ng-show="mainCtrl.isPast" class="ng-hide">
+                              <!-- ngRepeat: meetup in meetups track by meetup.id -->
+                              <div style="display:block !important;display:block !important" class="field-item events-upcoming ng-scope ng-hide" data-ng-repeat="meetup in meetups track by meetup.id" title="Past Events" meetups="meetupsCtrl.meetupsByStatus.past" ng-show="meetupsCtrl.meetupsByStatus.past.length" rsvps="meetupsCtrl.meetupsRsvps">
+                                 <a style="display:block !important" class="field-title ng-binding" data-ng-href="https://www.meetup.com/full-stack-developer-il/events/238898239/" target="_blank" href="https://www.meetup.com/full-stack-developer-il/events/238898239/"> Boost spark application performance - Lecture &amp; Beer </a>
+                                 <div style="display:block !important" class="field-date">
+                                    <div style="display:block !important" class="date ng-binding">
+                                       Sunday, April 23 , 17:45  @
+                                    </div>
+                                    <div style="display:block !important" class="name ng-binding">
+                                       Kiryat Atidim, building 7, 3rd floor ,  Tel Aviv-Yafo
+                                    </div>
+                                 </div>
+                                 <div style="display:block !important" class="field-photos">
+                                    <div style="display:block !important" class="photo">
+                                       <div style="display:block !important" class="photo">
+                                          <!-- ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/3/2/6/7/member_264192903.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/d/0/f/4/member_122333492.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/8/c/4/8/member_103235912.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/6/7/8/member_263881656.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/b/3/7/6/member_181425942.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- end ngRepeat: meetup in meetups track by meetup.id -->
+                              <div style="display:block !important;display:block !important" class="field-item events-upcoming ng-scope ng-hide" data-ng-repeat="meetup in meetups track by meetup.id" title="Past Events" meetups="meetupsCtrl.meetupsByStatus.past" ng-show="meetupsCtrl.meetupsByStatus.past.length" rsvps="meetupsCtrl.meetupsRsvps">
+                                 <a style="display:block !important" class="field-title ng-binding" data-ng-href="https://www.meetup.com/full-stack-developer-il/events/236445859/" target="_blank" href="https://www.meetup.com/full-stack-developer-il/events/236445859/"> Introduction to Machine Learning using Spark for Developers </a>
+                                 <div style="display:block !important" class="field-date">
+                                    <div style="display:block !important" class="date ng-binding">
+                                       Thursday, April 6 , 17:00  @
+                                    </div>
+                                    <div style="display:block !important" class="name ng-binding">
+                                       98 Yigal Alon st. ,  Tel-Aviv
+                                    </div>
+                                 </div>
+                                 <div style="display:block !important" class="field-photos">
+                                    <div style="display:block !important" class="photo">
+                                       <div style="display:block !important" class="photo">
+                                          <!-- ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/d/9/a/member_85023482.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/3/4/d/d/member_265573533.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/c/2/1/c/member_61249692.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/8/9/d/e/member_265175294.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/d/6/e/d/member_247495021.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- end ngRepeat: meetup in meetups track by meetup.id -->
+                              <div style="display:block !important;display:block !important" class="field-item events-upcoming ng-scope ng-hide" data-ng-repeat="meetup in meetups track by meetup.id" title="Past Events" meetups="meetupsCtrl.meetupsByStatus.past" ng-show="meetupsCtrl.meetupsByStatus.past.length" rsvps="meetupsCtrl.meetupsRsvps">
+                                 <a style="display:block !important" class="field-title ng-binding" data-ng-href="https://www.meetup.com/full-stack-developer-il/events/236350301/" target="_blank" href="https://www.meetup.com/full-stack-developer-il/events/236350301/"> Lecture &amp; Beer - Android NDK </a>
+                                 <div style="display:block !important" class="field-date">
+                                    <div style="display:block !important" class="date ng-binding">
+                                       Sunday, March 5 , 17:00  @
+                                    </div>
+                                    <div style="display:block !important" class="name ng-binding">
+                                       Kiryat Atidim, building 7, 3rd floor ,  Tel Aviv-Yafo
+                                    </div>
+                                 </div>
+                                 <div style="display:block !important" class="field-photos">
+                                    <div style="display:block !important" class="photo">
+                                       <div style="display:block !important" class="photo">
+                                          <!-- ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/9/0/3/a/member_188976922.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/4/c/a/6/member_221959622.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                          <div ng-repeat="rsvp in rsvps[meetup.id] | limitTo:5" class="ng-scope">
+                                             <img style="display:block !important" src="https://secure.meetupstatic.com/photos/member/c/a/b/e/member_98391902.jpeg">
+                                          </div>
+                                          <!-- end ngRepeat: rsvp in rsvps[meetup.id] | limitTo:5 -->
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- end ngRepeat: meetup in meetups track by meetup.id -->
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </section>
+               <section id="block-views-our-team-block" class="block block-views block-even">
+                  <h2 class="block-title">Our Team</h2>
+                  <div class="content">
+                     <div class="view view-our-team view-id-our_team view-display-id-block view-dom-id-0ad4f9f0323855f16358a2e4fc009175">
+                        <div class="view-header">
+                           We’re a diverse team of industry software experts
+                           helping companies achieve their projects full potential!
+                        </div>
+                        <div class="view-content">
+                           <div class="view-content-latestimit">
+                              <div class="view-content-limit-content">
+                                 <div class="views-row views-row-1">
+                                    <a href="../devops/haggai">
+                                       <div class="front">
+                                          <div class="views-field views-field-picture">
+                                             <div class="field-content">
+                                                <img typeof="foaf:Image" src="//res.cloudinary.com/ds7ihqtdu/image/upload/v1475587451/site/pictures/picture-53-1363331338.jpg" alt="">
+                                             </div>
+                                          </div>
+                                          <div class="views-field views-field-field-first-name">
+                                             <div class="field-content">Haggai</div>
+                                          </div>
+                                          <div class="views-field views-field-field-last-name">
+                                             <div class="field-content">Zagury</div>
+                                          </div>
+                                          <div class="views-field views-field-field-description">
+                                             <div class="field-content">DevOps Architect</div>
+                                          </div>
+                                       </div>
+                                       <div class="back">
+                                          <div class="views-field views-field-nothing">
+                                             <span class="field-content">
+                                                <div class="about">
+                                                   <div>CM/CI/DevOps engineer,Cloud &amp; Automation Consultant with over 5 years of proven experience&nbsp;</div>
+                                                </div>
+                                                <div class="name">Haggai Zagury</div>
+                                                <div class="description">DevOps Architect</div>
+                                             </span>
+                                          </div>
+                                       </div>
+                                    </a>
+                                 </div>
+                                 <div class="views-row views-row-2">
+                                    <a href="../java/rans">
+                                       <div class="front">
+                                          <div class="views-field views-field-picture">
+                                             <div class="field-content">
+                                                <img typeof="foaf:Image" src="//res.cloudinary.com/ds7ihqtdu/image/upload/v1475587463/site/pictures/rans.jpg" alt="">
+                                             </div>
+                                          </div>
+                                          <div class="views-field views-field-field-first-name">
+                                             <div class="field-content">Ran</div>
+                                          </div>
+                                          <div class="views-field views-field-field-last-name">
+                                             <div class="field-content">Silberman</div>
+                                          </div>
+                                          <div class="views-field views-field-field-description">
+                                             <div class="field-content">Big Data Architect</div>
+                                          </div>
+                                       </div>
+                                       <div class="back">
+                                          <div class="views-field views-field-nothing">
+                                             <span class="field-content">
+                                                <div class="about">
+                                                   <div>Developer in soul and architect by nature with more than 18 years in the industry. I am always hands-on and the business...</div>
+                                                </div>
+                                                <div class="name">Ran Silberman</div>
+                                                <div class="description">Big Data Architect</div>
+                                             </span>
+                                          </div>
+                                       </div>
+                                    </a>
+                                 </div>
+                                 <div class="views-row views-row-3">
+                                    <a href="../js/assafg">
+                                       <div class="front">
+                                          <div class="views-field views-field-picture">
+                                             <div class="field-content">
+                                                <img typeof="foaf:Image" src="//res.cloudinary.com/ds7ihqtdu/image/upload/v1475587454/site/pictures/assafg.jpg" alt="">
+                                             </div>
+                                          </div>
+                                          <div class="views-field views-field-field-first-name">
+                                             <div class="field-content">Assaf</div>
+                                          </div>
+                                          <div class="views-field views-field-field-last-name">
+                                             <div class="field-content">Gannon</div>
+                                          </div>
+                                          <div class="views-field views-field-field-description">
+                                             <div class="field-content">Javascript Architect</div>
+                                          </div>
+                                       </div>
+                                       <div class="back">
+                                          <div class="views-field views-field-nothing">
+                                             <span class="field-content">
+                                                <div class="about">
+                                                   <div>Over 16 years working on start-ups in the gaming industry and SaaS projects,&nbsp;senior level engineer with vast experience in end-to-end system development....</div>
+                                                </div>
+                                                <div class="name">Assaf Gannon</div>
+                                                <div class="description">Javascript Architect</div>
+                                             </span>
+                                          </div>
+                                       </div>
+                                    </a>
+                                 </div>
+                                 <div class="views-row views-row-4">
+                                    <a href="../ruby/avit">
+                                       <div class="front">
+                                          <div class="views-field views-field-picture">
+                                             <div class="field-content">
+                                                <img typeof="foaf:Image" src="//res.cloudinary.com/ds7ihqtdu/image/upload/v1475587448/site/pictures/picture-121-1361228696.jpg" alt="">
+                                             </div>
+                                          </div>
+                                          <div class="views-field views-field-field-first-name">
+                                             <div class="field-content">Avi</div>
+                                          </div>
+                                          <div class="views-field views-field-field-last-name">
+                                             <div class="field-content">Tzurel</div>
+                                          </div>
+                                          <div class="views-field views-field-field-description">
+                                             <div class="field-content">Ruby Architect</div>
+                                          </div>
+                                       </div>
+                                       <div class="back">
+                                          <div class="views-field views-field-nothing">
+                                             <span class="field-content">
+                                                <div class="about">
+                                                   <div>Working on a full blown website with Ruby on rails as a framework, managing servers and databases, deploying to a number of...</div>
+                                                </div>
+                                                <div class="name">Avi Tzurel</div>
+                                                <div class="description">Ruby Architect</div>
+                                             </span>
+                                          </div>
+                                       </div>
+                                    </a>
+                                 </div>
+                                 <div class="views-row views-row-5">
+                                    <a href="../android/yossie">
+                                       <div class="front">
+                                          <div class="views-field views-field-picture">
+                                             <div class="field-content">
+                                                <img typeof="foaf:Image" src="https://ci4.googleusercontent.com/proxy/4_buq5WCGZysfO7NomSTe7dZ9mu4Be7Q8sJ2uHU2-zUqv90k01HAR3n6LZvoDYt-3ktlYHtDL0mKZQwPSP_FH02_oOvpUV9Ex_CXlmqe_5NBMptxwg6Kr3XeNEuvfy6GBu_9VRdIZ51Y_znm_R92933ECGRHNz1dyKEzLMt3MazN2VAIsFpVR14zb-rPgK7ekQ=s0-d-e1-ft#https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAIQAAAAJGE1MDExMGExLThkYmQtNDcxYy05Y2JlLTRjZmRhNWRhZDU4Zg.jpg" alt="">
+                                             </div>
+                                          </div>
+                                          <div class="views-field views-field-field-first-name">
+                                             <div class="field-content">Yossi</div>
+                                          </div>
+                                          <div class="views-field views-field-field-last-name">
+                                             <div class="field-content">Elkrief</div>
+                                          </div>
+                                          <div class="views-field views-field-field-description">
+                                             <div class="field-content">Android Architect</div>
+                                          </div>
+                                       </div>
+                                       <div class="back">
+                                          <div class="views-field views-field-nothing">
+                                             <span class="field-content">
+                                                <div class="about">
+                                                   <div>Android expert with over 8 years of experience in Android development, 11 years Java background and 13 years of experience in software...</div>
+                                                </div>
+                                                <div class="name">Yossi Elkrief</div>
+                                                <div class="description">Android Architect</div>
+                                             </span>
+                                          </div>
+                                       </div>
+                                    </a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </section>
+               <section class="block block-webform quick-contact block-odd" id="block-webform-client-block-23">
+                  <h2 class="block-title">Quick Contact</h2>
+                  <script>
+                     $(document).ready(function(){
+                       var form = $('#webform-client-form-23');
+                       form.ajaxForm(function() {
+                         alert("Thank you for your! We will be in touch with you soon.");
+
+                       });
+                     })
+                  </script>
+                  <div class="content">
+                     <form accept-charset="UTF-8" id="webform-client-form-23" method="post" action="/form/info" enctype="multipart/form-data" class="webform-client-form">
+                        <div>
+                           <div id="webform-component-sub-title" class="form-item webform-component webform-component-markup">
+                              <p>Let us get in touch with you.</p>
+                           </div>
+                           <div id="webform-component-your-name" class="form-item webform-component webform-component-textfield">
+                              <input type="text" class="form-text required" maxlength="20" size="60" value="" name="name" id="edit-submitted-your-name" placeholder="Your Name" required="true">
+                           </div>
+                           <div id="webform-component-email-address" class="form-item webform-component webform-component-email">
+                              <input type="email" size="60" name="email_address" id="edit-submitted-email-address" placeholder="Email Address" class="email form-text form-email required" required="true">
+                           </div>
+                           <div id="webform-component-phone-number-quick-contact" class="form-item webform-component webform-component-phone">
+                              <input type="text" class="form-text" maxlength="15" size="17" value="" name="phone_number_quick_contact" id="edit-submitted-phone-number-quick-contact" placeholder="Phone Number (optional)">
+                           </div>
+                           <div id="webform-component-topic" class="form-item webform-component webform-component-textfield">
+                              <input type="text" class="form-text required" maxlength="128" size="60" value="" name="topic" id="edit-submitted-topic" placeholder="Topic">
+                           </div>
+                           <div id="edit-actions" class="form-actions form-wrapper">
+                              <input type="submit" class="form-submit" value="Send" name="op" id="edit-submit">
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+                  <!-- /.content -->
+               </section>
+            </div>
+         </div>
+      </div>
+      <footer id="footer" role="contentinfo">
+         <div class="region region-footer">
+            <section id="block-block-2" class="block block-block block-about-tikal block-even">
+               <h2 class="block-title">About Tikal</h2>
+               <div class="content">
+                  <div>
+                     <div>
+                        For over 12 years, we have helped breakthrough companies achieve excellence and meet their goals.&nbsp;
+                     </div>
+                     <div>
+                        By doing so we've earned recognition for delivering extremely competitive and high-performance software services to clients worldwide.
+                     </div>
+                  </div>
+                  <div class="contact-title">
+                     Contact Information
+                  </div>
+                  <div class="contact-number">
+                     (+972) 3 6488618
+                  </div>
+                  <div class="contact-mail">
+                     <a href="mailto:info@tikalk.com">info@tikalk.com</a>
+                  </div>
+               </div>
+               <!-- /.content -->
+            </section>
+            <!-- /.block -->
+            <section id="block-webform-client-block-22" class="block block-webform join-the-team block-odd">
+               <h2 class="block-title">Join the Team</h2>
+               <div class="content">
+                  <script>
+                     $(document).ready(function(){
+                         var form = $('#webform-client-form-22');
+                         form.ajaxForm(function() {
+                             alert("Thank you for your! We will be in touch with you soon.");
+
+                         });
+                     })
+                  </script>
+                  <form class="webform-client-form" enctype="multipart/form-data" action="/form/jobs" method="post" id="webform-client-form-22" accept-charset="UTF-8">
+                     <div>
+                        <div class="form-item webform-component webform-component-markup" id="webform-component-sub-header">
+                           <p>Let us contact you with more information</p>
+                        </div>
+                        <div class="form-item webform-component webform-component-textfield" id="webform-component-full-name">
+                           <input placeholder="Full Name" type="text" id="edit-submitted-full-name" name="submitted[full_name]" value="" size="60" maxlength="30" class="form-text" required="">
+                        </div>
+                        <div class="form-item webform-component webform-component-email" id="webform-component-email-address">
+                           <input class="email form-text form-email required" placeholder="Email Address" type="email" id="edit-submitted-email-address--2" name="submitted[email_address]" size="60" required="">
+                        </div>
+                        <div class="form-item webform-component webform-component-phone" id="webform-component-phone-number">
+                           <input placeholder="Phone Number (optional)" type="text" id="edit-submitted-phone-number" name="submitted[phone_number]" value="" size="17" maxlength="15" class="form-text" required="">
+                        </div>
+                        <div class="form-item webform-component webform-component-textfield" id="webform-component-youre-a-ninja">
+                           <input placeholder="You're a Ninja in... (ex: java, ruby)" type="text" id="edit-submitted-youre-a-ninja" name="submitted[youre_a_ninja]" value="" size="60" maxlength="35" class="form-text">
+                        </div>
+                        <div id="edit-submitted-click-to-add-your-cv-ajax-wrapper">
+                           <div class="form-item webform-component webform-component-managed_file" id="webform-component-click-to-add-your-cv">
+                              <label for="edit-submitted-click-to-add-your-cv-upload">Click to add your CV </label>
+                              <div id="edit-submitted-click-to-add-your-cv" class="form-managed-file"><input type="file" id="edit-submitted-click-to-add-your-cv-upload" name="files[submitted_click_to_add_your_cv]" size="22" class="form-file"><input type="submit" id="edit-submitted-click-to-add-your-cv-upload-button" name="submitted_click_to_add_your_cv_upload_button" value="Upload" class="form-submit ajax-processed"><input type="hidden" name="submitted[click_to_add_your_cv][fid]" value="0">
+                              </div>
+                           </div>
+                           <div class="form-actions form-wrapper" id="edit-actions--3"><input type="submit" id="edit-submit--3" name="op" value="Send" class="form-submit"></div>
+                        </div>
+                     </div>
+                  </form>
+               </div>
+               <!-- /.content -->
+            </section>
+            <!-- /.block -->
+            <section id="block-general-tikal-map-home-page" class="block block-general-tikal block-even">
+               <h2 class="block-title">Find us at:</h2>
+               <div class="content">
+                  <div id="map_canvas_footer" style="width: 240px; height: 200px; position: relative; overflow: hidden;">
+                     <div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);">
+                        <div class="gm-style" style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px;">
+                           <div style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; cursor: url(&quot;http://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;) 8 8, default;">
+                              <div style="z-index: 1; position: absolute; top: 0px; left: 0px; width: 100%; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                 <div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;">
+                                    <div style="position: absolute; left: 0px; top: 0px; z-index: 0;">
+                                       <div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;">
+                                          <div style="width: 256px; height: 256px; position: absolute; left: -35px; top: -26px;"></div>
+                                          <div style="width: 256px; height: 256px; position: absolute; left: 221px; top: -26px;"></div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div>
+                                 <div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div>
+                                 <div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;">
+                                    <div style="position: absolute; left: 0px; top: 0px; z-index: -1;">
+                                       <div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;">
+                                          <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -35px; top: -26px;">
+                                             <canvas draggable="false" height="256" width="256" style="user-select: none; position: absolute; left: 0px; top: 0px; height: 256px; width: 256px;"></canvas>
+                                          </div>
+                                          <div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 221px; top: -26px;"></div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div style="position: absolute; z-index: 0; left: 0px; top: 0px;">
+                                    <div style="overflow: hidden; width: 240px; height: 200px;"><img src="http://maps.googleapis.com/maps/api/js/StaticMapService.GetMapImage?1m2&amp;1i5006115&amp;2i3403290&amp;2e1&amp;3u15&amp;4m2&amp;1u240&amp;2u200&amp;5m5&amp;1e0&amp;5sen-US&amp;6sus&amp;10b1&amp;12b1&amp;token=22127" style="width: 240px; height: 200px;"></div>
+                                 </div>
+                                 <div style="position: absolute; left: 0px; top: 0px; z-index: 0;">
+                                    <div aria-hidden="true" style="position: absolute; left: 0px; top: 0px; z-index: 1; visibility: inherit;">
+                                       <div style="position: absolute; left: -35px; top: -26px; transition: opacity 200ms ease-out;"><img src="http://maps.google.com/maps/vt?pb=!1m5!1m4!1i15!2i19555!3i13294!4i256!2m3!1e0!2sm!3i378067332!3m9!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=63042" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
+                                       <div style="position: absolute; left: 221px; top: -26px; transition: opacity 200ms ease-out;"><img src="http://maps.google.com/maps/vt?pb=!1m5!1m4!1i15!2i19556!3i13294!4i256!2m3!1e0!2sm!3i378066972!3m9!2sen-US!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!4e0&amp;token=112284" draggable="false" alt="" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div style="z-index: 2; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px;"></div>
+                              <div style="z-index: 3; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px;">
+                                 <div style="z-index: 1; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px;"></div>
+                              </div>
+                              <div style="z-index: 4; position: absolute; top: 0px; left: 0px; width: 100%; transform-origin: 0px 0px 0px; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                 <div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div>
+                                 <div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div>
+                                 <div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"></div>
+                                 <div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div>
+                              </div>
+                              <iframe frameborder="0" style="z-index: -1; border: 0px none; position: absolute; height: 100%; width: 100%; padding: 0px; margin: 0px; left: 0px; top: 0px;"></iframe>
+                           </div>
+                           <div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;">
+                              <a target="_blank" href="https://maps.google.com/maps?ll=32.115219,34.844289&amp;z=15&amp;t=m&amp;hl=en-US&amp;gl=US&amp;mapclient=apiv3" title="Click to see this area on Google Maps" style="position: static; overflow: visible; float: none; display: inline;">
+                                 <div style="width: 66px; height: 26px; cursor: pointer;"><img src="http://maps.gstatic.com/mapfiles/api-3/images/google4.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 66px; height: 26px; user-select: none; border: 0px; padding: 0px; margin: 0px;"></div>
+                              </a>
+                           </div>
+                           <div style="background-color: white; padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; width: 186px; height: 148px; position: absolute; left: 5px; top: 10px;">
+                              <div style="padding: 0px 0px 10px; font-size: 16px;">Map Data</div>
+                              <div style="font-size: 13px;">Map data ©2017 Google, Mapa GISrael</div>
+                              <div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 12px; top: 12px; z-index: 10000; cursor: pointer;"><img src="http://maps.gstatic.com/mapfiles/api-3/images/mapcnt6.png" draggable="false" style="position: absolute; left: -2px; top: -336px; width: 59px; height: 492px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
+                           </div>
+                           <div class="gmnoprint" style="z-index: 1000001; position: absolute; right: 71px; bottom: 0px; width: 55px;">
+                              <div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px;">
+                                 <div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;">
+                                    <div style="width: 1px;"></div>
+                                    <div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div>
+                                 </div>
+                                 <div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a style="color: rgb(68, 68, 68); text-decoration: none; cursor: pointer;">Map Data</a><span style="display: none;">Map data ©2017 Google, Mapa GISrael</span></div>
+                              </div>
+                           </div>
+                           <div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;">
+                              <div style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">Map data ©2017 Google, Mapa GISrael</div>
+                           </div>
+                           <div class="gmnoprint gm-style-cc" draggable="false" style="z-index: 1000001; user-select: none; height: 14px; line-height: 14px; position: absolute; right: 0px; bottom: 0px;">
+                              <div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;">
+                                 <div style="width: 1px;"></div>
+                                 <div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div>
+                              </div>
+                              <div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a href="https://www.google.com/intl/en-US_US/help/terms_maps.html" target="_blank" style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);">Terms of Use</a></div>
+                           </div>
+                           <div style="cursor: pointer; width: 25px; height: 25px; overflow: hidden; display: none; margin: 10px 14px; position: absolute; top: 0px; right: 0px;"><img src="http://maps.gstatic.com/mapfiles/api-3/images/sv9.png" draggable="false" class="gm-fullscreen-control" style="position: absolute; left: -52px; top: -86px; width: 164px; height: 175px; user-select: none; border: 0px; padding: 0px; margin: 0px;"></div>
+                           <div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px; display: none; position: absolute; right: 0px; bottom: 0px;">
+                              <div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;">
+                                 <div style="width: 1px;"></div>
+                                 <div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div>
+                              </div>
+                              <div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a target="_new" title="Report errors in the road map or imagery to Google" href="https://www.google.com/maps/@32.115219,34.844289,15z/data=!10m1!1e1!12b1?source=apiv3&amp;rapsrc=apiv3" style="font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;">Report a map error</a></div>
+                           </div>
+                           <div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom" draggable="false" controlwidth="28" controlheight="93" style="margin: 10px; user-select: none; position: absolute; bottom: 107px; right: 28px;">
+                              <div class="gmnoprint" controlwidth="28" controlheight="55" style="position: absolute; left: 0px; top: 38px;">
+                                 <div draggable="false" style="user-select: none; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; background-color: rgb(255, 255, 255); width: 28px; height: 55px;">
+                                    <div title="Zoom in" style="position: relative; width: 28px; height: 27px; left: 0px; top: 0px;">
+                                       <div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img src="http://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div>
+                                    </div>
+                                    <div style="position: relative; overflow: hidden; width: 67%; height: 1px; left: 16%; background-color: rgb(230, 230, 230); top: 0px;"></div>
+                                    <div title="Zoom out" style="position: relative; width: 28px; height: 27px; left: 0px; top: 0px;">
+                                       <div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img src="http://maps.gstatic.com/mapfiles/api-3/images/tmapctrl.png" draggable="false" style="position: absolute; left: 0px; top: -15px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="gm-svpc" controlwidth="28" controlheight="28" style="background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; width: 28px; height: 28px; cursor: url(&quot;http://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;) 8 8, default; position: absolute; left: 0px; top: 0px;">
+                                 <div style="position: absolute; left: 1px; top: 1px;"></div>
+                                 <div style="position: absolute; left: 1px; top: 1px;">
+                                    <div aria-label="Street View Pegman Control" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px;"><img src="http://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png" draggable="false" style="position: absolute; left: -147px; top: -26px; width: 215px; height: 835px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
+                                    <div aria-label="Pegman is on top of the Map" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="http://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png" draggable="false" style="position: absolute; left: -147px; top: -52px; width: 215px; height: 835px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
+                                    <div aria-label="Street View Pegman Control" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="http://maps.gstatic.com/mapfiles/api-3/images/cb_scout5.png" draggable="false" style="position: absolute; left: -147px; top: -78px; width: 215px; height: 835px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
+                                 </div>
+                              </div>
+                              <div class="gmnoprint" controlwidth="28" controlheight="0" style="display: none; position: absolute;">
+                                 <div title="Rotate map 90 degrees" style="width: 28px; height: 28px; overflow: hidden; position: absolute; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; cursor: pointer; background-color: rgb(255, 255, 255); display: none;"><img src="http://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4.png" draggable="false" style="position: absolute; left: -141px; top: 6px; width: 170px; height: 54px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
+                                 <div class="gm-tilt" style="width: 28px; height: 28px; overflow: hidden; position: absolute; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; top: 0px; cursor: pointer; background-color: rgb(255, 255, 255);"><img src="http://maps.gstatic.com/mapfiles/api-3/images/tmapctrl4.png" draggable="false" style="position: absolute; left: -141px; top: -13px; width: 170px; height: 54px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>
+                  <script type="text/javascript">
+                     var latlng = new google.maps.LatLng(32.115219, 34.844289);
+                     var settings = {
+                     zoom: 15,
+                           center: latlng,
+                           mapTypeControl: false,
+                           mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+                           navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+                           mapTypeId: google.maps.MapTypeId.ROADMAP
+                     };
+                     var map = new google.maps.Map(document.getElementById("map_canvas_footer"), settings);
+                     var companyImage = new google.maps.MarkerImage("/assets/icons/logo-map-b243c518ddedf343095cbb9a79061a39.png",
+                         new google.maps.Size(100,50),
+                         new google.maps.Point(0,0),
+                         new google.maps.Point(50,50)
+                     );
+                     var companyShadow = new google.maps.MarkerImage("images/logo_shadow.png",
+                         new google.maps.Size(130,50),
+                         new google.maps.Point(0,0),
+                         new google.maps.Point(65, 50)
+                     );
+                     var companyPos = new google.maps.LatLng(32.115219, 34.844289);
+                     var companyMarker = new google.maps.Marker({
+                       position: companyPos,
+                       map: map,
+                       icon: companyImage,
+                       shadow: companyShadow,
+                       title:"",
+                       zIndex: 3}
+                     );
+                  </script>
+               </div>
+               <!-- /.content -->
+            </section>
+            <!-- /.block -->
+            <div id="block-block-3" class="block block-block find-us-at block-odd">
+               <div class="content">
+                  <div class="address">
+                     Kiryat Atidim, Building 7, 3rd Floor&nbsp;<br>
+                     POB 58269
+                     Tel Aviv 6158102<br>
+                     Israel
+                  </div>
+               </div>
+               <!-- /.content -->
+            </div>
+            <!-- /.block -->
+         </div>
+      </footer>
+      <footer id="footer-second" role="contentinfo">
+         <div class="region region-footer-second">
+            <section id="block-menu-menu-fields" class="block block-menu block-odd">
+               <h2 class="block-title">Domains</h2>
+               <div class="content">
+                  <ul class="menu clearfix">
+                     <li class="first leaf application lifecycle management"><a href="/devops" title="">DevOps</a></li>
+                     <li class="leaf java"><a href="/java" title="">Java</a></li>
+                     <li class="leaf javascript"><a href="/js" title="">JavaScript</a></li>
+                     <li class="leaf .net"><a href="/android" title="">Android</a></li>
+                     <li class="last leaf ruby on rails"><a href="/ruby" title="">Ruby</a></li>
+                  </ul>
+               </div>
+               <!-- /.content -->
+            </section>
+            <!-- /.block -->
+            <section id="block-menu-menu-site-map" class="block block-menu block-even">
+               <h2 class="block-title">Site Map</h2>
+               <div class="content">
+                  <ul class="menu clearfix">
+                     <li class="first leaf about us"><a href="/about" title="">About Us</a></li>
+                     <li class="leaf active-trail solutions"><a href="/solutions" title="" class="active-trail active">Solutions</a></li>
+                     <li class="leaf careers"><a href="/careers" title="">Careers</a></li>
+                     <li class="leaf events"><a href="/events" title="">Events</a></li>
+                     <li class="last leaf contact"><a href="/contact" title="">Contact</a></li>
+                  </ul>
+               </div>
+               <!-- /.content -->
+            </section>
+            <!-- /.block -->
+            <div id="block-block-1" class="block block-block all-rights-reserved block-odd">
+               <div class="content">
+                  <p>© 2013 All Rights Reserved. Tikal</p>
+               </div>
+               <!-- /.content -->
+            </div>
+            <!-- /.block -->
+            <div id="block-menu-menu-external-links" class="block block-menu block-even">
+               <div class="content">
+                  <ul class="menu clearfix">
+                     <li class="first leaf facebook"><a href="http://www.facebook.com/TikalKnowledge" title="" target="_blank">Facebook</a></li>
+                     <li class="leaf twitter"><a href="https://twitter.com/TikalK" title="" target="_blank">Twitter</a></li>
+                     <li class="leaf in"><a href="http://www.linkedin.com/company/tikal-knowledge" title="" target="_blank">in</a></li>
+                     <li class="last leaf rss"><a href="/feed.xml" title="Latest Articles">RSS</a></li>
+                  </ul>
+               </div>
+               <!-- /.content -->
+            </div>
+            <!-- /.block -->
+         </div>
+      </footer>
+      <div id="cboxOverlay" style="display: none;"></div>
+      <div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;">
+         <div id="cboxWrapper">
+            <div>
+               <div id="cboxTopLeft" style="float: left;"></div>
+               <div id="cboxTopCenter" style="float: left;"></div>
+               <div id="cboxTopRight" style="float: left;"></div>
+            </div>
+            <div style="clear: left;">
+               <div id="cboxMiddleLeft" style="float: left;"></div>
+               <div id="cboxContent" style="float: left;">
+                  <div id="cboxTitle" style="float: left;"></div>
+                  <div id="cboxCurrent" style="float: left;"></div>
+                  <button type="button" id="cboxPrevious"></button><button type="button" id="cboxNext"></button><button id="cboxSlideshow"></button>
+                  <div id="cboxLoadingOverlay" style="float: left;"></div>
+                  <div id="cboxLoadingGraphic" style="float: left;"></div>
+               </div>
+               <div id="cboxMiddleRight" style="float: left;"></div>
+            </div>
+            <div style="clear: left;">
+               <div id="cboxBottomLeft" style="float: left;"></div>
+               <div id="cboxBottomCenter" style="float: left;"></div>
+               <div id="cboxBottomRight" style="float: left;"></div>
+            </div>
+         </div>
+         <div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div>
+      </div>
+      <a id="scrollUp" href="#top" style="display: none; position: fixed; z-index: 2147483647;">Scroll to top</a>
+      <div id="fb-root" class=" fb_reset">
+         <div style="position: absolute; top: -10000px; height: 0px; width: 0px;">
+            <div></div>
+         </div>
+      </div>
+      <div id="lo-engage-ext-container">
+         <div data-reactroot=""></div>
+      </div>
+      <link rel="stylesheet" type="text/css" href="chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/css/content.css">
+      <table cellspacing="0" cellpadding="0" class="gstl_50 gssb_c" style="width: 183px; display: none; top: 64px; left: 980px; position: absolute;">
+         <tbody>
+            <tr>
+               <td class="gssb_f"></td>
+               <td class="gssb_e" style="width: 100%;"></td>
+            </tr>
+         </tbody>
+      </table>
+      <div id="stcpDiv" style="position: absolute; top: -1999px; left: -1988px;">ShareThis Copy and Paste</div>
+      <div id="stwrapper" class="stwrapper stwrapper4x stwrapper4x" style="display: none;"><iframe allowtransparency="true" id="stLframe" class="stLframe" name="stLframe" frameborder="0" scrolling="no" src="http://edge.sharethis.com/share4x/index.1c129c2ba22e14223e77b263f4ff52f0.html"></iframe></div>
+      <div id="stOverlay" onclick="javascript:stWidget.closeWidget();"></div>
+   </body>
+</html>
