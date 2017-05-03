@@ -7,17 +7,29 @@ module.exports = (passport) => {
     /* GET home page. */
 
     const authCallbackObj = {
-        successRedirect: '/generate',
+        successRedirect: '/start',
         failureRedirect: '/'
     };
 
     router.get('/', (req, res, next) => {
         res.render('index');
     });
+    
+    router.get('/start', (req, res, next) => {
+        res.render('start');
+    });
+    
+    router.get('/timi', (req, res, next) => {
+        res.send('YYYYYYY');
+    });
+    
+    router.get('/XXXXXXXXYYYYYYYZZZZZZZZ', (req, res, next) => {
+        res.redirect('/generate');
+    });
 
     router.get('/generate', isLoggedIn, (req, res) => {
         dGenUtils.generate(req.user, quests)
-            .then(firstRoomId => res.send(firstRoomId))
+            .then(() => res.render('welcome'))
             .catch(err => {
                 console.log(`[${req.user.tikalId}]: ${err}`);
                 res.status(500).send(err);
