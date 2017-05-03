@@ -17,7 +17,7 @@ module.exports = (passport) => {
 
     router.get('/generate', isLoggedIn, (req, res) => {
         dGenUtils.generate(req.user, quests)
-            .then(firstRoomId => res.send(firstRoomId))
+            .then(() => res.render('welcome', { name: req.user.displayName }))
             .catch(err => {
                 console.log(`[${req.user.tikalId}]: ${err}`);
                 res.status(500).send(err);

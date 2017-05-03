@@ -1,8 +1,110 @@
+html {
+  height: 100%;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 14px;
+
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #001603;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Source Code Pro', monospace;
 }
 
 a {
-  color: #00B7FF;
+  color: #000;
+}
+
+.content {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: auto 30px;
+}
+
+.content .jumbotron {
+  border-radius: 0;
+  position: relative;
+  z-index: 99;
+  padding: 60px;
+  background-color: rgba(0, 0, 0, .3);
+  color: rgba(255, 255, 255, .7);
+}
+
+.content .jumbotron .row {
+  margin-bottom: 30px;
+}
+
+.bgterminal {
+  background-color: transparent;
+  background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent);
+  height:100%;
+  background-size:50px 50px;
+
+  padding: 30px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  color: rgba(50, 250, 50, 0.3);
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -o-pre-wrap;
+  font-family: monospace;
+  font-size: 16px;
+  z-index: 0;
+  text-align: left;
+  transition-delay: 0;
+}
+
+.bgterminal .cursor {
+  background: rgba(50, 250, 50, 0.3);
+}
+
+.btn {
+  background-color: rgba(50,250,50,0.2);
+}
+
+.btn:hover {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.timi {
+  background: url('../assets/timi-green.svg') no-repeat center;
+  background-size: 120px;
+  width: 120px;
+  height: 130px;
+  opacity: 0.2;
+  position: fixed;
+  bottom: -20px;
+  right: -20px;
+}
+
+.timi:before {
+  content: "•";
+  position: relative;
+  left: 30px;
+  top: 15px;
+  font-size: 25px;
+  color: #000;
+}
+
+.timi:after {
+  content: "<";
+  position: relative;
+  left: 35px;
+  top: 17px;
+  font-size: 25px;
+  color: #000;
+}
+
+.timi.blink:before {
+  content: "-";
+  top: 17px;
 }
