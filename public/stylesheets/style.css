@@ -20,11 +20,23 @@ a {
   color: #000;
 }
 
+code {
+  background-color: transparent;
+  border: 1px solid rgba(50, 250, 50, 0.5);
+  color: rgba(50, 250, 50, 0.5);
+}
+
 .content {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
   margin: auto 30px;
+}
+
+.content.welcome {
+  margin: 100px 30px 30px;
+  top: auto;
+  transform: none;
 }
 
 .content .jumbotron {
@@ -38,6 +50,25 @@ a {
 
 .content .jumbotron .row {
   margin-bottom: 30px;
+}
+
+.content .jumbotron .row h4 {
+  margin-top: 50px;
+}
+
+.content .jumbotron .row h2, .content .jumbotron .row h4 {
+  color: #fff;
+}
+
+.content .jumbotron p, .content .jumbotron label, .content .jumbotron code {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.content .jumbotron p code {
+  display: inline-block;
+  line-height: 1.4;
+  padding: 0 2px;
 }
 
 .bgterminal {
@@ -117,4 +148,15 @@ a {
   position: fixed;
   bottom: 10px;
   left: 30px;
+}
+
+.documentation .row code {
+  display: block;
+  white-space: pre-wrap;
+}
+
+.documentation .row p > span.note {
+  display: block;
+  font-style: italic;
+  color: rgba(250, 50, 50, 0.5);
 }
