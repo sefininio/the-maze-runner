@@ -30,7 +30,7 @@ module.exports = (passport) => {
     
     router.get('/text/:name', (req, res, next) => {
         console.log(req.params.name);
-        fs.readFile('src/' + req.params.name + '.txt', 'utf8', function(err, data) {
+        fs.readFile('src/static/' + req.params.name + '.txt', 'utf8', function(err, data) {
             if (err) throw err;
             res.send(data);
         });
