@@ -56,10 +56,6 @@ code {
   margin-top: 50px;
 }
 
-.content .jumbotron .row h2, .content .jumbotron .row h4 {
-  color: #fff;
-}
-
 .content .jumbotron p, .content .jumbotron label, .content .jumbotron code {
   font-size: 14px;
   line-height: 1.8;
@@ -159,4 +155,8 @@ code {
   display: block;
   font-style: italic;
   color: rgba(250, 50, 50, 0.5);
+}
+
+.welcome .jumbotron .row h2, .welcome .jumbotron .row h4 {
+  color: #fff;
 }
