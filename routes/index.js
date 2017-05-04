@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const dGenUtils = require('../src/dungeon-generator');
 const quests = require('../quests.json').quests;
+const fs = require('fs');
 
 module.exports = (passport) => {
     /* GET home page. */
@@ -25,6 +26,14 @@ module.exports = (passport) => {
     
     router.get('/XXXXXXXXYYYYYYYZZZZZZZZ', (req, res, next) => {
         res.redirect('/generate');
+    });
+    
+    router.get('/text/:name', (req, res, next) => {
+        console.log(req.params.name);
+        fs.readFile('src/' + req.params.name + '.txt', 'utf8', function(err, data) {
+            if (err) throw err;
+            res.send(data);
+        });
     });
 
     router.get('/generate', isLoggedIn, (req, res) => {
