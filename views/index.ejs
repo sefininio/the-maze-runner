@@ -19,7 +19,8 @@
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-98490629-1', 'auto');
+        var id = window.location.href.indexOf('maze-dev.tikal.io') > -1 ? 'UA-98490629-2' : 'UA-98490629-1';
+        ga('create', id, 'auto');
         ga('send', 'pageview');
     </script>
 </head>
