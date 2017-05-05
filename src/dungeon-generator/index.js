@@ -72,12 +72,30 @@ module.exports.getRoom = (key, roomId) => {
 
                 resolve({
                     room: doc.dungeon[roomId],
-                    items: doc.dungeon.items
+                    items: doc.dungeon.items,
+                    lastVisitedRooms: doc.lastVisitedRoomId,
                 });
             })
             .catch(err => reject(err));
     });
 };
+
+function doAction(desc, room) {
+    desc.quest = {
+        questId: room.item.questId,
+        itemId: room.item.itemId,
+        description: `${room.item.desc} ${room.item.action}`
+    };
+}
+
+function doActionPrereq(desc, room) {
+    delete desc.hashLetter;
+    desc.quest = {
+        questId: room.item.questId,
+        itemId: room.item.itemId,
+        description: `${room.item.desc} ${room.item.actionPrereqNotMet}`
+    };
+}
 
 module.exports.getRoomDescription = (key, roomId) => {
     // auto pick up -> update db that player collected the item
@@ -87,19 +105,16 @@ module.exports.getRoomDescription = (key, roomId) => {
             .then(doc => {
                 const room = doc.room;
                 const items = doc.items;
+                const lastVisitedRooms = doc.lastVisitedRooms;
 
                 let desc = {
                     hashLetter: room.tikalTag
                 };
 
                 if (room.item) {
-                    if (!room.item.prereqId) {
-                        // just do the item action (update db) and give the hash.
-                        desc.quest = {
-                            questId: room.item.questId,
-                            itemId: room.item.itemId,
-                            description: `${room.item.desc} ${room.item.action}`
-                        };
+                    if (!room.item.prereqObj) {
+                        // no prereq, just do the item action (update db) and give the hash.
+                        doAction(desc, room);
 
                         if (room.item.encoding) {
                             delete desc.hashLetter;
@@ -114,37 +129,54 @@ module.exports.getRoomDescription = (key, roomId) => {
                         }
                     }
 
-                    if (room.item.prereqId) {
-                        // if prereq, check if prereq already done.
-                        // yes? do action. no? do actionPrereqNotMet
-                        if (_.find(items, {'itemId': room.item.prereqId})) {
-                            // prereq exists, pick it up and give hash.
-                            desc.quest = {
-                                questId: room.item.questId,
-                                itemId: room.item.itemId,
-                                description: `${room.item.desc} ${room.item.action}`
-                            };
+                    if (room.item.prereqObj) {
+                        // currently, only supports `minUniqueRoomsVisited`, `prereqId`
+                        if (room.item.prereqObj.minUniqueRoomsVisited) {
+                            const uniqueVisitedRooms = _.uniq(lastVisitedRooms).length;
+                            if (uniqueVisitedRooms >= room.item.prereqObj.minUniqueRoomsVisited) {
+                                // prereq met, pick it up and give hash.
+                                doAction(desc, room);
 
-                            if (!_.find(items, {'itemId': room.item.itemId})) {
-                                db.updateItem(key, room.item).then((items) => {
+                                if (!_.find(items, {'itemId': room.item.itemId})) {
+                                    db.updateItem(key, room.item).then((items) => {
+                                        resolve({description: desc});
+                                    });
+                                } else {
                                     resolve({description: desc});
-                                });
+                                }
                             } else {
+                                // prereq not met, do actionPrereqNotMet and remove hash
+                                doActionPrereq(desc, room);
+
                                 resolve({description: desc});
                             }
-
-                        } else {
-                            // prereq not met, do actionPrereqNotMet and remove hash
-                            delete desc.hashLetter;
-                            desc.quest = {
-                                questId: room.item.questId,
-                                itemId: room.item.itemId,
-                                description: `${room.item.desc} ${room.item.actionPrereqNotMet}`
-                            };
-
-                            resolve({description: desc});
                         }
+
+                        if (room.item.prereqObj.prereqId) {
+                            // if prereq, check if prereq already done.
+                            // yes? do action. no? do actionPrereqNotMet
+                            if (_.find(items, {'itemId': room.item.prereqObj.prereqId})) {
+                                // prereq met, pick it up and give hash.
+                                doAction(desc, room);
+
+                                if (!_.find(items, {'itemId': room.item.itemId})) {
+                                    db.updateItem(key, room.item).then((items) => {
+                                        resolve({description: desc});
+                                    });
+                                } else {
+                                    resolve({description: desc});
+                                }
+
+                            } else {
+                                // prereq not met, do actionPrereqNotMet and remove hash
+                                doActionPrereq(desc, room);
+
+                                resolve({description: desc});
+                            }
+                        }
+
                     }
+
                 } else {
                     resolve({description: desc});
                 }
