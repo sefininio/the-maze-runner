@@ -11,27 +11,35 @@ module.exports = (passport) => {
         successRedirect: '/start',
         failureRedirect: '/'
     };
+    let generatePath = new Date().getTime();
 
     router.get('/', (req, res, next) => {
         res.render('index');
     });
     
     router.get('/start', (req, res, next) => {
+        createGeneratePath();
         res.render('start');
     });
     
     router.get('/timi', (req, res, next) => {
-        res.send('YYYYYYY');
+        res.send(generatePath.toString().substr(7, 3));
     });
     
-    router.get('/XXXXXXXXYYYYYYYZZZZZZZZ', (req, res, next) => {
+    router.get('/start-clue', (req, res, next) => {
+        res.send(generatePath.toString().substr(10));
+    });
+    
+    router.get('/' + generatePath, (req, res, next) => {
         res.redirect('/generate');
     });
     
     router.get('/text/:name', (req, res, next) => {
-        console.log(req.params.name);
         fs.readFile('src/static/' + req.params.name + '.txt', 'utf8', function(err, data) {
             if (err) throw err;
+            if (req.params.name === 'start') {
+                data = data.replace('<CLUE>', generatePath.toString().substr(0, 7))
+            }
             res.send(data);
         });
     });
@@ -105,6 +113,11 @@ module.exports = (passport) => {
         }
 
         res.redirect('/');
+    }
+    
+    function createGeneratePath() {
+        generatePath = new Date().getTime();
+        console.log('current generatePath', generatePath);
     }
 
     return router;
