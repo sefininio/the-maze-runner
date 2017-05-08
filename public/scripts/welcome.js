@@ -6,7 +6,7 @@ $(document).ready(function(){
     wait: 1000 // The number of milliseconds to wait at the end of the line (when \n is found)
   });
 
-  $.get('/tikal-id', function(id) {
-    $('.tikal-id').text(''+id);
+  $.get('/maze-id', function(id) {
+    $('.maze-id').text(''+id);
   });
 });

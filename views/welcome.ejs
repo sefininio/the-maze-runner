@@ -22,8 +22,8 @@
         <div class="row">
             <h1>Welcome to the maze!</h1>
         </div>
-        <div class="tikal-id-container">
-            Your tikalId is: <code class="tikal-id"></code>.
+        <div class="maze-id-container">
+            Your mazeId is: <code class="maze-id"></code>.
             You should use it when making API calls.
         </div>
 
@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="col-xs-12">
-                    <h4>/maze/:tikalId/room/:roomId/describe</h4>
+                    <h4>/maze/:mazeId/room/:roomId/describe</h4>
                     <p>Given a <code>roomId</code>, the result will be an object that contains the room description.<br>
                         The quest property will only appear if the room is part of a quest.
                         Until the quest is complete, the hashLetter property will not be provided.<br>
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="col-xs-12">
-                    <h4>/maze/:tikalId/room/:roomId/exits</h4>
+                    <h4>/maze/:mazeId/room/:roomId/exits</h4>
                     <p>Given a roomId, the result will be an object that contains the possible exits from the room.
                         0 = N, 90 = E, 180 = S, 270 = W. <br>
                         You can only do this operation if you are currently inside the <code>roomId</code>.</p>
@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="col-xs-12">
-                    <h4>/maze/:tikalId/room/:roomId/exit/:direction</h4>
+                    <h4>/maze/:mazeId/room/:roomId/exit/:direction</h4>
                     <p>Given a <code>roomId</code> and the <code>direction</code> to exit, the result will be the next roomId.<br>
                         You can only do this operation if you are currently inside the <code>roomId</code>.</p>
                     <label>Return</label>
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="col-xs-12">
-                    <h4>/maze/:tikalId/validate/:hash</h4>
+                    <h4>/maze/:mazeId/validate/:hash</h4>
                     <p>Given the <code>hash</code>, the result will be if the hash is correct or not.
                         <span class="note">Be careful! There is a limit to the number of times you can validate!</span></p>
                     <label>Return</label>
