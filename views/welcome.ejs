@@ -35,9 +35,9 @@
 
                 <div class="col-xs-12">
                     <h4>/maze/:tikalId/room/:roomId/describe</h4>
-                    <p>Given a <code>roomId</code>, the result will be an object that contains the room description.
+                    <p>Given a <code>roomId</code>, the result will be an object that contains the room description.<br>
                         The quest property will only appear if the room is part of a quest.
-                        Until the quest is complete, the hashLetter property will not be provided.
+                        Until the quest is complete, the hashLetter property will not be provided.<br>
                         You can only do this operation if you are currently inside the <code>roomId</code>.</p>
                     <label>Return</label>
                     <code>
@@ -57,7 +57,7 @@
                 <div class="col-xs-12">
                     <h4>/maze/:tikalId/room/:roomId/exits</h4>
                     <p>Given a roomId, the result will be an object that contains the possible exits from the room.
-                        0 = N, 90 = E, 180 = S, 270 = W
+                        0 = N, 90 = E, 180 = S, 270 = W. <br>
                         You can only do this operation if you are currently inside the <code>roomId</code>.</p>
                     <label>Return</label>
                     <code>
@@ -69,7 +69,7 @@
 
                 <div class="col-xs-12">
                     <h4>/maze/:tikalId/room/:roomId/exit/:direction</h4>
-                    <p>Given a <code>roomId</code> and the <code>direction</code> to exit, the result will be the next roomId.
+                    <p>Given a <code>roomId</code> and the <code>direction</code> to exit, the result will be the next roomId.<br>
                         You can only do this operation if you are currently inside the <code>roomId</code>.</p>
                     <label>Return</label>
                     <code>
@@ -86,7 +86,7 @@
                     <label>Return</label>
                     <code>
     {
-    newRoomId: string
+        validated: boolean
     }
                     </code>
                 </div>
