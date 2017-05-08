@@ -23,7 +23,10 @@ module.exports.saveDungeon = (dungeon) => {
                 reject(err);
             }
 
-            resolve({firstRoomId: newDoc.dungeon[0].id});
+            resolve({
+                tikalId: dungeon.key,
+                firstRoomId: newDoc.dungeon[0].id
+            });
         });
     });
 };
