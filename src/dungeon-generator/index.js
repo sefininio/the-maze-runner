@@ -9,7 +9,10 @@ module.exports.generate = (user, quests) => {
         db.getDungeon(user.tikalId)
             .then(doc => {
                 if (doc) {
-                    resolve({firstRoomId: doc.dungeon[0].id});
+                    resolve({
+                        tikalId: doc.key,
+                        firstRoomId: doc.dungeon[0].id
+                    });
 
                 } else {
                     const dungeon = new Dungeon().generate(quests).persistAndReset();
@@ -25,7 +28,7 @@ module.exports.generate = (user, quests) => {
                     return db.saveDungeon(newDoc);
                 }
             })
-            .then(firstRoomId => resolve(firstRoomId))
+            .then(generateObj => resolve(generateObj))
             .catch(err => reject(err));
     });
 };
