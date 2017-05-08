@@ -41,7 +41,7 @@ module.exports.validate = (key, hash) => {
                     reject(new Error(`Dungeon not found for key ${key}`));
                 }
 
-                if (doc.numOfValidationTries >= 10) {
+                if (doc.numOfValidationTries >= 20) {
                     reject(new Error('You have reached the limit of validation tries!'));
 
                 } else {

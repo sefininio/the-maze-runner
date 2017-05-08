@@ -45,42 +45,42 @@ module.exports = (passport) => {
             });
     });
 
-    router.get('/tikal-id', isLoggedIn, (req, res) => {
+    router.get('/maze-id', isLoggedIn, (req, res) => {
         res.send(req.user.tikalId);
     });
 
-    router.get('/maze/:tikalId/room/:roomId/describe', (req, res) => {
-        dGenUtils.getRoomDescription(req.params.tikalId ,req.params.roomId)
+    router.get('/maze/:mazeId/room/:roomId/describe', (req, res) => {
+        dGenUtils.getRoomDescription(req.params.mazeId ,req.params.roomId)
             .then(description => res.send(description))
             .catch(err => {
-                console.log(`[${req.params.tikalId}]: ${err}`);
+                console.log(`[${req.params.mazeId}]: ${err}`);
                 res.status(500).send(err);
             });
     });
 
-    router.get('/maze/:tikalId/room/:roomId/exits', (req, res) => {
-        dGenUtils.getRoomExits(req.params.tikalId ,req.params.roomId)
+    router.get('/maze/:mazeId/room/:roomId/exits', (req, res) => {
+        dGenUtils.getRoomExits(req.params.mazeId ,req.params.roomId)
             .then(exits => res.send(exits))
             .catch(err => {
-                console.log(`[${req.params.tikalId}]: ${err}`);
+                console.log(`[${req.params.mazeId}]: ${err}`);
                 res.status(500).send(err);
             });
     });
 
-    router.get('/maze/:tikalId/room/:roomId/exit/:direction', (req, res) => {
-        dGenUtils.exitRoom(req.params.tikalId, req.params.roomId, req.params.direction)
+    router.get('/maze/:mazeId/room/:roomId/exit/:direction', (req, res) => {
+        dGenUtils.exitRoom(req.params.mazeId, req.params.roomId, req.params.direction)
             .then(newRoomId => res.send(newRoomId))
             .catch(err => {
-                console.log(`[${req.params.tikalId}]: ${err}`);
+                console.log(`[${req.params.mazeId}]: ${err}`);
                 res.status(500).send(err);
             });
     });
 
-    router.get('/maze/:tikalId/validate/:hash', (req, res) => {
-        dGenUtils.validate(req.params.tikalId, req.params.hash)
+    router.get('/maze/:mazeId/validate/:hash', (req, res) => {
+        dGenUtils.validate(req.params.mazeId, req.params.hash)
             .then(verified => res.send(verified))
             .catch(err => {
-                console.log(`[${req.params.tikalId}]: ${err}`);
+                console.log(`[${req.params.mazeId}]: ${err}`);
                 res.status(500).send(err);
             });
     });
