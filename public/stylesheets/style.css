@@ -56,7 +56,10 @@ code {
   margin-top: 50px;
 }
 
-.content .jumbotron p, .content .jumbotron label, .content .jumbotron code {
+.content .jumbotron p,
+.content .jumbotron label,
+.content .jumbotron ul,
+.content .jumbotron code {
   font-size: 14px;
   line-height: 1.8;
 }
@@ -157,6 +160,15 @@ code {
   color: rgba(250, 50, 50, 0.5);
 }
 
-.welcome .jumbotron .row h2, .welcome .jumbotron .row h4 {
+.welcome .jumbotron .row h2,
+.welcome .jumbotron .row h3,
+.welcome .jumbotron .row ul .ul-title,
+.welcome .jumbotron .row h4 {
   color: #fff;
+}
+
+.welcome .jumbotron .row a :hover,
+.welcome .jumbotron .row a :visited,
+.welcome .jumbotron .row a {
+  color: rgba(50, 250, 50, 0.5);
 }
