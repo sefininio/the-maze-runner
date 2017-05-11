@@ -16,6 +16,6 @@ module.exports = {
     github: {
         "client_id": "421f8b71254c45dcedd2",
         "client_secret": "a3d5bda7e4dee99d10dba37abd977432e581f229",
-        "redirect_uri": "http://127.0.0.1/auth/github/callback"
+        "redirect_uri": "http://127.0.0.1:3000/auth/github/callback"
     }
 };

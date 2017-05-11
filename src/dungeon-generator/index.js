@@ -2,22 +2,72 @@ const db = require('../db');
 const Dungeon = require('./generators/dungeon');
 const _ = require('lodash');
 
-module.exports.generate = (user, quests) => {
-    user.tikalId = `${user.id}_${user.provider}`;
+function getTikalId(user) {
+    return `${user.id}_${user.provider}`;
+}
+
+function generateClue() {
+    const sample = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';
+    return [
+        _.join(_.sampleSize(sample, 8), ''),
+        _.join(_.sampleSize(sample, 8), ''),
+        _.join(_.sampleSize(sample, 8), ''),
+    ];
+}
+
+module.exports.getClue = (user) => {
+    user.tikalId = getTikalId(user);
 
     return new Promise((resolve, reject) => {
         db.getDungeon(user.tikalId)
             .then(doc => {
                 if (doc) {
+                    // doc already exists, so it must have clue
+                    resolve({
+                        key: user.tikalId,
+                        clue: doc.clue
+                    });
+
+                } else {
+                    // create new doc
+                    const newDoc = {
+                        key: user.tikalId,
+                        clue: generateClue()
+                    };
+                    return db.saveDungeon(newDoc);
+                }
+
+            })
+            .then(res => resolve(res))
+            .catch(err => reject(err));
+    });
+
+};
+
+module.exports.generate = (user, quests) => {
+    user.tikalId = getTikalId(user);
+
+    return new Promise((resolve, reject) => {
+        db.getDungeon(user.tikalId)
+            .then(doc => {
+                if (!doc) {
+                    // at this point doc must exist with clue
+                    reject('no doc found in DB!')
+                }
+
+                if (doc.dungeon) {
+                    // if doc already has dungeon, no need to generate - just return it.
                     resolve({
                         tikalId: doc.key,
                         firstRoomId: doc.dungeon[0].id
                     });
 
                 } else {
+                    // create the dungeon and update db
                     const dungeon = new Dungeon().generate(quests).persistAndReset();
                     const newDoc = {
                         key: user.tikalId,
+                        clue: doc.clue,
                         hash: dungeon.hash,
                         numOfValidationTries: 0,
                         lastVisitedRoomId: [dungeon.dungeon[0].id],
@@ -25,7 +75,7 @@ module.exports.generate = (user, quests) => {
                         user: user
                     };
 
-                    return db.saveDungeon(newDoc);
+                    return db.updateDungeon(newDoc);
                 }
             })
             .then(generateObj => resolve(generateObj))
