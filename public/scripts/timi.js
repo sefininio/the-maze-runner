@@ -1,5 +1,5 @@
 function timiBlink() {
-  $(".timi").addTemporaryClass("blink", 200);
+  $('.timi').addTemporaryClass('blink', 200);
 }
 
 (function($){
