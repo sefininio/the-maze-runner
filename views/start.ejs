@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <title>Maze Runner</title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.bgterminal.min.js"></script>
+    <script type="text/javascript" src="scripts/ga.js"></script>
+    <script type="text/javascript" src="scripts/start.js"></script>
+    <script type="text/javascript" src="scripts/timi.js"></script>
+    <link rel="shortcut icon" href="/assets/timi.png">
+    <script>
+        function aMazeMe() {
+            $.ajax('/start-clue')
+                .then(function(res) {
+                    console.log(res);
+                });
+        }
+    </script>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+    <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+<div id="terminal"></div>
+<div class="timi" onclick="timiClick();"></div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+    <title>Maze Runner</title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.bgterminal.min.js"></script>
+    <script type="text/javascript" src="scripts/ga.js"></script>
+    <script type="text/javascript" src="scripts/welcome.js"></script>
+    <script type="text/javascript" src="scripts/timi.js"></script>
+
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="shortcut icon" href="/assets/timi.png">
+</head>
+<body>
+<div id="terminal"></div>
+<div class="timi"></div>
+<div class="content welcome">
+    <div class="jumbotron text-center">
+        <div class="row">
+            <h1>Welcome Adventurer!</h1>
+        </div>
+        <div class="row">
+            <div class="documentation text-left col-xs-12">
+                <h3>Description of the challenge</h3>
+
+                <p>You have successfully navigated to the maze entrance.
+                The task at hand, is to travel the maze created just for you!</p>
+
+                <p>Each maze room will have a letter written on the wall. <br>
+                You should implement an algorithm that traverses the maze, tracks the letters on the wall and figures
+                 out how those letters combine to a maze hash once you decide all rooms have been visited.</p>
+
+                <h4>Quests</h4>
+                <p>Some of the maze rooms will be part of a quest. Some quests span across a single room, while some
+                span across multiple rooms. <br>In these rooms, the letter on the wall will only be revealed once
+                you solve the room puzzle.</p>
+
+                <h4>Solution</h4>
+                <p>You should send your code along with the maze hash as the solution to <code>maze-runner@tikalk.com</code>. <br>
+                If you would like to join us at <a href="http://www.tikalk.com/" target="_blank">Tikal</a>, feel free to also send your CV!<br>
+                Once submitted, you will receive an email that the solution was received and under review.</p>
+
+                <h4>Technology</h4>
+                <p>The choice of technology is up to you, on any platform: Android, Frontend, Backend or a combination.
+
+                <ul>
+                    <p>
+                        <span class="ul-title">FrontEnd</span>
+                        <li>Using ES5 or ES6</li>
+                        <li>With or without a framework of choice - Angular, React, Vue.js, Slim.js, NativeScript, ReactNative etc.</li>
+                        <li>Using any JavaScript superset - TypeScript, CoffeeScript etc.</li>
+                    </p>
+                    <p>
+                        <span class="ul-title">Backend</span>
+
+                        <li>JavaScript</li>
+                        <li>Java</li>
+                        <li>Python</li>
+                        <li>Ruby</li>
+                        <li>etc.</li>
+                    </p>
+                    <p>
+                        <span class="ul-title">Platform</span>
+
+                        <li>Android</li>
+                        <li>Ember</li>
+                        <li>Angular Universal</li>
+                        <li>Electron</li>
+                        <li>etc.</li>
+                    </p>
+                </ul>
+
+                <h4>Extra Credit</h4>
+                <p>Draw the dungeon on screen using - DOM manipulation, JQuery, svg.js etc.</p>
+
+            </div>
+
+
+
+        </div>
+
+        <div class="documentation text-left col-xs-12">
+            <h2>REST APIs</h2>
+        </div>
+
+        <div>
+            Your mazeId is: <code class="maze-id"></code>.
+            You should use it when making API calls.
+        </div>
+
+        <div class="documentation text-left">
+            <div class="row">
+
+                <div class="col-xs-12">
+                    <h4>/maze/:mazeId/room/:roomId/describe</h4>
+                    <p>Given a <code>roomId</code>, the result will be an object that contains the room description.<br>
+                        The quest property will only appear if the room is part of a quest.
+                        Until the quest is complete, the hashLetter property will not be provided.<br>
+                        You can only do this operation if you are currently inside the <code>roomId</code>.</p>
+                    <label>Return</label>
+                    <code>
+    {
+        description: {
+            hashLetter: string,
+            quest: {
+                questId: string,
+                itemId: string,
+                description: string
+            }
+        }
+    }
+                    </code>
+                </div>
+
+                <div class="col-xs-12">
+                    <h4>/maze/:mazeId/room/:roomId/exits</h4>
+                    <p>Given a roomId, the result will be an object that contains the possible exits from the room.
+                        0 = N, 90 = E, 180 = S, 270 = W. <br>
+                        You can only do this operation if you are currently inside the <code>roomId</code>.</p>
+                    <label>Return</label>
+                    <code>
+    {
+        exits: [0, 90, 180, 270]
+    }
+                    </code>
+                </div>
+
+                <div class="col-xs-12">
+                    <h4>/maze/:mazeId/room/:roomId/exit/:direction</h4>
+                    <p>Given a <code>roomId</code> and the <code>direction</code> to exit, the result will be the next roomId.<br>
+                        You can only do this operation if you are currently inside the <code>roomId</code>.</p>
+                    <label>Return</label>
+                    <code>
+    {
+        newRoomId: string
+    }
+                    </code>
+                </div>
+
+                <div class="col-xs-12">
+                    <h4>/maze/:mazeId/validate/:hash</h4>
+                    <p>Given the <code>hash</code>, the result will be if the hash is correct or not.
+                        <span class="note">Be careful! There is a limit to the number of times you can validate!</span></p>
+                    <label>Return</label>
+                    <code>
+    {
+        validated: boolean
+    }
+                    </code>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

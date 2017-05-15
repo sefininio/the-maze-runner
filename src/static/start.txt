@@ -1,0 +1,6 @@
+> Hello
+> Can you help me?
+> I'm stuck in the maze
+> I think the room name starts with <CLUE>
+> I don't have a clue what is the right path
+>
