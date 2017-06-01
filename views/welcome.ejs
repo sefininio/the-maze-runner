@@ -95,6 +95,17 @@
             <div class="row">
 
                 <div class="col-xs-12">
+                    <h4>/maze/:mazeId/currentRoom</h4>
+                    <p>The result will be an object that contains the current <code>roomId</code>.</p>
+                    <label>Return</label>
+                    <code>
+    {
+        currentRoomId: number
+    }
+                    </code>
+                </div>
+
+                <div class="col-xs-12">
                     <h4>/maze/:mazeId/room/:roomId/describe</h4>
                     <p>Given a <code>roomId</code>, the result will be an object that contains the room description.<br>
                         The quest property will only appear if the room is part of a quest.

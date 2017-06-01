@@ -83,6 +83,23 @@ module.exports.generate = (user, quests) => {
     });
 };
 
+module.exports.getCurrentRoom = (key) => {
+    return new Promise((resolve, reject) => {
+        db.getDungeon(key)
+            .then(doc => {
+                if (!doc) {
+                    reject(new Error(`Dungeon not found for key ${key}`));
+                }
+
+                resolve({
+                    currentRoomId: _.last(doc.lastVisitedRoomId)
+                });
+
+            })
+            .catch(err => reject(err));
+    });
+};
+
 module.exports.validate = (key, hash) => {
     return new Promise((resolve, reject) => {
         db.getDungeon(key)
