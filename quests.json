@@ -70,7 +70,7 @@
         "minUniqueRoomsVisited": 30
       },
       "endOfQuest": true,
-      "desc": "You see a Albus Dumbledore sitting on the floor. You ask for the secret. ",
+      "desc": "You see Albus Dumbledore sitting on the floor. You ask for the secret. ",
       "actionPrereqNotMet": "'You still know nothing! Come back later.' he says.",
       "action": "You are indeed knowledgeable in the ways of the maze!"
     }
