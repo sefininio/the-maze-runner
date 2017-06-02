@@ -154,6 +154,7 @@ function doAction(desc, room) {
     desc.quest = {
         questId: room.item.questId,
         itemId: room.item.itemId,
+        pickedUpItem: true,
         description: `${room.item.desc} ${room.item.action}`
     };
 }
@@ -163,6 +164,7 @@ function doActionPrereq(desc, room) {
     desc.quest = {
         questId: room.item.questId,
         itemId: room.item.itemId,
+        pickedUpItem: false,
         description: `${room.item.desc} ${room.item.actionPrereqNotMet}`
     };
 }
