@@ -170,5 +170,5 @@ code {
 .welcome .jumbotron .row a :hover,
 .welcome .jumbotron .row a :visited,
 .welcome .jumbotron .row a {
-  color: rgba(50, 250, 50, 0.3);
+color: rgba(50, 250, 50, 0.5);
 }
