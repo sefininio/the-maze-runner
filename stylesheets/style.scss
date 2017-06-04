@@ -120,6 +120,17 @@ code {
   }
 }
 
+.logo {
+  background: url('../assets/tikal-logo-green.svg') no-repeat center;
+  background-size: 120px;
+  width: 140px;
+  height: 50px;
+  opacity: 0.2;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
+
 .timi {
   background: url('../assets/timi-green.svg') no-repeat center;
   background-size: 120px;

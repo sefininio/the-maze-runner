@@ -19,7 +19,7 @@ module.exports = (passport) => {
     router.get('/start', isLoggedIn, (req, res, next) => {
         res.render('start');
     });
-
+    
     router.get('/timi', isLoggedIn, (req, res, next) => {
         dGenUtils.getClue(req.user)
             .then((resClue) => {
