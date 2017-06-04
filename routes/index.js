@@ -75,6 +75,15 @@ module.exports = (passport) => {
         res.send(req.user.tikalId);
     });
 
+    router.get('/maze/:mazeId/currentRoom', (req, res) => {
+        dGenUtils.getCurrentRoom(req.params.mazeId)
+            .then(description => res.send(description))
+            .catch(err => {
+                console.log(`[${req.params.mazeId}]: ${err}`);
+                res.status(500).send(err);
+            });
+    });
+
     router.get('/maze/:mazeId/room/:roomId/describe', (req, res) => {
         dGenUtils.getRoomDescription(req.params.mazeId, req.params.roomId)
             .then(description => res.send(description))

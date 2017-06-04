@@ -31,54 +31,43 @@ code {
   top: 50%;
   transform: translateY(-50%);
   margin: auto 30px;
+}
 
-  &.welcome {
-    margin: 100px 30px 30px;
-    top: auto;
-    transform: none;
+.content.welcome {
+  margin: 100px 30px 30px;
+  top: auto;
+  transform: none;
+}
 
-    .jumbotron {
-      .row {
-        a, a:hover, a:visited {
-          color: rgba(50, 250, 50, 0.5);
-        }
-      }
-    }
-  }
+.content .jumbotron {
+  border-radius: 0;
+  position: relative;
+  z-index: 99;
+  padding: 60px;
+  background-color: rgba(0, 0, 0, .3);
+  color: rgba(255, 255, 255, .7);
+}
 
-  .jumbotron {
-    border-radius: 0;
-    position: relative;
-    z-index: 99;
-    padding: 60px;
-    background-color: rgba(0, 0, 0, .3);
-    color: rgba(255, 255, 255, .7);
+.content .jumbotron .row {
+  margin-bottom: 30px;
+}
 
-    h2, h3, h4, ul .ul-title, label {
-      color: #fff;
-    }
+.content .jumbotron .row h4 {
+  margin-top: 50px;
+}
 
-    .row {
-      margin-bottom: 30px;
+.content .jumbotron p,
+.content .jumbotron label,
+.content .jumbotron ul,
+.content .jumbotron code {
+  font-size: 14px;
+  line-height: 1.8;
+}
 
-      h4 {
-        margin-top: 50px;
-      }
-
-      p, label, code, ul {
-        font-size: 14px;
-        line-height: 1.8;
-      }
-
-      p {
-        code {
-          display: inline-block;
-          line-height: 1.4;
-          padding: 0 2px;
-        }
-      }
-    }
-  }
+.content .jumbotron p code {
+  display: inline-block;
+  line-height: 1.4;
+  padding: 0 2px;
 }
 
 .bgterminal {
@@ -101,23 +90,22 @@ code {
   z-index: 0;
   text-align: left;
   transition-delay: 0;
+}
 
-  span {
-    line-height: 2;
-  }
+.bgterminal span {
+  line-height: 2;
+}
 
-  .cursor {
-    background: rgba(50, 250, 50, 0.3);
-  }
-
+.bgterminal .cursor {
+  background: rgba(50, 250, 50, 0.3);
 }
 
 .btn {
   background-color: rgba(50,250,50,0.2);
+}
 
-  &:hover {
-    color: rgba(255, 255, 255, 0.2);
-  }
+.btn:hover {
+  color: rgba(255, 255, 255, 0.2);
 }
 
 .timi {
@@ -129,29 +117,29 @@ code {
   position: fixed;
   bottom: -20px;
   right: -20px;
+}
 
-  &:before {
-    content: "•";
-    position: relative;
-    left: 30px;
-    top: 15px;
-    font-size: 25px;
-    color: #000;
-  }
+.timi:before {
+  content: "•";
+  position: relative;
+  left: 30px;
+  top: 15px;
+  font-size: 25px;
+  color: #000;
+}
 
-  &:after {
-    content: "<";
-    position: relative;
-    left: 35px;
-    top: 17px;
-    font-size: 25px;
-    color: #000;
-  }
+.timi:after {
+  content: "<";
+  position: relative;
+  left: 35px;
+  top: 17px;
+  font-size: 25px;
+  color: #000;
+}
 
-  &.blink:before {
-    content: "-";
-    top: 17px;
-  }
+.timi.blink:before {
+  content: "-";
+  top: 17px;
 }
 
 .timi-text {
@@ -161,17 +149,26 @@ code {
   left: 30px;
 }
 
-.documentation {
-  .row {
-    code {
-      display: block;
-      white-space: pre-wrap;
-    }
+.documentation .row code {
+  display: block;
+  white-space: pre-wrap;
+}
 
-    p > span.note {
-      display: block;
-      font-style: italic;
-      color: rgba(250, 50, 50, 0.5);
-    }
-  }
+.documentation .row p > span.note {
+  display: block;
+  font-style: italic;
+  color: rgba(250, 50, 50, 0.5);
+}
+
+.welcome .jumbotron .row h2,
+.welcome .jumbotron .row h3,
+.welcome .jumbotron .row ul .ul-title,
+.welcome .jumbotron .row h4 {
+  color: #fff;
+}
+
+.welcome .jumbotron .row a :hover,
+.welcome .jumbotron .row a :visited,
+.welcome .jumbotron .row a {
+  color: rgba(50, 250, 50, 0.3);
 }

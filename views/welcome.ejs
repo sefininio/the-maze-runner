@@ -18,12 +18,12 @@
 <div id="terminal"></div>
 <div class="timi"></div>
 <div class="content welcome">
-    <div class="jumbotron documentation text-left">
+    <div class="jumbotron text-center">
         <div class="row text-center">
             <h1>Welcome Adventurer!</h1>
         </div>
         <div class="row">
-            <div class="col-xs-12">
+            <div class="documentation text-left col-xs-12">
                 <h3>Description of the challenge</h3>
 
                 <p>You have successfully navigated to the maze entrance.
@@ -79,14 +79,29 @@
             </div>
         </div>
 
-        <h2>REST APIs</h2>
+        <div class="documentation text-left col-xs-12">
+            <h2>REST APIs</h2>
+        </div>
 
-        <h4>
+        <div>
             Your mazeId is: <code class="maze-id"></code>.
             You should use it when making API calls.
-        </h4>
+        </div>
 
+        <div class="documentation text-left">
         <div class="row">
+
+         <div class="col-xs-12">
+             <h4>/maze/:mazeId/currentRoom</h4>
+             <p>The result will be an object that contains the current <code>roomId</code>.</p>
+             <label>Return</label>
+             <code>
+ {
+     currentRoomId: number
+ }
+             </code>
+         </div>
+
             <div class="col-xs-12">
                 <h4>/maze/:mazeId/room/:roomId/describe</h4>
                 <p>Given a <code>roomId</code>, the result will be an object that contains the room description.<br>
@@ -101,6 +116,7 @@
             quest: {
                 questId: string,
                 itemId: string,
+                pickedUpItem: boolean,
                 description: string
             }
         }
@@ -144,6 +160,7 @@
     }
                 </code>
             </div>
+        </div>
         </div>
     </div>
 </div>
