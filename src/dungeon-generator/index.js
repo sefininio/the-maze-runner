@@ -3,7 +3,7 @@ const Dungeon = require('./generators/dungeon');
 const _ = require('lodash');
 
 function getTikalId(user) {
-    return `${user.id}_${user.provider}`;
+    return `${user.provider}-${user.id}`;
 }
 
 function generateClue() {
