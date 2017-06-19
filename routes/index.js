@@ -15,12 +15,12 @@ module.exports = (passport) => {
     const userErrorHandler = (req, res) => err => {
         console.log(`[${req.user.tikalId}]: ${err}`, err);
         res.sendStatus(400);
-    }
+    };
 
     const mazeErrorHandler = (req, res) => err => {
         console.log(`[${req.params.mazeId}]: ${err}`, err);
         res.status(403).send({error: err});
-    }
+    };
 
     router.get('/', (req, res, next) => {
         res.render('index');

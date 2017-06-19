@@ -32,7 +32,8 @@ module.exports.getClue = (user) => {
                     // create new doc
                     const newDoc = {
                         key: user.tikalId,
-                        clue: generateClue()
+                        clue: generateClue(),
+                        user: user,
                     };
                     return db.saveDungeon(newDoc);
                 }
@@ -52,7 +53,7 @@ module.exports.generate = (user, quests) => {
             .then(doc => {
                 if (!doc) {
                     // at this point doc must exist with clue
-                    reject('no doc found in DB!')
+                    reject(new Error('no doc found in DB!'));
                 }
 
                 if (doc.dungeon) {
@@ -72,7 +73,7 @@ module.exports.generate = (user, quests) => {
                         numOfValidationTries: 0,
                         lastVisitedRoomId: [dungeon.dungeon[0].id],
                         dungeon: dungeon.dungeon,
-                        user: user
+                        user: doc.user,
                     };
 
                     return db.updateDungeon(newDoc);
