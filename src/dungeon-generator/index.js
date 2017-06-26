@@ -3,7 +3,9 @@ const Dungeon = require('./generators/dungeon');
 const _ = require('lodash');
 
 function getTikalId(user) {
-    return `${user.id}_${user.provider}`;
+    const tikalId = `${user.provider}-${user.id}`;
+    const encoded = Buffer.from(tikalId, 'utf8');
+    return encoded.toString('base64');
 }
 
 function generateClue() {
@@ -32,7 +34,8 @@ module.exports.getClue = (user) => {
                     // create new doc
                     const newDoc = {
                         key: user.tikalId,
-                        clue: generateClue()
+                        clue: generateClue(),
+                        user: user,
                     };
                     return db.saveDungeon(newDoc);
                 }
@@ -52,7 +55,7 @@ module.exports.generate = (user, quests) => {
             .then(doc => {
                 if (!doc) {
                     // at this point doc must exist with clue
-                    reject('no doc found in DB!')
+                    reject(new Error('no doc found in DB!'));
                 }
 
                 if (doc.dungeon) {
@@ -70,9 +73,10 @@ module.exports.generate = (user, quests) => {
                         clue: doc.clue,
                         hash: dungeon.hash,
                         numOfValidationTries: 0,
+                        numOfResets: 0,
                         lastVisitedRoomId: [dungeon.dungeon[0].id],
                         dungeon: dungeon.dungeon,
-                        user: user
+                        user: doc.user,
                     };
 
                     return db.updateDungeon(newDoc);
@@ -95,6 +99,22 @@ module.exports.getCurrentRoom = (key) => {
                     currentRoomId: _.last(doc.lastVisitedRoomId)
                 });
 
+            })
+            .catch(err => reject(err));
+    });
+};
+
+module.exports.reset = (key) => {
+    return new Promise((resolve, reject) => {
+        db.reset(key)
+            .then(doc => {
+                if (!doc) {
+                    reject(new Error(`Dungeon not found for key ${key}`));
+                }
+
+                resolve({
+                    currentRoomId: doc.lastVisitedRoomId
+                });
             })
             .catch(err => reject(err));
     });

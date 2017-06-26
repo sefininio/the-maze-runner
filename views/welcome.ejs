@@ -19,7 +19,7 @@
 <div class="timi"></div>
 <div class="content welcome">
     <div class="jumbotron text-center">
-        <div class="row">
+        <div class="row text-center">
             <h1>Welcome Adventurer!</h1>
         </div>
         <div class="row">
@@ -153,6 +153,17 @@
                 </div>
 
                 <div class="col-xs-12">
+                    <h4>/maze/:mazeId/reset</h4>
+                    <p>Will teleport you back to the first room. All quest items will be lost!</p>
+                    <label>Return</label>
+                    <code>
+    {
+        currentRoomId: number
+    }
+                    </code>
+                </div>
+
+                <div class="col-xs-12">
                     <h4>/maze/:mazeId/validate/:hash</h4>
                     <p>Given the <code>hash</code>, the result will be if the hash is correct or not.
                         <span class="note">Be careful! There is a limit to the number of times you can validate!</span></p>
@@ -163,7 +174,9 @@
     }
                     </code>
                 </div>
+
             </div>
+        </div>
         </div>
     </div>
 </div>

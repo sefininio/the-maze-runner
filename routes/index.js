@@ -12,6 +12,16 @@ module.exports = (passport) => {
         failureRedirect: '/'
     };
 
+    const userErrorHandler = (req, res) => err => {
+        console.log(`[${req.user.tikalId}]: ${err}`, err);
+        res.sendStatus(400);
+    };
+
+    const mazeErrorHandler = (req, res) => err => {
+        console.log(`[${req.params.mazeId}]: ${err}`, err);
+        res.status(403).send({error: err});
+    };
+
     router.get('/', (req, res, next) => {
         res.render('index');
     });
@@ -25,10 +35,7 @@ module.exports = (passport) => {
             .then((resClue) => {
                 res.send(resClue.clue[1]);
             })
-            .catch(err => {
-                console.log(`[${req.user.tikalId}]: ${err}`);
-                res.status(500).send(err);
-            });
+            .catch(userErrorHandler(req, res));
     });
 
     router.get('/start-clue', isLoggedIn, (req, res, next) => {
@@ -36,25 +43,19 @@ module.exports = (passport) => {
             .then((resClue) => {
                 res.send(resClue.clue[2]);
             })
-            .catch(err => {
-                console.log(`[${req.user.tikalId}]: ${err}`);
-                res.status(500).send(err);
-            });
+            .catch(userErrorHandler(req, res));
     });
 
     router.get('/text/:name', isLoggedIn, (req, res, next) => {
         fs.readFile('src/static/' + req.params.name + '.txt', 'utf8', function (err, data) {
-            if (err) throw err;
+            if (err) res.sendStatus(404);
             if (req.params.name === 'start') {
                 dGenUtils.getClue(req.user)
                     .then((resClue) => {
                         data = data.replace('<CLUE>', resClue.clue[0]);
                         res.send(data);
                     })
-                    .catch(err => {
-                        console.log(`[${req.user.tikalId}]: ${err}`);
-                        res.status(500).send(err);
-                    });
+                    .catch(userErrorHandler(req, res));
 
             } else {
                 res.send(data);
@@ -65,10 +66,7 @@ module.exports = (passport) => {
     router.get('/generate', isLoggedIn, (req, res) => {
         dGenUtils.generate(req.user, quests)
             .then(() => res.render('welcome'))
-            .catch(err => {
-                console.log(`[${req.user.tikalId}]: ${err}`);
-                res.status(500).send(err);
-            });
+            .catch(userErrorHandler(req, res));
     });
 
     router.get('/maze-id', isLoggedIn, (req, res) => {
@@ -78,46 +76,37 @@ module.exports = (passport) => {
     router.get('/maze/:mazeId/currentRoom', (req, res) => {
         dGenUtils.getCurrentRoom(req.params.mazeId)
             .then(description => res.send(description))
-            .catch(err => {
-                console.log(`[${req.params.mazeId}]: ${err}`);
-                res.status(500).send(err);
-            });
+            .catch(mazeErrorHandler(req, res));
+    });
+
+    router.get('/maze/:mazeId/reset', (req, res) => {
+        dGenUtils.reset(req.params.mazeId)
+            .then(description => res.send(description))
+            .catch(mazeErrorHandler(req, res));
     });
 
     router.get('/maze/:mazeId/room/:roomId/describe', (req, res) => {
         dGenUtils.getRoomDescription(req.params.mazeId, req.params.roomId)
             .then(description => res.send(description))
-            .catch(err => {
-                console.log(`[${req.params.mazeId}]: ${err}`);
-                res.status(500).send(err);
-            });
+            .catch(mazeErrorHandler(req, res));
     });
 
     router.get('/maze/:mazeId/room/:roomId/exits', (req, res) => {
         dGenUtils.getRoomExits(req.params.mazeId, req.params.roomId)
             .then(exits => res.send(exits))
-            .catch(err => {
-                console.log(`[${req.params.mazeId}]: ${err}`);
-                res.status(500).send(err);
-            });
+            .catch(mazeErrorHandler(req, res));
     });
 
     router.get('/maze/:mazeId/room/:roomId/exit/:direction', (req, res) => {
         dGenUtils.exitRoom(req.params.mazeId, req.params.roomId, req.params.direction)
             .then(newRoomId => res.send(newRoomId))
-            .catch(err => {
-                console.log(`[${req.params.mazeId}]: ${err}`);
-                res.status(500).send(err);
-            });
+            .catch(mazeErrorHandler(req, res));
     });
 
     router.get('/maze/:mazeId/validate/:hash', (req, res) => {
         dGenUtils.validate(req.params.mazeId, req.params.hash)
             .then(verified => res.send(verified))
-            .catch(err => {
-                console.log(`[${req.params.mazeId}]: ${err}`);
-                res.status(500).send(err);
-            });
+            .catch(mazeErrorHandler(req, res));
     });
 
     router.get('/logout', function (req, res) {
@@ -138,10 +127,7 @@ module.exports = (passport) => {
                     res.redirect('/start');
                 }
             })
-            .catch(err => {
-                console.log(`[${req.user.tikalId}]: ${err}`);
-                res.status(500).send(err);
-            });
+            .catch(userErrorHandler(req, res));
     });
 
     router.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
