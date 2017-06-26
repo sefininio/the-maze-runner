@@ -79,6 +79,12 @@ module.exports = (passport) => {
             .catch(mazeErrorHandler(req, res));
     });
 
+    router.get('/maze/:mazeId/reset', (req, res) => {
+        dGenUtils.reset(req.params.mazeId)
+            .then(description => res.send(description))
+            .catch(mazeErrorHandler(req, res));
+    });
+
     router.get('/maze/:mazeId/room/:roomId/describe', (req, res) => {
         dGenUtils.getRoomDescription(req.params.mazeId, req.params.roomId)
             .then(description => res.send(description))

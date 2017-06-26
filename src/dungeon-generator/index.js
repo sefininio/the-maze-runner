@@ -73,6 +73,7 @@ module.exports.generate = (user, quests) => {
                         clue: doc.clue,
                         hash: dungeon.hash,
                         numOfValidationTries: 0,
+                        numOfResets: 0,
                         lastVisitedRoomId: [dungeon.dungeon[0].id],
                         dungeon: dungeon.dungeon,
                         user: doc.user,
@@ -98,6 +99,22 @@ module.exports.getCurrentRoom = (key) => {
                     currentRoomId: _.last(doc.lastVisitedRoomId)
                 });
 
+            })
+            .catch(err => reject(err));
+    });
+};
+
+module.exports.reset = (key) => {
+    return new Promise((resolve, reject) => {
+        db.reset(key)
+            .then(doc => {
+                if (!doc) {
+                    reject(new Error(`Dungeon not found for key ${key}`));
+                }
+
+                resolve({
+                    currentRoomId: doc.lastVisitedRoomId
+                });
             })
             .catch(err => reject(err));
     });

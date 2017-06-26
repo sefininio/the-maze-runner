@@ -66,6 +66,26 @@ module.exports.updateLastVisitedRoom = (key, roomId) => {
     });
 };
 
+module.exports.reset = (key) => {
+    return new Promise((resolve, reject) => {
+        db.update({key: key}, {
+            $push: {lastVisitedRoomId: 0},
+            $inc: {numOfResets: 1},
+            $set: {"dungeon.items": []}
+        }, {}, (err, numUpdated) => {
+            if (err) {
+                reject(err);
+            }
+
+            if (numUpdated !== 1) {
+                reject(new Error(`Key + RoomId combination not unique!`));
+            }
+
+            resolve({lastVisitedRoomId: 0});
+        });
+    });
+};
+
 module.exports.updateNumberOfTries = (key) => {
     return new Promise((resolve, reject) => {
         db.update({key: key}, {$inc: {numOfValidationTries: 1}}, {returnUpdatedDocs: true}, (err, numUpdated, doc) => {
