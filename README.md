@@ -3,26 +3,26 @@ MazeRunner is Tikal's JS code challenge.
 
 **_If you are joining the development effort on this project, please join the `#maze-runner` channel on `Slack` and enable all notifications._**
 
-####Authentication
+#### Authentication
 Authentication is done over `Passport.js` (currently supporting Google, Facebook and Github).
 
-####Purpose
+#### Purpose
 Once a Challenger logs into the system, the server will generate a random dungeon for the Challenger and store it 
 on a local DB (`nedb`).
 
 Each dungeon room will have a letter written on the wall.  
 Challengers should implement an algorithm that traverses the dungeon, track the letters on the wall and figure out how those letters combine to a dungeon hash.  
 
-####Quests
+#### Quests
 Some of the rooms will be part of a quest.  
 Some quests span across a single room, while some span across multiple rooms.  
 In these rooms, the letter on the wall will only be revealed once you solve the room puzzle.  
 
-####Solution
+#### Solution
 The Challenger should send his code and the dungeon hash as the solution.  
 Once submitted, Challenger will receive an email that the solution was received and under review.
 
-####Technology
+#### Technology
 The Challenger can choose the technology used to implement the code.  
 
 FrontEnd  
