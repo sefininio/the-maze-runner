@@ -258,7 +258,7 @@ class Dungeon extends Generator {
     generate(quests) {
         let no_rooms = this.options.room_count - 1;
         this.quests = quests;
-        this.QUEST_PROBABILITY = Math.floor((no_rooms) / quests.length);
+        this.QUEST_PROBABILITY = Math.floor((no_rooms) / this.quests.length);
         this.questItemCounter = this.QUEST_PROBABILITY;
 
         let room = this.new_room(this.options.rooms.initial ? 'initial' : undefined);
