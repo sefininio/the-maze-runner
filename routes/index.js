@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const dGenUtils = require('../src/dungeon-generator');
-const quests = require('../quests.json').quests;
 const fs = require('fs');
 
 module.exports = (passport) => {
@@ -64,7 +63,7 @@ module.exports = (passport) => {
     });
 
     router.get('/generate', isLoggedIn, (req, res) => {
-        dGenUtils.generate(req.user, quests)
+        dGenUtils.generate(req.user)
             .then(() => res.render('welcome'))
             .catch(userErrorHandler(req, res));
     });

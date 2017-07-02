@@ -1,6 +1,7 @@
 const db = require('../db');
 const Dungeon = require('./generators/dungeon');
 const _ = require('lodash');
+const quests = require('./quests').quests;
 
 function getTikalId(user) {
     const tikalId = `${user.provider}-${user.id}`;
@@ -47,7 +48,7 @@ module.exports.getClue = (user) => {
 
 };
 
-module.exports.generate = (user, quests) => {
+module.exports.generate = (user) => {
     user.tikalId = getTikalId(user);
 
     return new Promise((resolve, reject) => {
