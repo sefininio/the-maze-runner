@@ -68,7 +68,7 @@ module.exports.generate = (user) => {
 
                 } else {
                     // create the dungeon and update db
-                    const dungeon = new Dungeon().generate(quests).persistAndReset();
+                    const dungeon = new Dungeon().generate(_.cloneDeep(quests)).persistAndReset();
                     const newDoc = {
                         key: user.tikalId,
                         clue: doc.clue,
