@@ -12,13 +12,13 @@ module.exports = (passport) => {
     };
 
     const userErrorHandler = (req, res) => err => {
-        console.log(`[${req.user.tikalId}]: ${err}`, err);
+        console.log(`[${req.user.tikalId}]: ${err}`);
         res.sendStatus(400);
     };
 
     const mazeErrorHandler = (req, res) => err => {
-        console.log(`[${req.params.mazeId}]: ${err}`, err);
-        res.status(403).send({error: err});
+        console.log(`[${req.params.mazeId}]: ${err}`);
+        res.status(403).send({error: err.message});
     };
 
     router.get('/', (req, res, next) => {
@@ -62,7 +62,7 @@ module.exports = (passport) => {
         });
     });
 
-    router.get('/generate', isLoggedIn, (req, res) => {
+    router.get('/welcome', isLoggedIn, (req, res) => {
         dGenUtils.generate(req.user)
             .then(() => res.render('welcome'))
             .catch(userErrorHandler(req, res));
@@ -116,12 +116,12 @@ module.exports = (passport) => {
     router.get('/:clue', isLoggedIn, (req, res, next) => {
         // default route that is not '/'
         // this MUST be the last route defined, otherwise it'll override other routes.
-        // it will either redirect to '/generate' if the clue is correct
+        // it will either redirect to '/welcome' if the clue is correct
         // or redirect back to '/start' since the clue is incorrect
         dGenUtils.getClue(req.user)
             .then(resClue => {
                 if (req.params.clue === resClue.clue.join('')) {
-                    res.redirect('/generate');
+                    res.redirect('/welcome');
                 } else {
                     res.redirect('/start');
                 }

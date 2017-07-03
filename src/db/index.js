@@ -68,21 +68,29 @@ module.exports.updateLastVisitedRoom = (key, roomId) => {
 
 module.exports.reset = (key) => {
     return new Promise((resolve, reject) => {
-        db.update({key: key}, {
-            $push: {lastVisitedRoomId: 0},
-            $inc: {numOfResets: 1},
-            $set: {"dungeon.items": []}
-        }, {}, (err, numUpdated) => {
-            if (err) {
-                reject(err);
-            }
+        this.getDungeon(key)
+            .then(doc => {
+                if (!doc) {
+                    reject(new Error(`Dungeon not found for key ${key}`));
+                }
 
-            if (numUpdated !== 1) {
-                reject(new Error(`Key + RoomId combination not unique!`));
-            }
+                db.update({key: key}, {
+                    $inc: {numOfResets: 1},
+                    $set: {"dungeon.items": [], lastVisitedRoomId: [0]}
+                }, {}, (err, numUpdated) => {
+                    if (err) {
+                        reject(err);
+                    }
 
-            resolve({lastVisitedRoomId: 0});
-        });
+                    if (numUpdated !== 1) {
+                        reject(new Error(`Key + RoomId combination not unique!`));
+                    }
+
+                    resolve({lastVisitedRoomId: 0});
+                });
+
+            })
+            .catch(err => reject(err));
     });
 };
 

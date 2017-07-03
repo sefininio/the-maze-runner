@@ -275,7 +275,7 @@ module.exports.getRoomDescription = (key, roomId) => {
                 }
 
             })
-            .catch(err => reject(err.message));
+            .catch(err => reject(err));
     });
 };
 
@@ -289,7 +289,7 @@ module.exports.getRoomExits = (key, roomId) => {
 
                 resolve({exits: exits});
             })
-            .catch(err => reject(err.message));
+            .catch(err => reject(err));
     });
 };
 
@@ -310,6 +310,6 @@ module.exports.exitRoom = (key, roomId, direction) => {
                 }
             })
             .then(newRoomId => resolve({newRoomId: newRoomId}))
-            .catch(err => reject(err.message));
+            .catch(err => reject(err));
     });
 };
