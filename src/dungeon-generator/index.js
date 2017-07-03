@@ -92,7 +92,7 @@ module.exports.getCurrentRoom = (key) => {
     return new Promise((resolve, reject) => {
         db.getDungeon(key)
             .then(doc => {
-                if (!doc) {
+                if (!doc || !doc.lastVisitedRoomId) {
                     reject(new Error(`Dungeon not found for key ${key}`));
                 }
 
