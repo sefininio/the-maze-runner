@@ -69,22 +69,10 @@
             <div class="row">
 
                 <div class="col-xs-12">
-                    <h4>/maze/:mazeId/currentRoom</h4>
-                    <p>The result will be an object that contains the current <code>roomId</code>.</p>
-                    <label>Return</label>
-                    <code>
-    {
-        currentRoomId: number
-    }
-                    </code>
-                </div>
-
-                <div class="col-xs-12">
-                    <h4>/maze/:mazeId/room/:roomId/describe</h4>
-                    <p>Given a <code>roomId</code>, the result will be an object that contains the room description.<br>
+                    <h4>/maze/:mazeId/describe</h4>
+                    <p>The result will be an object that contains the current room description.<br>
                         The quest property will only appear if the room is part of a quest.
-                        Until the quest is complete, the hashLetter property will not be provided.<br>
-                        You can only do this operation if you are currently inside the <code>roomId</code>.</p>
+                        Until the quest is complete, the hashLetter property will not be provided.</p>
                     <label>Return</label>
                     <code>
     {
@@ -102,10 +90,9 @@
                 </div>
 
                 <div class="col-xs-12">
-                    <h4>/maze/:mazeId/room/:roomId/exits</h4>
-                    <p>Given a roomId, the result will be an object that contains the possible exits from the room.
-                        0 = N, 90 = E, 180 = S, 270 = W. <br>
-                        You can only do this operation if you are currently inside the <code>roomId</code>.</p>
+                    <h4>/maze/:mazeId/exits</h4>
+                    <p>The result will be an object that contains the possible exits from the current room.
+                        0 = N, 90 = E, 180 = S, 270 = W.</p>
                     <label>Return</label>
                     <code>
     {
@@ -115,9 +102,8 @@
                 </div>
 
                 <div class="col-xs-12">
-                    <h4>/maze/:mazeId/room/:roomId/exit/:direction</h4>
-                    <p>Given a <code>roomId</code> and the <code>direction</code> to exit, the result will be the next roomId.<br>
-                        You can only do this operation if you are currently inside the <code>roomId</code>.</p>
+                    <h4>/maze/:mazeId/exit/:direction</h4>
+                    <p>Given a <code>direction</code> to exit, the result will be the next roomId.</p>
                     <label>Return</label>
                     <code>
     {
