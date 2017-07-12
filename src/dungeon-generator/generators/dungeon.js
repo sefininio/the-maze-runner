@@ -251,11 +251,29 @@ class Dungeon extends Generator {
 	}
 
 	getRoomItem() {
-		//todo: make sure to use prereq items first, to maximize chance
-		// challengers encounter quest items with prereq first.
 		let item;
 		if (this.quests.length) {
-			item = _.pullAt(this.quests, this.random.int(0, this.quests.length - 1))[0];
+			// first get random endOfQuest=true item
+			let items = _.filter(this.quests, {'endOfQuest': true});
+
+			if (!items.length) {
+				// then get items with prereq
+				items = _.filter(this.quests, (o) => {
+					return o.hasOwnProperty('prereqObj')
+				});
+			}
+
+			if (!items.length) {
+				// then get item at random from what is left
+				items = this.quests;
+			}
+
+			if (items.length) {
+				// _.pull(this.quests, item);
+				item = _.pullAt(items, this.random.int(0, items.length - 1))[0];
+				_.pull(this.quests, item);
+			}
+
 		}
 		return item;
 	}
