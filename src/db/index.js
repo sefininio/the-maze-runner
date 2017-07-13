@@ -125,6 +125,25 @@ module.exports.updateNumberOfTries = (key) => {
 	});
 };
 
+module.exports.updateRoom = (key, room) => {
+	return new Promise((resolve, reject) => {
+		this.getDungeon(key)
+			.then(doc => {
+				if (!doc) {
+					reject(new Error(`Dungeon not found for key ${key}`));
+				}
+
+				doc.dungeon[room.id] = room;
+
+				this.updateDungeon(doc).then(() => {
+					resolve()
+				});
+
+			})
+			.catch(err => reject(err));
+	});
+};
+
 module.exports.updateItem = (key, item) => {
 	return new Promise((resolve, reject) => {
 		db.update({key: key}, {$addToSet: {"dungeon.items": item}}, {returnUpdatedDocs: true}, (err, numUpdated, doc) => {

@@ -82,7 +82,30 @@
                 questId: string,
                 itemId: string,
                 pickedUpItem: boolean,
-                description: string
+                description: string,
+                action: string
+            }
+        }
+    }
+                    </code>
+                </div>
+
+                <div class="col-xs-12">
+                    <h4>/maze/:mazeId/beat-monster/:insult</h4>
+                    <p>Some quests require beating a monster. It will throw an insult at you and you
+                    will have to reply with a snappy comeback. If you are successful, you will get the hashLetter.
+                    (See below for the API for getting an insult comeback).</p>
+                    <label>Return</label>
+                    <code>
+    {
+        description: {
+            hashLetter: string,
+            quest: {
+                questId: string,
+                itemId: string,
+                pickedUpItem: boolean,
+                description: string,
+                action: string
             }
         }
     }
@@ -131,6 +154,18 @@
                     <code>
     {
         validated: boolean
+    }
+                    </code>
+                </div>
+
+                <div class="col-xs-12">
+                    <h4>/insult/:insult</h4>
+                    <p>Given the <code>insult</code>, the result will the insult and its comeback.</p>
+                    <label>Return</label>
+                    <code>
+    {
+        insult: string,
+        comeback: string
     }
                     </code>
                 </div>
