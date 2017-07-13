@@ -108,6 +108,18 @@ module.exports = (passport) => {
 			.catch(mazeErrorHandler(req, res));
 	});
 
+	router.get('/maze/:mazeId/beat-monster/:comeback', (req, res) => {
+		dGenUtils.beatMonster(req.params.mazeId, req.params.comeback)
+			.then(desc => res.send(desc))
+			.catch(mazeErrorHandler(req, res));
+	});
+
+	router.get('/insult/:insult', (req, res) => {
+		dGenUtils.getInsultResponse(req.params.insult)
+			.then(response => res.send(response))
+			.catch(mazeErrorHandler(req, res));
+	});
+
 	router.get('/logout', function (req, res) {
 		req.logout();
 		res.redirect('/');
