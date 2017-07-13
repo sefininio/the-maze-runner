@@ -42,10 +42,13 @@ class Dungeon extends Generator {
 			this.room_tags.push('any');
 		}
 
+		this.insultRooms = [];
+
 	}
 
 	reset() {
 		this.hash = [];
+		this.insultRooms = [];
 		for (let i = 1; i <= this.options.room_count; i++) {
 			this.hash.push(_.sample(this.sample));
 		}
@@ -184,27 +187,29 @@ class Dungeon extends Generator {
 		let opts = this.options.rooms[key];
 		const tikalTag = this.hash.shift();
 
-		this.questItemCounter--;
-		let item;
-		if (this.questItemCounter === 0) {
-			item = this.getRoomItem();
-			this.questItemCounter = this.QUEST_PROBABILITY;
-
-			if (item.encoding) {
-				let descStr = JSON.stringify({description: {hashLetter: tikalTag}});
-				let encoded = Buffer.from(descStr, 'utf8');
-				item.action = encoded.toString(item.encoding);
-			}
-		}
-
 		let room = new Room({
 			size: this.random.vec(opts.min_size, opts.max_size),
 			max_exits: opts.max_exits,
 			symmetric: this.symmetric_rooms,
 			tag: key,
 			tikalTag: tikalTag,
-			item: item
 		});
+
+		if (_.includes(this.itemRoomIds, room.id)) {
+			let item = this.getRoomItem();
+
+			if (item && item.encoding) {
+				let descStr = JSON.stringify({description: {hashLetter: tikalTag}});
+				let encoded = Buffer.from(descStr, 'utf8');
+				item.action = encoded.toString(item.encoding);
+			}
+
+			room.item = item;
+		}
+
+		if (room.item && room.item.questId === consts.QUESTS.INSULT_QUEST) {
+			this.insultRooms.push(room);
+		}
 
 		this.room_tags.splice(this.room_tags.indexOf(key), 1);
 
@@ -244,7 +249,35 @@ class Dungeon extends Generator {
 		return this.pDungeon;
 	}
 
+	assignInsultItems() {
+		let currRoom = _.find(this.insultRooms, (o) => {
+			return o.item.startOfQuest;
+		});
+		_.pull(this.insultRooms, currRoom);
+		currRoom.item.action = _.pullAt(this.insults, this.random.int(0, this.insults.length - 1))[0].insult;
+		let room;
+
+		while (!currRoom.item.endOfQuest) {
+			room = _.find(this.insultRooms, (o) => {
+				return o.item.prereqObj.prereqId === currRoom.item.itemId;
+			});
+
+			if (room.item.endOfQuest) {
+				room.item.action = this.queenInsults[0].insult;
+				room.item.step = 0;
+				room.item.queenInsults = this.queenInsults;
+			} else {
+				room.item.action = _.pullAt(this.insults, this.random.int(0, this.insults.length - 1))[0].insult;
+				room.item.actionPrereqNotMet = `You should first learn the insult in room ${currRoom.id}.`;
+			}
+
+			currRoom = room;
+		}
+
+	}
+
 	persistAndReset() {
+		this.assignInsultItems();
 		let persistedDungeon = this.persist();
 		this.reset();
 		return persistedDungeon;
@@ -269,8 +302,7 @@ class Dungeon extends Generator {
 			}
 
 			if (items.length) {
-				// _.pull(this.quests, item);
-				item = _.pullAt(items, this.random.int(0, items.length - 1))[0];
+				item = _.sample(items);
 				_.pull(this.quests, item);
 			}
 
@@ -278,11 +310,13 @@ class Dungeon extends Generator {
 		return item;
 	}
 
-	generate(quests) {
+	generate(quests, insults) {
 		let no_rooms = this.options.room_count - 1;
 		this.quests = quests;
-		this.QUEST_PROBABILITY = Math.floor((no_rooms) / this.quests.length);
-		this.questItemCounter = this.QUEST_PROBABILITY;
+		this.insults = insults;
+		this.queenInsults = _.shuffle(insults);
+		//todo: use _.random
+		this.itemRoomIds = _.sampleSize(_.range(1, no_rooms - 1), quests.length);
 
 		let room = this.new_room(this.options.rooms.initial ? 'initial' : undefined);
 		let no_corridors = Math.round(this.corridor_density * no_rooms);
