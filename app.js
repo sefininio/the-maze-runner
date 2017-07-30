@@ -10,7 +10,7 @@ const promBundle = require("express-prom-bundle");
 const metricsMiddleware = promBundle({includeMethod: true, includePath: true});
 
 const app = express();
-app.use(metricsMiddleware);
+app.use("/((maze))*", metricsMiddleware);
 
 require('./passport')(passport);
 
