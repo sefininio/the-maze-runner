@@ -1,6 +1,6 @@
 # MongoDB access information
 
-## Dev/Staging environment
+## Production environment
 
 * Mongo Connection string: `ds129462.mlab.com:29462/maze-prod`
 * Database user: `maze` 
@@ -18,7 +18,7 @@ To connect using a driver via the standard MongoDB URI:
 mongodb://maze:<dbpassword>@ds129462.mlab.com:29462/maze-prod
 ```
 
-## Production environment
+## Dev/Staging environment
 
 * Mongo Connection string: `ds129733.mlab.com:29733/maze-dev`
 * Database user: `maze` 
