@@ -1,13 +1,41 @@
-const Datastore = require('nedb');
-const db = new Datastore({filename: './dungeon.db', autoload: true});
 const _ = require('lodash');
+const bdUrl = require('../../conf/mongo').url;
+const mongoClient = require('mongodb').MongoClient;
 
-// auto compact db every 30 minutes
-db.persistence.setAutocompactionInterval(1800000);
+const state = {
+	db: null,
+	collection: null
+};
+
+module.exports.connect = (done) => {
+	if (state.db && state.collection) {
+		return done();
+	}
+
+	mongoClient.connect(bdUrl, (err, db) => {
+		if (err) {
+			return done(err);
+		}
+
+		state.db = db;
+		state.collection = db.collection('dungeon');
+		done();
+	})
+};
+
+module.exports.close = (done) => {
+	if (state.db) {
+		state.db.close((err, result) => {
+			state.db = null;
+			state.mode = null;
+			done(err);
+		});
+	}
+};
 
 module.exports.getDungeon = (key) => {
 	return new Promise((resolve, reject) => {
-		db.findOne({key: key}, (err, doc) => {
+		state.collection.find({key: key}).limit(1).next((err, doc) => {
 			if (err) {
 				reject(err);
 			}
@@ -19,14 +47,14 @@ module.exports.getDungeon = (key) => {
 
 module.exports.saveDungeon = (doc) => {
 	return new Promise((resolve, reject) => {
-		db.insert(doc, (err, newDoc) => {
+		state.collection.insertOne(doc, (err, r) => {
 			if (err) {
 				reject(err);
 			}
 
 			resolve({
-				tikalId: newDoc.key,
-				clue: newDoc.clue
+				tikalId: doc.key,
+				clue: doc.clue
 			});
 		});
 	});
@@ -34,12 +62,12 @@ module.exports.saveDungeon = (doc) => {
 
 module.exports.updateDungeon = (dungeon) => {
 	return new Promise((resolve, reject) => {
-		db.update({key: dungeon.key}, dungeon, {}, (err, numUpdated) => {
+		state.collection.updateOne({key: dungeon.key}, dungeon, {}, (err, r) => {
 			if (err) {
 				reject(err);
 			}
 
-			if (numUpdated !== 1) {
+			if (r.modifiedCount !== 1) {
 				reject(new Error(`Failed to save dungeon for ${dungeon.key}`));
 			}
 
@@ -64,12 +92,12 @@ module.exports.updateLastVisitedRoom = (key, roomId) => {
 					rooms.push(roomId);
 				}
 
-				db.update({key: key}, {$set: {lastVisitedRoomId: rooms}}, {}, (err, numUpdated) => {
+				state.collection.updateOne({key: key}, {$set: {lastVisitedRoomId: rooms}}, {}, (err, r) => {
 					if (err) {
 						reject(err);
 					}
 
-					if (numUpdated !== 1) {
+					if (r.modifiedCount !== 1) {
 						reject(new Error(`Key + RoomId combination not unique!`));
 					}
 
@@ -89,15 +117,15 @@ module.exports.reset = (key) => {
 					reject(new Error(`Dungeon not found for key ${key}`));
 				}
 
-				db.update({key: key}, {
+				state.collection.updateOne({key: key}, {
 					$inc: {numOfResets: 1},
 					$set: {"dungeon.items": [], lastVisitedRoomId: [0]}
-				}, {}, (err, numUpdated) => {
+				}, {}, (err, r) => {
 					if (err) {
 						reject(err);
 					}
 
-					if (numUpdated !== 1) {
+					if (r.modifiedCount !== 1) {
 						reject(new Error(`Key + RoomId combination not unique!`));
 					}
 
@@ -111,16 +139,16 @@ module.exports.reset = (key) => {
 
 module.exports.updateNumberOfTries = (key) => {
 	return new Promise((resolve, reject) => {
-		db.update({key: key}, {$inc: {numOfValidationTries: 1}}, {returnUpdatedDocs: true}, (err, numUpdated, doc) => {
+		state.collection.findOneAndUpdate({key: key}, {$inc: {numOfValidationTries: 1}}, {returnOriginal: false}, (err, r) => {
 			if (err) {
 				reject(err);
 			}
 
-			if (numUpdated !== 1) {
+			if (r.ok !== 1) {
 				reject(new Error(`Number of tries not incremented`));
 			}
 
-			resolve(doc.numOfValidationTries);
+			resolve(r.value.numOfValidationTries);
 		});
 	});
 };
@@ -146,16 +174,16 @@ module.exports.updateRoom = (key, room) => {
 
 module.exports.updateItem = (key, item) => {
 	return new Promise((resolve, reject) => {
-		db.update({key: key}, {$addToSet: {"dungeon.items": item}}, {returnUpdatedDocs: true}, (err, numUpdated, doc) => {
+		state.collection.findOneAndUpdate({key: key}, {$addToSet: {"dungeon.items": item}}, {returnOriginal: false}, (err, r) => {
 			if (err) {
 				reject(err);
 			}
 
-			if (numUpdated !== 1) {
+			if (r.ok !== 1) {
 				reject(new Error(`Could not update item`));
 			}
 
-			resolve(doc.dungeon.items);
+			resolve(r.value.dungeon.items);
 		});
 	});
 };
