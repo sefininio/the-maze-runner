@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const dGenUtils = require('../src/dungeon-generator');
 const fs = require('fs');
+const cors = require('cors');
 
 module.exports = (passport) => {
 	/* GET home page. */
@@ -72,49 +73,49 @@ module.exports = (passport) => {
 		res.send(req.user.tikalId);
 	});
 
-	router.get('/maze/:mazeId/currentRoom', (req, res) => {
+	router.get('/maze/:mazeId/currentRoom', cors(), (req, res) => {
 		dGenUtils.getCurrentRoom(req.params.mazeId)
 			.then(description => res.send(description))
 			.catch(mazeErrorHandler(req, res));
 	});
 
-	router.get('/maze/:mazeId/reset', (req, res) => {
+	router.get('/maze/:mazeId/reset', cors(), (req, res) => {
 		dGenUtils.reset(req.params.mazeId)
 			.then(description => res.send(description))
 			.catch(mazeErrorHandler(req, res));
 	});
 
-	router.get('/maze/:mazeId/describe', (req, res) => {
+	router.get('/maze/:mazeId/describe', cors(), (req, res) => {
 		dGenUtils.getRoomDescription(req.params.mazeId)
 			.then(description => res.send(description))
 			.catch(mazeErrorHandler(req, res));
 	});
 
-	router.get('/maze/:mazeId/exits', (req, res) => {
+	router.get('/maze/:mazeId/exits', cors(), (req, res) => {
 		dGenUtils.getRoomExits(req.params.mazeId)
 			.then(exits => res.send(exits))
 			.catch(mazeErrorHandler(req, res));
 	});
 
-	router.get('/maze/:mazeId/exit/:direction', (req, res) => {
+	router.get('/maze/:mazeId/exit/:direction', cors(), (req, res) => {
 		dGenUtils.exitRoom(req.params.mazeId, req.params.direction)
 			.then(newRoomId => res.send(newRoomId))
 			.catch(mazeErrorHandler(req, res));
 	});
 
-	router.get('/maze/:mazeId/validate/:hash', (req, res) => {
+	router.get('/maze/:mazeId/validate/:hash', cors(), (req, res) => {
 		dGenUtils.validate(req.params.mazeId, req.params.hash)
 			.then(verified => res.send(verified))
 			.catch(mazeErrorHandler(req, res));
 	});
 
-	router.get('/maze/:mazeId/beat-monster/:comeback', (req, res) => {
+	router.get('/maze/:mazeId/beat-monster/:comeback', cors(), (req, res) => {
 		dGenUtils.beatMonster(req.params.mazeId, req.params.comeback)
 			.then(desc => res.send(desc))
 			.catch(mazeErrorHandler(req, res));
 	});
 
-	router.get('/insult/:insult', (req, res) => {
+	router.get('/insult/:insult', cors(), (req, res) => {
 		dGenUtils.getInsultResponse(req.params.insult)
 			.then(response => res.send(response))
 			.catch(mazeErrorHandler(req, res));
