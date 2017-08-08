@@ -22,15 +22,14 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
-/**
- * Listen on provided port, on all network interfaces.
- */
-
+// Try to connect to db
 db.connect((err) => {
 	if (err) {
+		// failure, exit
 		console.log('Unable to connect to db');
 		process.exit(1);
 	} else {
+		// connection success. Listen on provided port, on all network interfaces.
 		console.log('connected to db...');
 		server.listen(port);
 		server.on('error', onError);
