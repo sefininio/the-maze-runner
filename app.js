@@ -1,5 +1,4 @@
 const express = require('express');
-const cors = require('cors');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
@@ -11,7 +10,6 @@ const promBundle = require("express-prom-bundle");
 const metricsMiddleware = promBundle({includeMethod: true, includePath: true});
 
 const app = express();
-app.use(cors());
 app.use(metricsMiddleware);
 
 require('./passport')(passport);
