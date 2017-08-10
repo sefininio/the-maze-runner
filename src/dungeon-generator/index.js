@@ -75,9 +75,15 @@ module.exports.generate = (user) => {
 						key: user.tikalId,
 						clue: doc.clue,
 						hash: dungeon.hash,
-						numOfValidationTries: 0,
-						numOfResets: 0,
+						metrics: {
+							numOfValidationTries: 0,
+							numOfResets: 0,
+							numOfApiCalls: 0,
+							timeToSolve: 0,
+							score: 0
+						},
 						lastVisitedRoomId: [dungeon.dungeon[0].id],
+						challengeStarted: Date.now().toString(),
 						dungeon: dungeon.dungeon,
 						user: doc.user,
 					};
@@ -145,6 +151,14 @@ module.exports.validate = (key, hash) => {
 	});
 };
 
+module.exports.updateApiCount = (key) => {
+	return new Promise((resolve, reject) => {
+		db.updateApiCount(key)
+			.then(number => resolve())
+			.catch(err => reject(err));
+	});
+};
+
 module.exports.getInsultResponse = (insult) => {
 	return new Promise((resolve, reject) => {
 		const comeback = _.find(insults, {'insult': insult});
@@ -162,10 +176,10 @@ module.exports.beatMonster = (key, comeback) => {
 			const {room, items} = doc;
 
 			if (!room.item || room.item.questId !== consts.QUESTS.INSULT_QUEST) {
-				reject(new Error(`Room ${room.id} is not part of the insults quest.`))
+				reject(new Error(`Room ${room.id} is not part of the insults quest.`));
 			}
 
-			if (room.item.endOfQuest) {
+			else if (room.item.endOfQuest) {
 				const {step, queenInsults} = room.item;
 
 				if (queenInsults.length === step) {
