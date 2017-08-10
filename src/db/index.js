@@ -132,23 +132,60 @@ module.exports.reset = (key) => {
 	});
 };
 
-module.exports.updateNumberOfTries = (key) => {
+function calculateScore(metrics) {
+	let score = 250;
+
+	// 1 val = 250, 10 val = 25, 20 val = 12.5...
+	score += Math.floor(250 / metrics.numOfValidationTries);
+
+	// 0 resets = 250, 10 resets = 125, 20 resets = 0, ...
+	score += Math.floor(-12.5 * metrics.numOfResets + 250);
+
+	// 1K apis = 250, 50K apis = 0, 100K = -255, ...
+	score += Math.floor(-0.0051 * metrics.numOfApiCalls + 255);
+
+	// 1h = 500, 24h = 0
+	score += Math.floor(-20.8334 * (metrics.timeToSolve / 3600000) + 500);
+
+	return score;
+}
+
+module.exports.validate = (key, hashCandidate) => {
 	return new Promise((resolve, reject) => {
-		state.collection.findOneAndUpdate(
-			{key: key},
-			{$inc: {"metrics.numOfValidationTries": 1}},
-			{returnOriginal: false},
-			(err, r) => {
-				if (err) {
-					reject(err);
+		this.getDungeon(key)
+			.then(doc => {
+				if (!doc) {
+					reject(new Error(`Dungeon not found for key ${key}`));
 				}
 
-				if (r.ok !== 1) {
-					reject(new Error(`Number of tries not incremented`));
+				let {metrics} = doc;
+				const validated = hashCandidate === doc.hash;
+
+				metrics.numOfValidationTries += 1;
+
+				if (validated) {
+					metrics.timeToSolve = Date.now() - doc.challengeStarted;
+					metrics.score = calculateScore(metrics);
 				}
 
-				resolve(r.value.metrics.numOfValidationTries);
+				state.collection.findOneAndUpdate(
+					{key: key},
+					{$set: {metrics: metrics}},
+					{returnOriginal: false},
+					(err, r) => {
+						if (err) {
+							reject(err);
+						}
+
+						if (r.ok !== 1) {
+							reject(new Error(`Number of tries not incremented`));
+						}
+
+						resolve({validated: validated});
+					});
+
 			});
+
 	});
 };
 
