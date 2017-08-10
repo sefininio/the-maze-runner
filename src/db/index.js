@@ -111,45 +111,64 @@ module.exports.updateLastVisitedRoom = (key, roomId) => {
 
 module.exports.reset = (key) => {
 	return new Promise((resolve, reject) => {
-		this.getDungeon(key)
-			.then(doc => {
-				if (!doc) {
-					reject(new Error(`Dungeon not found for key ${key}`));
+		state.collection.findOneAndUpdate(
+			{key: key},
+			{
+				$inc: {"metrics.numOfResets": 1},
+				$set: {"dungeon.items": [], lastVisitedRoomId: [0]}
+			},
+			{returnOriginal: false},
+			(err, r) => {
+				if (err) {
+					reject(err);
 				}
 
-				state.collection.updateOne({key: key}, {
-					$inc: {numOfResets: 1},
-					$set: {"dungeon.items": [], lastVisitedRoomId: [0]}
-				}, {}, (err, r) => {
-					if (err) {
-						reject(err);
-					}
+				if (r.ok !== 1) {
+					reject(new Error(`Key + RoomId combination not unique!`));
+				}
 
-					if (r.modifiedCount !== 1) {
-						reject(new Error(`Key + RoomId combination not unique!`));
-					}
-
-					resolve({lastVisitedRoomId: 0});
-				});
-
-			})
-			.catch(err => reject(err));
+				resolve({lastVisitedRoomId: 0});
+			});
 	});
 };
 
 module.exports.updateNumberOfTries = (key) => {
 	return new Promise((resolve, reject) => {
-		state.collection.findOneAndUpdate({key: key}, {$inc: {numOfValidationTries: 1}}, {returnOriginal: false}, (err, r) => {
-			if (err) {
-				reject(err);
-			}
+		state.collection.findOneAndUpdate(
+			{key: key},
+			{$inc: {"metrics.numOfValidationTries": 1}},
+			{returnOriginal: false},
+			(err, r) => {
+				if (err) {
+					reject(err);
+				}
 
-			if (r.ok !== 1) {
-				reject(new Error(`Number of tries not incremented`));
-			}
+				if (r.ok !== 1) {
+					reject(new Error(`Number of tries not incremented`));
+				}
 
-			resolve(r.value.numOfValidationTries);
-		});
+				resolve(r.value.metrics.numOfValidationTries);
+			});
+	});
+};
+
+module.exports.updateApiCount = (key) => {
+	return new Promise((resolve, reject) => {
+		state.collection.findOneAndUpdate(
+			{key: key},
+			{$inc: {"metrics.numOfApiCalls": 1}},
+			{returnOriginal: false},
+			(err, r) => {
+				if (err) {
+					reject(err);
+				}
+
+				if (r.ok !== 1) {
+					reject(new Error(`Number of API calls not incremented`));
+				}
+
+				resolve(r.value.metrics.numOfApiCalls);
+			});
 	});
 };
 
@@ -174,16 +193,20 @@ module.exports.updateRoom = (key, room) => {
 
 module.exports.updateItem = (key, item) => {
 	return new Promise((resolve, reject) => {
-		state.collection.findOneAndUpdate({key: key}, {$addToSet: {"dungeon.items": item}}, {returnOriginal: false}, (err, r) => {
-			if (err) {
-				reject(err);
-			}
+		state.collection.findOneAndUpdate(
+			{key: key},
+			{$addToSet: {"dungeon.items": item}},
+			{returnOriginal: false},
+			(err, r) => {
+				if (err) {
+					reject(err);
+				}
 
-			if (r.ok !== 1) {
-				reject(new Error(`Could not update item`));
-			}
+				if (r.ok !== 1) {
+					reject(new Error(`Could not update item`));
+				}
 
-			resolve(r.value.dungeon.items);
-		});
+				resolve(r.value.dungeon.items);
+			});
 	});
 };

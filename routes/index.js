@@ -73,43 +73,43 @@ module.exports = (passport) => {
 		res.send(req.user.tikalId);
 	});
 
-	router.get('/maze/:mazeId/currentRoom', cors(), (req, res) => {
+	router.get('/maze/:mazeId/currentRoom', cors(), updateApiCount, (req, res) => {
 		dGenUtils.getCurrentRoom(req.params.mazeId)
 			.then(description => res.send(description))
 			.catch(mazeErrorHandler(req, res));
 	});
 
-	router.get('/maze/:mazeId/reset', cors(), (req, res) => {
+	router.get('/maze/:mazeId/reset', cors(), updateApiCount, (req, res) => {
 		dGenUtils.reset(req.params.mazeId)
 			.then(description => res.send(description))
 			.catch(mazeErrorHandler(req, res));
 	});
 
-	router.get('/maze/:mazeId/describe', cors(), (req, res) => {
+	router.get('/maze/:mazeId/describe', cors(), updateApiCount, (req, res) => {
 		dGenUtils.getRoomDescription(req.params.mazeId)
 			.then(description => res.send(description))
 			.catch(mazeErrorHandler(req, res));
 	});
 
-	router.get('/maze/:mazeId/exits', cors(), (req, res) => {
+	router.get('/maze/:mazeId/exits', cors(), updateApiCount, (req, res) => {
 		dGenUtils.getRoomExits(req.params.mazeId)
 			.then(exits => res.send(exits))
 			.catch(mazeErrorHandler(req, res));
 	});
 
-	router.get('/maze/:mazeId/exit/:direction', cors(), (req, res) => {
+	router.get('/maze/:mazeId/exit/:direction', cors(), updateApiCount, (req, res) => {
 		dGenUtils.exitRoom(req.params.mazeId, req.params.direction)
 			.then(newRoomId => res.send(newRoomId))
 			.catch(mazeErrorHandler(req, res));
 	});
 
-	router.get('/maze/:mazeId/validate/:hash', cors(), (req, res) => {
+	router.get('/maze/:mazeId/validate/:hash', cors(), updateApiCount, (req, res) => {
 		dGenUtils.validate(req.params.mazeId, req.params.hash)
 			.then(verified => res.send(verified))
 			.catch(mazeErrorHandler(req, res));
 	});
 
-	router.get('/maze/:mazeId/beat-monster/:comeback', cors(), (req, res) => {
+	router.get('/maze/:mazeId/beat-monster/:comeback', cors(), updateApiCount, (req, res) => {
 		dGenUtils.beatMonster(req.params.mazeId, req.params.comeback)
 			.then(desc => res.send(desc))
 			.catch(mazeErrorHandler(req, res));
@@ -157,6 +157,12 @@ module.exports = (passport) => {
 		}
 
 		res.redirect('/');
+	}
+
+	function updateApiCount(req, res, next) {
+		dGenUtils.updateApiCount(req.params.mazeId)
+			.then(() => next())
+			.catch(mazeErrorHandler(req, res));
 	}
 
 	return router;
