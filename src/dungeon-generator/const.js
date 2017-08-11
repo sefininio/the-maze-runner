@@ -7,6 +7,7 @@ module.exports = {
 	QUESTS: {
 		INSULT_QUEST: 5
 	},
+	TIME_LIMIT: 86400000,
 	TOP: TOP,
 	BOTTOM: BOTTOM,
 	LEFT: LEFT,

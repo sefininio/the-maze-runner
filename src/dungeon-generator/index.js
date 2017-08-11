@@ -75,9 +75,15 @@ module.exports.generate = (user) => {
 						key: user.tikalId,
 						clue: doc.clue,
 						hash: dungeon.hash,
-						numOfValidationTries: 0,
-						numOfResets: 0,
+						metrics: {
+							numOfValidationTries: 0,
+							numOfResets: 0,
+							numOfApiCalls: 0,
+							timeToSolve: 0,
+							score: 0
+						},
 						lastVisitedRoomId: [dungeon.dungeon[0].id],
+						challengeStarted: Date.now().toString(),
 						dungeon: dungeon.dungeon,
 						user: doc.user,
 					};
@@ -98,9 +104,7 @@ module.exports.getCurrentRoom = (key) => {
 					reject(new Error(`Dungeon not found for key ${key}`));
 				}
 
-				resolve({
-					currentRoomId: _.last(doc.lastVisitedRoomId)
-				});
+				resolve({currentRoomId: _.last(doc.lastVisitedRoomId)});
 
 			})
 			.catch(err => reject(err));
@@ -115,9 +119,7 @@ module.exports.reset = (key) => {
 					reject(new Error(`Dungeon not found for key ${key}`));
 				}
 
-				resolve({
-					currentRoomId: doc.lastVisitedRoomId
-				});
+				resolve({currentRoomId: doc.lastVisitedRoomId});
 			})
 			.catch(err => reject(err));
 	});
@@ -131,17 +133,32 @@ module.exports.validate = (key, hash) => {
 					reject(new Error(`Dungeon not found for key ${key}`));
 				}
 
-				if (doc.numOfValidationTries >= 20) {
-					reject(new Error('You have reached the limit of validation tries!'));
-
-				} else {
-					db.updateNumberOfTries(key)
-						.then(number => resolve({validated: hash === doc.hash}))
-						.catch(err => reject(err));
-				}
+				db.validate(key, hash)
+					.then(res => resolve(res))
+					.catch(err => reject(err));
 
 			})
 			.catch(err => reject(err));
+	});
+};
+
+module.exports.updateApiCount = (key) => {
+	return new Promise((resolve, reject) => {
+		db.getDungeon(key)
+			.then(doc => {
+				// first check if time limit not exeeded.
+				const elapsed = Date.now() - doc.challengeStarted;
+
+				if (elapsed > consts.TIME_LIMIT) {
+					reject(new Error(`Time allocated for solving the challenge has exceeded!`));
+					return;
+				}
+
+				db.updateApiCount(key)
+					.then(number => resolve())
+					.catch(err => reject(err));
+
+			});
 	});
 };
 
@@ -162,10 +179,10 @@ module.exports.beatMonster = (key, comeback) => {
 			const {room, items} = doc;
 
 			if (!room.item || room.item.questId !== consts.QUESTS.INSULT_QUEST) {
-				reject(new Error(`Room ${room.id} is not part of the insults quest.`))
+				reject(new Error(`Room ${room.id} is not part of the insults quest.`));
 			}
 
-			if (room.item.endOfQuest) {
+			else if (room.item.endOfQuest) {
 				const {step, queenInsults} = room.item;
 
 				if (queenInsults.length === step) {

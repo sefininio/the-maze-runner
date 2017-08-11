@@ -1,8 +1,8 @@
-$(document).ready(function(){
-  $('#terminal').bgTerminal({
-    url: '/text/index',
-    glow: true,
-    speed: 100,
-    wait: 1000
-  });
+$(document).ready(function () {
+	$('#terminal').bgTerminal({
+		url: '/text/index',
+		glow: true,
+		speed: 50,
+		wait: 300
+	});
 });
