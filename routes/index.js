@@ -73,12 +73,6 @@ module.exports = (passport) => {
 		res.send(req.user.tikalId);
 	});
 
-	router.get('/maze/:mazeId/currentRoom', cors(), updateApiCount, (req, res) => {
-		dGenUtils.getCurrentRoom(req.params.mazeId)
-			.then(description => res.send(description))
-			.catch(mazeErrorHandler(req, res));
-	});
-
 	router.get('/maze/:mazeId/reset', cors(), updateApiCount, (req, res) => {
 		dGenUtils.reset(req.params.mazeId)
 			.then(description => res.send(description))

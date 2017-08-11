@@ -204,6 +204,18 @@ module.exports.updateApiCount = (key) => {
 	});
 };
 
+module.exports.getRoomById = (key, roomId) => {
+	return new Promise((resolve, reject) => {
+		state.collection.find({key: key}, {rooms: {$elemMatch: {id: roomId}}}).next((err, doc) => {
+			if (err) {
+				reject(err);
+			}
+
+			resolve(doc);
+		});
+	});
+};
+
 module.exports.updateRoom = (key, room) => {
 	return new Promise((resolve, reject) => {
 		this.getDungeon(key)

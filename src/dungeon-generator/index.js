@@ -94,22 +94,6 @@ module.exports.generate = (user) => {
 	});
 };
 
-// todo: remove?
-module.exports.getCurrentRoom = (key) => {
-	return new Promise((resolve, reject) => {
-		db.getDungeon(key)
-			.then(doc => {
-				if (!doc || !doc.lastVisitedRoomId) {
-					reject(new Error(`Dungeon not found for key ${key}`));
-				}
-
-				resolve({currentRoomId: _.last(doc.lastVisitedRoomId)});
-
-			})
-			.catch(err => reject(err));
-	});
-};
-
 module.exports.reset = (key) => {
 	return new Promise((resolve, reject) => {
 		db.reset(key)
