@@ -63,10 +63,7 @@ module.exports.generate = (user) => {
 
 				if (doc.dungeon) {
 					// if doc already has dungeon, no need to generate - just return it.
-					resolve({
-						tikalId: doc.key,
-						firstRoomId: doc.dungeon[0].id
-					});
+					resolve();
 
 				} else {
 					// create the dungeon and update db
@@ -82,9 +79,10 @@ module.exports.generate = (user) => {
 							timeToSolve: 0,
 							score: 0
 						},
-						lastVisitedRoomId: [dungeon.dungeon[0].id],
+						lastVisitedRoomId: [dungeon.rooms[0].id],
 						challengeStarted: Date.now().toString(),
-						dungeon: dungeon.dungeon,
+						rooms: dungeon.rooms,
+						items: dungeon.items,
 						user: doc.user,
 					};
 
@@ -96,6 +94,7 @@ module.exports.generate = (user) => {
 	});
 };
 
+// todo: remove?
 module.exports.getCurrentRoom = (key) => {
 	return new Promise((resolve, reject) => {
 		db.getDungeon(key)
@@ -127,17 +126,8 @@ module.exports.reset = (key) => {
 
 module.exports.validate = (key, hash) => {
 	return new Promise((resolve, reject) => {
-		db.getDungeon(key)
-			.then(doc => {
-				if (!doc) {
-					reject(new Error(`Dungeon not found for key ${key}`));
-				}
-
-				db.validate(key, hash)
-					.then(res => resolve(res))
-					.catch(err => reject(err));
-
-			})
+		db.validate(key, hash)
+			.then(res => resolve(res))
 			.catch(err => reject(err));
 	});
 };
@@ -183,6 +173,7 @@ module.exports.beatMonster = (key, comeback) => {
 			}
 
 			else if (room.item.endOfQuest) {
+				// todo: figure out a way not to destroy the original room conf, so it'll be easier on reset.
 				const {step, queenInsults} = room.item;
 
 				if (queenInsults.length === step) {
@@ -261,8 +252,8 @@ module.exports.getRoom = (key) => {
 				const roomId = Number(_.last(doc.lastVisitedRoomId));
 
 				resolve({
-					room: doc.dungeon[roomId],
-					items: doc.dungeon.items,
+					room: doc.rooms[roomId],
+					items: doc.items,
 					lastVisitedRooms: doc.lastVisitedRoomId,
 				});
 			})
@@ -297,9 +288,7 @@ module.exports.getRoomDescription = (key) => {
 	return new Promise((resolve, reject) => {
 		this.getRoom(key)
 			.then(doc => {
-				const room = doc.room;
-				const items = doc.items;
-				const lastVisitedRooms = doc.lastVisitedRooms;
+				const {room, items, lastVisitedRooms} = doc;
 
 				let desc = {
 					roomId: doc.room.id,

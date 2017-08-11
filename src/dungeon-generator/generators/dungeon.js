@@ -240,11 +240,12 @@ class Dungeon extends Generator {
 	}
 
 	persist() {
+		this.pDungeon.rooms = [];
 		this.children.map((room) => {
-			this.pDungeon.dungeon[room.id] = this.persistRoom(room);
+			this.pDungeon.rooms[room.id] = this.persistRoom(room);
 		});
 
-		this.pDungeon.dungeon.items = [];
+		this.pDungeon.items = [];
 
 		return this.pDungeon;
 	}

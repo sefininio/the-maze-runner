@@ -71,10 +71,7 @@ module.exports.updateDungeon = (dungeon) => {
 				reject(new Error(`Failed to save dungeon for ${dungeon.key}`));
 			}
 
-			resolve({
-				tikalId: dungeon.key,
-				firstRoomId: dungeon.dungeon[0].id
-			})
+			resolve()
 		});
 	});
 };
@@ -115,7 +112,7 @@ module.exports.reset = (key) => {
 			{key: key},
 			{
 				$inc: {"metrics.numOfResets": 1},
-				$set: {"dungeon.items": [], lastVisitedRoomId: [0]}
+				$set: {"items": [], lastVisitedRoomId: [0]}
 			},
 			{returnOriginal: false},
 			(err, r) => {
@@ -183,9 +180,7 @@ module.exports.validate = (key, hashCandidate) => {
 
 						resolve({validated: validated});
 					});
-
 			});
-
 	});
 };
 
@@ -217,7 +212,7 @@ module.exports.updateRoom = (key, room) => {
 					reject(new Error(`Dungeon not found for key ${key}`));
 				}
 
-				doc.dungeon[room.id] = room;
+				doc.rooms[room.id] = room;
 
 				this.updateDungeon(doc).then(() => {
 					resolve()
@@ -232,7 +227,7 @@ module.exports.updateItem = (key, item) => {
 	return new Promise((resolve, reject) => {
 		state.collection.findOneAndUpdate(
 			{key: key},
-			{$addToSet: {"dungeon.items": item}},
+			{$addToSet: {"items": item}},
 			{returnOriginal: false},
 			(err, r) => {
 				if (err) {
@@ -243,7 +238,7 @@ module.exports.updateItem = (key, item) => {
 					reject(new Error(`Could not update item`));
 				}
 
-				resolve(r.value.dungeon.items);
+				resolve(r.value.items);
 			});
 	});
 };
