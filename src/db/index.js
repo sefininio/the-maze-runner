@@ -177,7 +177,7 @@ function calculateScore(metrics) {
 
 module.exports.validate = (key, hashCandidate) => {
 	return new Promise((resolve, reject) => {
-		this.getDungeon(key, {metrics: 1})
+		this.getDungeon(key, {metrics: 1, hash: 1, challengeStarted: 1})
 			.then(doc => {
 				if (!doc) {
 					reject(new Error(`Dungeon not found for key ${key}`));
