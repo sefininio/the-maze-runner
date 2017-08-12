@@ -26,6 +26,12 @@ module.exports = (passport) => {
 		res.render('index');
 	});
 
+	router.get('/top-scores', (req, res) => {
+		dGenUtils.topScores(5)
+			.then(doc => res.send(doc))
+			.catch(userErrorHandler(req, res));
+	});
+
 	router.get('/start', isLoggedIn, (req, res, next) => {
 		res.render('start');
 	});
