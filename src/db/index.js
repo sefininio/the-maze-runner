@@ -206,7 +206,7 @@ module.exports.validate = (key, hashCandidate) => {
 							reject(new Error(`Number of tries not incremented`));
 						}
 
-						resolve({validated: validated});
+						resolve({validated: validated, score: metrics.score});
 					});
 			});
 	});
@@ -217,7 +217,7 @@ module.exports.updateApiCount = (key) => {
 		state.collection.findOneAndUpdate(
 			{key: key},
 			{$inc: {"metrics.numOfApiCalls": 1}},
-			{returnOriginal: false},
+			{returnNewDocument: true},
 			(err, r) => {
 				if (err) {
 					reject(err);
@@ -286,5 +286,23 @@ module.exports.updateItem = (key, item) => {
 
 				resolve(r.value.items);
 			});
+	});
+};
+
+module.exports.topScores = (limit) => {
+	return new Promise((resolve, reject) => {
+		state.collection.aggregate([
+			{$match: {"metrics.score": {$gt: 0}}},
+			{$group: {_id: "$user", score: {$max: "$metrics.score"}}},
+			{$project: {_id: 0, "user": "$_id", score: 1}},
+			{$sort: {score: -1}},
+			{$limit: limit}
+		]).next((err, doc) => {
+			if (err) {
+				reject(err);
+			}
+
+			resolve(doc);
+		});
 	});
 };

@@ -409,3 +409,7 @@ module.exports.exitRoom = (key, direction) => {
 			.catch(err => reject(err));
 	});
 };
+
+module.exports.topScores = (limit) => {
+	return db.topScores(limit);
+};
