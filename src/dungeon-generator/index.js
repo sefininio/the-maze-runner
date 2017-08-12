@@ -24,7 +24,7 @@ module.exports.getClue = (user) => {
 	user.tikalId = getTikalId(user);
 
 	return new Promise((resolve, reject) => {
-		db.getDungeon(user.tikalId)
+		db.getDungeon(user.tikalId, {clue: 1})
 			.then(doc => {
 				if (doc) {
 					// doc already exists, so it must have clue
@@ -54,15 +54,15 @@ module.exports.generate = (user) => {
 	user.tikalId = getTikalId(user);
 
 	return new Promise((resolve, reject) => {
-		db.getDungeon(user.tikalId)
+		db.getDungeon(user.tikalId, {challengeStarted: 1, clue: 1, user: 1})
 			.then(doc => {
 				if (!doc) {
 					// at this point doc must exist with clue
 					reject(new Error('no doc found in DB!'));
 				}
 
-				if (doc.dungeon) {
-					// if doc already has dungeon, no need to generate - just return it.
+				if (doc.challengeStarted) {
+					// if doc already has dungeon, no need to generate - just resolve.
 					resolve();
 
 				} else {
@@ -79,7 +79,8 @@ module.exports.generate = (user) => {
 							timeToSolve: 0,
 							score: 0
 						},
-						lastVisitedRoomId: [dungeon.rooms[0].id],
+						visitedRoomIds: [dungeon.rooms[0].id],
+						currentRoom: dungeon.rooms[0],
 						challengeStarted: Date.now().toString(),
 						rooms: dungeon.rooms,
 						items: dungeon.items,
@@ -102,7 +103,7 @@ module.exports.reset = (key) => {
 					reject(new Error(`Dungeon not found for key ${key}`));
 				}
 
-				resolve({currentRoomId: doc.lastVisitedRoomId});
+				resolve(doc);
 			})
 			.catch(err => reject(err));
 	});
@@ -118,7 +119,7 @@ module.exports.validate = (key, hash) => {
 
 module.exports.updateApiCount = (key) => {
 	return new Promise((resolve, reject) => {
-		db.getDungeon(key)
+		db.getDungeon(key, {challengeStarted: 1})
 			.then(doc => {
 				// first check if time limit not exeeded.
 				const elapsed = Date.now() - doc.challengeStarted;
@@ -227,18 +228,16 @@ module.exports.beatMonster = (key, comeback) => {
 
 module.exports.getRoom = (key) => {
 	return new Promise((resolve, reject) => {
-		db.getDungeon(key)
+		db.getDungeon(key, {currentRoom: 1, items: 1, visitedRoomIds: 1})
 			.then(doc => {
 				if (!doc) {
 					reject(new Error(`Dungeon not found for key ${key}`));
 				}
 
-				const roomId = Number(_.last(doc.lastVisitedRoomId));
-
 				resolve({
-					room: doc.rooms[roomId],
+					room: doc.currentRoom,
 					items: doc.items,
-					lastVisitedRooms: doc.lastVisitedRoomId,
+					visitedRoomIds: doc.visitedRoomIds,
 				});
 			})
 			.catch(err => reject(err));
@@ -272,7 +271,7 @@ module.exports.getRoomDescription = (key) => {
 	return new Promise((resolve, reject) => {
 		this.getRoom(key)
 			.then(doc => {
-				const {room, items, lastVisitedRooms} = doc;
+				const {room, items, visitedRoomIds} = doc;
 
 				let desc = {
 					roomId: doc.room.id,
@@ -321,7 +320,7 @@ module.exports.getRoomDescription = (key) => {
 						if (room.item.prereqObj) {
 							// currently, only supports `minUniqueRoomsVisited`, `prereqId`
 							if (room.item.prereqObj.minUniqueRoomsVisited) {
-								const uniqueVisitedRooms = _.uniq(lastVisitedRooms).length;
+								const uniqueVisitedRooms = _.uniq(visitedRoomIds).length;
 								if (uniqueVisitedRooms >= room.item.prereqObj.minUniqueRoomsVisited) {
 									// prereq met, pick it up and give hash.
 									doAction(desc, room);
