@@ -297,7 +297,7 @@ module.exports.topScores = (limit) => {
 			{$project: {_id: 0, "user": "$_id", score: 1}},
 			{$sort: {score: -1}},
 			{$limit: limit}
-		]).next((err, doc) => {
+		]).toArray((err, doc) => {
 			if (err) {
 				reject(err);
 			}
