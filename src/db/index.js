@@ -33,9 +33,9 @@ module.exports.close = (done) => {
 	}
 };
 
-module.exports.getDungeon = (key) => {
+module.exports.getDungeon = (key, projection) => {
 	return new Promise((resolve, reject) => {
-		state.collection.find({key: key}).limit(1).next((err, doc) => {
+		state.collection.find({key: key}, projection).limit(1).next((err, doc) => {
 			if (err) {
 				reject(err);
 			}
@@ -71,38 +71,60 @@ module.exports.updateDungeon = (dungeon) => {
 				reject(new Error(`Failed to save dungeon for ${dungeon.key}`));
 			}
 
+			resolve()
+		});
+	});
+};
+
+module.exports.getRoomById = (key, roomId) => {
+	return new Promise((resolve, reject) => {
+		state.collection.find(
+			{key: key},
+			{rooms: {$elemMatch: {id: roomId}}, visitedRoomIds: 1}).next((err, doc) => {
+			if (err) {
+				reject(err);
+			}
+
+			if (doc.rooms.length !== 1) {
+				reject(new Error(`Couldn't find room ${roomId}.`))
+			}
+
 			resolve({
-				tikalId: dungeon.key,
-				firstRoomId: dungeon.dungeon[0].id
-			})
+				room: doc.rooms[0],
+				visitedRoomIds: doc.visitedRoomIds
+			});
 		});
 	});
 };
 
 module.exports.updateLastVisitedRoom = (key, roomId) => {
 	return new Promise((resolve, reject) => {
-		this.getDungeon(key)
+		this.getRoomById(key, roomId)
 			.then(doc => {
 				if (!doc) {
 					reject(new Error(`Dungeon not found for key ${key}`));
 				}
 
-				let rooms = _.uniq(doc.lastVisitedRoomId);
+				let rooms = _.uniq(doc.visitedRoomIds);
 				if (_.last(rooms) !== roomId) {
 					rooms.push(roomId);
 				}
 
-				state.collection.updateOne({key: key}, {$set: {lastVisitedRoomId: rooms}}, {}, (err, r) => {
-					if (err) {
-						reject(err);
-					}
+				state.collection.updateOne(
+					{key: key},
+					{$set: {visitedRoomIds: rooms, currentRoom: doc.room}},
+					{},
+					(err, r) => {
+						if (err) {
+							reject(err);
+						}
 
-					if (r.modifiedCount !== 1) {
-						reject(new Error(`Key + RoomId combination not unique!`));
-					}
+						if (r.modifiedCount !== 1) {
+							reject(new Error(`Key + RoomId combination not unique!`));
+						}
 
-					resolve(roomId);
-				});
+						resolve(roomId);
+					});
 
 			})
 			.catch(err => reject(err));
@@ -111,24 +133,27 @@ module.exports.updateLastVisitedRoom = (key, roomId) => {
 
 module.exports.reset = (key) => {
 	return new Promise((resolve, reject) => {
-		state.collection.findOneAndUpdate(
-			{key: key},
-			{
-				$inc: {"metrics.numOfResets": 1},
-				$set: {"dungeon.items": [], lastVisitedRoomId: [0]}
-			},
-			{returnOriginal: false},
-			(err, r) => {
-				if (err) {
-					reject(err);
-				}
+		this.getRoomById(key, 0).then((doc) => {
+			state.collection.findOneAndUpdate(
+				{key: key},
+				{
+					$inc: {"metrics.numOfResets": 1},
+					$set: {"items": [], visitedRoomIds: [0], currentRoom: doc.room}
+				},
+				{returnNewDocument: true},
+				(err, r) => {
+					if (err) {
+						reject(err);
+					}
 
-				if (r.ok !== 1) {
-					reject(new Error(`Key + RoomId combination not unique!`));
-				}
+					if (r.ok !== 1) {
+						reject(new Error(`Key + RoomId combination not unique!`));
+					}
 
-				resolve({lastVisitedRoomId: 0});
-			});
+					resolve({currentRoomId: 0});
+				});
+
+		});
 	});
 };
 
@@ -152,7 +177,7 @@ function calculateScore(metrics) {
 
 module.exports.validate = (key, hashCandidate) => {
 	return new Promise((resolve, reject) => {
-		this.getDungeon(key)
+		this.getDungeon(key, {metrics: 1})
 			.then(doc => {
 				if (!doc) {
 					reject(new Error(`Dungeon not found for key ${key}`));
@@ -183,9 +208,7 @@ module.exports.validate = (key, hashCandidate) => {
 
 						resolve({validated: validated});
 					});
-
 			});
-
 	});
 };
 
@@ -211,13 +234,31 @@ module.exports.updateApiCount = (key) => {
 
 module.exports.updateRoom = (key, room) => {
 	return new Promise((resolve, reject) => {
+
+		// state.collection.updateOne(
+		// 	{key: key, rooms: {$elemMatch: {id: room.id}}},
+		// 	{$set: {'rooms.$': room}},
+		// 	{},
+		// 	(err, r) => {
+		// 		if (err) {
+		// 			reject(err);
+		// 		}
+		//
+		// 		if (r.modifiedCount !== 1) {
+		// 			reject(new Error(`Key + RoomId combination not unique!`));
+		// 		}
+		//
+		// 		resolve();
+		// 	});
+
+
 		this.getDungeon(key)
 			.then(doc => {
 				if (!doc) {
 					reject(new Error(`Dungeon not found for key ${key}`));
 				}
 
-				doc.dungeon[room.id] = room;
+				doc.rooms[room.id] = room;
 
 				this.updateDungeon(doc).then(() => {
 					resolve()
@@ -232,7 +273,7 @@ module.exports.updateItem = (key, item) => {
 	return new Promise((resolve, reject) => {
 		state.collection.findOneAndUpdate(
 			{key: key},
-			{$addToSet: {"dungeon.items": item}},
+			{$addToSet: {"items": item}},
 			{returnOriginal: false},
 			(err, r) => {
 				if (err) {
@@ -243,7 +284,7 @@ module.exports.updateItem = (key, item) => {
 					reject(new Error(`Could not update item`));
 				}
 
-				resolve(r.value.dungeon.items);
+				resolve(r.value.items);
 			});
 	});
 };
