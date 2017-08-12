@@ -35,6 +35,10 @@ module.exports.getClue = (user) => {
 
 				} else {
 					// create new doc
+					if (!user.displayName) {
+						user.displayName = user.username;
+					}
+
 					const newDoc = {
 						key: user.tikalId,
 						clue: generateClue(),
