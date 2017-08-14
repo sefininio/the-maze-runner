@@ -44,7 +44,7 @@ code {
 	position: relative;
 	z-index: 99;
 	padding: 60px;
-	background-color: rgba(0, 0, 0, .7);
+	background-color: rgba(0, 0, 0, .6);
 	color: rgba(255, 255, 255, .7);
 }
 
@@ -57,12 +57,20 @@ code {
 	background-color: rgba(50, 250, 50, 0.1);
 	margin: auto;
 	text-align: left;
-	padding-left: 15px;
-	font-size: 18px;
+	padding: 10px;
+	font-size: 14px;
+	display: flex;
+	flex-direction: column;
+}
+
+.content .jumbotron .row.top-scores .top-score-item {
+	flex: 1 0 auto
 }
 
 .content .jumbotron .row.top-scores h3 {
-	font-size: 20px;
+	font-size: 16px;
+	flex: 1 0 auto;
+	margin: 5px;
 }
 
 .content .jumbotron .row h4 {
@@ -130,6 +138,7 @@ code {
 	position: fixed;
 	bottom: -20px;
 	right: -20px;
+	z-index: 99999;
 }
 
 .timi:before {
