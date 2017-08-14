@@ -18,13 +18,13 @@ function getTopScores() {
 					const score = res[i];
 
 					$(`#top-score-${i + 1}`).replaceWith(`
-						<div id="top-score-1">
-			                ${i + 1}. <span>Name : ${score.user.displayName}, Score: ${score.score}</span>
+						<div id="top-score-${i + 1}" class="top-score-item">
+			                ${i + 1}. <span>${score.user.displayName}, Score: ${score.score}</span>
             			</div>
 					`);
 				} else {
 					$(`#top-score-${i + 1}`).replaceWith(`
-						<div id="top-score-1">
+						<div id="top-score-${i + 1}"  class="top-score-item">
 			                ${i + 1}. <span>Free slot</span>
             			</div>
 					`);
