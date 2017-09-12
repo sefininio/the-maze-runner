@@ -1,0 +1,26 @@
+{
+	"sumFunc": {
+		"input": [2, 3],
+		"expected": 5
+	},
+	"multiplyFunc": {
+		"input": [5, 5],
+		"expected": 25
+	},
+	"subtractFunc": {
+		"input": [5, 4],
+		"expected": 1
+	},
+	"divideFunc": {
+		"input": [5, 5],
+		"expected": 1
+	},
+	"stringFunc": {
+		"input": "hello",
+		"expected": "hello world"
+	},
+	"booleanFunc": {
+		"input": true,
+		"expected": false
+	}
+}

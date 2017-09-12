@@ -69,7 +69,7 @@
             <div class="row">
 
                 <div class="col-xs-12">
-                    <h4>/maze/:mazeId/describe</h4>
+                    <h4><span>GET</span> /maze/:mazeId/describe</h4>
                     <p>The result will be an object that contains the current room description.<br>
                         The quest property will only appear if the room is part of a quest.
                         Until the quest is complete, the hashLetter property will not be provided.</p>
@@ -91,7 +91,7 @@
                 </div>
 
                 <div class="col-xs-12">
-                    <h4>/maze/:mazeId/beat-monster/:comeback</h4>
+                    <h4><span>GET</span> /maze/:mazeId/beat-monster/:comeback</h4>
                     <p>Some quests require beating a monster. It will throw an insult your way, and you
                     will have to reply with a snappy comeback. Some monsters are harder to beat and will require
                      more than just one snappy comeback! If you are successful, you will get the hashLetter.<br>
@@ -114,7 +114,7 @@
                 </div>
 
                 <div class="col-xs-12">
-                    <h4>/maze/:mazeId/exits</h4>
+                    <h4><span>GET</span> /maze/:mazeId/exits</h4>
                     <p>The result will be an object that contains the possible exits from the current room.
                         0 = N, 90 = E, 180 = S, 270 = W.</p>
                     <label>Return</label>
@@ -126,7 +126,7 @@
                 </div>
 
                 <div class="col-xs-12">
-                    <h4>/maze/:mazeId/exit/:direction</h4>
+                    <h4><span>GET</span> /maze/:mazeId/exit/:direction</h4>
                     <p>Given a <code>direction</code> to exit, the result will be the next roomId.</p>
                     <label>Return</label>
                     <code>
@@ -137,7 +137,7 @@
                 </div>
 
                 <div class="col-xs-12">
-                    <h4>/maze/:mazeId/reset</h4>
+                    <h4><span>GET</span> /maze/:mazeId/reset</h4>
                     <p>Will teleport you back to the first room. All quest items will be lost!</p>
                     <label>Return</label>
                     <code>
@@ -148,9 +148,11 @@
                 </div>
 
                 <div class="col-xs-12">
-                    <h4>/maze/:mazeId/validate/:hash</h4>
+                    <h4><span>POST</span> /maze/:mazeId/validate/:hash</h4>
                     <p>Given the <code>hash</code>, the result will be if the hash is correct or not.
-                        <span class="note">Be careful! There is a limit to the number of times you can validate!</span></p>
+                        The request body should contain the code challenge solution as string.
+                        <span class="note">Be careful! There is a limit to the number of times you can validate!</span>
+                    </p>
                     <label>Return</label>
                     <code>
     {
@@ -160,7 +162,7 @@
                 </div>
 
                 <div class="col-xs-12">
-                    <h4>/insult/:insult</h4>
+                    <h4><span>GET</span> /insult/:insult</h4>
                     <p>Given the <code>insult</code>, the result will the insult and its comeback.</p>
                     <label>Return</label>
                     <code>

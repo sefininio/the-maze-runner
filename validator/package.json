@@ -1,0 +1,19 @@
+{
+  "name": "validator",
+  "version": "1.0.0",
+  "description": "Maze Runner code validator",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "tap tests/*.js"
+  },
+  "author": "Erez Carmel <erez@tikalk.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.0",
+    "express": "^4.15.4"
+  },
+  "devDependencies": {
+    "tap": "^10.7.2"
+  }
+}

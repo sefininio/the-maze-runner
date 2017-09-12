@@ -188,6 +188,9 @@ code {
 .welcome .jumbotron .row h4 {
 	color: #fff;
 }
+.welcome .jumbotron .row h4 > span {
+	color: rgba(50, 250, 50, 0.5);
+}
 
 .welcome .jumbotron .row a :hover,
 .welcome .jumbotron .row a :visited,

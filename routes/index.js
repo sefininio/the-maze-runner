@@ -3,6 +3,8 @@ const router = express.Router();
 const dGenUtils = require('../src/dungeon-generator');
 const fs = require('fs');
 const cors = require('cors');
+const http = require('http');
+const querystring = require('querystring');
 
 module.exports = (passport) => {
 	/* GET home page. */
@@ -103,10 +105,46 @@ module.exports = (passport) => {
 			.catch(mazeErrorHandler(req, res));
 	});
 
-	router.get('/maze/:mazeId/validate/:hash', cors(), updateApiCount, (req, res) => {
-		dGenUtils.validate(req.params.mazeId, req.params.hash)
-			.then(verified => res.send(verified))
-			.catch(mazeErrorHandler(req, res));
+	router.post('/maze/:mazeId/validate/:hash', cors(), updateApiCount, (req, res) => {
+		const post_data = querystring.stringify({
+			'code': req.body.code,
+			questions: [
+				'sumFunc',
+				'subtractFunc',
+				'divideFunc',
+				'stringFunc',
+				'booleanFunc'
+			]
+		});
+
+		let post_req = http.request({
+			host: 'localhost',
+			path: '/validate/' + req.params.mazeId,
+			port: 8080,
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+				'Content-Length': Buffer.byteLength(post_data)
+			}
+		}, response => {
+			let str = '';
+
+			response.on('data', chunk => str += chunk);
+
+			response.on('end', () => {
+				dGenUtils.validate(req.params.mazeId, req.params.hash)
+					.then(verified => {
+						verified.codeScore = JSON.parse(str);
+						res.send(verified);
+					})
+					.catch(mazeErrorHandler(req, res));
+			});
+		}, err => {
+			console.log(err);
+		});
+
+		post_req.write(post_data);
+		post_req.end();
 	});
 
 	router.get('/maze/:mazeId/beat-monster/:comeback', cors(), updateApiCount, (req, res) => {
