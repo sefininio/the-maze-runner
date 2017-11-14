@@ -1,0 +1,14 @@
+{
+  "name": "validator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap tests/*.js"
+  },
+  "author": "Erez Carmel <erez@tikalk.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "tap": "^10.7.2"
+  }
+}

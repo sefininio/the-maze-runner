@@ -1,0 +1,66 @@
+.question {
+  text-align: center;
+}
+
+.question .header {
+  height: 150px;
+  text-align: left;
+}
+
+.question .content {
+  font-size: large;
+}
+
+.question .content .editor {
+  margin: 20px auto;
+}
+
+.question button, .question code {
+  background-color: transparent;
+  border: 1px solid rgba(50, 250, 50, 0.5);
+  color: rgba(50, 250, 50, 0.5);
+}
+
+.description {
+  text-align: left;
+}
+
+.description label {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.description code {
+  display: block;
+  padding: 20px;
+}
+
+.question .controls {
+  float: right;
+}
+
+.question button {
+  margin: 0 10px;
+}
+
+.question label {
+
+}
+
+.question .score {
+  float: left;
+  border: 1px solid rgba(50, 250, 50, 0.5);
+  color: rgba(50, 250, 50, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.question .score .pass {
+  color: #32fa32;
+}
+
+.question .score .fail {
+  color: red;
+}

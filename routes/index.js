@@ -3,6 +3,10 @@ const router = express.Router();
 const dGenUtils = require('../src/dungeon-generator');
 const fs = require('fs');
 const cors = require('cors');
+const http = require('http');
+const querystring = require('querystring');
+
+let isCandidator = false;
 
 module.exports = (passport) => {
 	/* GET home page. */
@@ -23,6 +27,7 @@ module.exports = (passport) => {
 	};
 
 	router.get('/', (req, res, next) => {
+		isCandidator = req.query.q && req.query.q === '1';
 		res.render('index');
 	});
 
@@ -134,7 +139,12 @@ module.exports = (passport) => {
 		dGenUtils.getClue(req.user)
 			.then(resClue => {
 				if (req.params.clue === resClue.clue.join('')) {
-					res.redirect('/generate');
+					console.log('isCandidator', isCandidator);
+					if(isCandidator) {
+						res.redirect('http://localhost:3001');
+					} else {
+						res.redirect('/generate');
+					}
 				} else {
 					res.redirect('/start');
 				}
@@ -150,6 +160,37 @@ module.exports = (passport) => {
 
 	router.get('/auth/github', passport.authenticate('github', {scope: 'user:email'}));
 	router.get('/auth/github/callback', passport.authenticate('github', authCallbackObj));
+
+	router.post('/candidator/validate', cors(), (req, res) => {
+		const post_data = querystring.stringify({
+			'code': req.body.code
+		});
+
+		let post_req = http.request({
+			host: '72vklh3hn2.execute-api.us-east-1.amazonaws.com',
+			path: '/prod/validator/',
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded',
+				'Content-Length': Buffer.byteLength(post_data)
+			}
+		}, response => {
+			let str = '';
+
+			response.on('data', chunk => str += chunk);
+
+			response.on('end', () => {
+				res.send(str);
+			});
+		}, err => {
+			res.send(err);
+		});
+
+		post_req.write(post_data);
+		post_req.end();
+
+		// res.send({ "score": 80 });
+	});
 
 	function isLoggedIn(req, res, next) {
 		if (req.isAuthenticated()) {
