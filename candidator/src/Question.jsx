@@ -13,16 +13,19 @@ import 'brace/theme/monokai';
 
 class Question extends Component {
 
+	answer = '';
+
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			score: null
+			score: null,
+			answer: ''
 		}
 	}
 
 	submit() {
-		axios.post('http://localhost:3000/candidator/validate', { code: '(a,b) => a + b;' })
+		axios.post('http://localhost:3000/candidator/validate', { code: this.answer })
 			.then(res => {
 				this.setState({score: res.data.score});
 			})
@@ -33,6 +36,10 @@ class Question extends Component {
 
 	next() {
 		console.log('next');
+	}
+
+	onChange(code) {
+		this.answer = code.replace(/\n/ig, '');
 	}
 
 	render() {
@@ -46,6 +53,11 @@ class Question extends Component {
 
 				<div className="content">
 					<div className="description">
+						<label>Question</label>
+						<p>
+							Question bla bla
+						</p>
+
 						<label>Code sample</label>
 						<code>
 							(a, b) => a + b;
@@ -56,13 +68,14 @@ class Question extends Component {
 						className="editor"
 						mode="javascript"
 						theme="monokai"
-						onChange={this.onChange}
+						onChange={this.onChange.bind(this)}
 						fontSize={14}
 						showPrintMargin={false}
 						showGutter={true}
 						highlightActiveLine={true}
 						width="100%"
 						setOptions={{
+							wrapEnabled: true,
 							enableBasicAutocompletion: true,
 							enableLiveAutocompletion: true,
 							enableSnippets: false,
