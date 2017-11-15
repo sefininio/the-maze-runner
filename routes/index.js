@@ -5,6 +5,7 @@ const fs = require('fs');
 const cors = require('cors');
 const http = require('http');
 const querystring = require('querystring');
+const axios = require('axios');
 
 let isCandidator = false;
 
@@ -140,7 +141,7 @@ module.exports = (passport) => {
 			.then(resClue => {
 				if (req.params.clue === resClue.clue.join('')) {
 					console.log('isCandidator', isCandidator);
-					if(isCandidator) {
+					if (isCandidator) {
 						res.redirect('http://localhost:3001');
 					} else {
 						res.redirect('/generate');
@@ -163,33 +164,68 @@ module.exports = (passport) => {
 
 	router.post('/candidator/validate', cors(), (req, res) => {
 		const post_data = querystring.stringify({
-			'code': req.body.code
+			'code': req.body.code,
+			"tests": [
+				{"assert": "equal", "input": [2, 3], "expected": 5},
+				{"assert": "equal", "input": [0, 0], "expected": 0},
+				{"assert": "equal", "input": [-1, 2], "expected": 1},
+				{"assert": "equal", "input": [-1, -1], "expected": -2},
+				{"assert": "equal", "input": [1, "hello"], "expected": "1hello"}
+			]
 		});
 
-		let post_req = http.request({
-			host: '72vklh3hn2.execute-api.us-east-1.amazonaws.com',
-			path: '/prod/validator/',
-			method: 'POST',
+		const codeToTest = req.body.code;
+
+		const baseURL = 'https://72vklh3hn2.execute-api.us-east-1.amazonaws.com';
+
+		const options = {
+			baseURL,
+			url: '/prod/validator/',
+			method: 'post',
 			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded',
-				'Content-Length': Buffer.byteLength(post_data)
+				'Content-Type': 'application/json',
+				'Content-Length': 2048,//Buffer.byteLength(post_data)
+			},
+			// data: post_data,
+			data:{
+				"code": "(a,b) => a + b;",
+				"tests": [
+					{ "assert": "equal", "input": [2, 3], "expected": 5},
+					{ "assert": "equal", "input": [0, 0], "expected": 0},
+					{ "assert": "equal", "input": [-1, 2], "expected": 1},
+					{ "assert": "equal", "input": [-1, -1], "expected": -2},
+					{ "assert": "equal", "input": [1, "hello"], "expected": "1hello"}
+				]
 			}
-		}, response => {
-			let str = '';
+		};
 
-			response.on('data', chunk => str += chunk);
-
-			response.on('end', () => {
-				res.send(str);
+		axios(options)
+			.then(response => {
+				console.log('response', response.data);
+				return response.data;
+			})
+			.then((answer) => res.send(answer))
+			.catch(error => {
+				if (error.response) {
+					// The request was made and the server responded with a status code
+					// that falls out of the range of 2xx
+					console.log("response error")
+					console.log(error.response.data);
+					console.log(error.response.status);
+					console.log(error.response.headers);
+				} else if (error.request) {
+					// The request was made but no response was received
+					// `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+					// http.ClientRequest in node.js
+					console.log("request error")
+					console.log(error.request);
+				} else {
+					// Something happened in setting up the request that triggered an Error
+					console.log("else error")
+					console.log('Error', error.message);
+				}
+				console.log(error.config);
 			});
-		}, err => {
-			res.send(err);
-		});
-
-		post_req.write(post_data);
-		post_req.end();
-
-		// res.send({ "score": 80 });
 	});
 
 	function isLoggedIn(req, res, next) {
