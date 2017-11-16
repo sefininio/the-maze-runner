@@ -6,6 +6,7 @@ const cors = require('cors');
 const http = require('http');
 const querystring = require('querystring');
 const axios = require('axios');
+const questionPoolHandler = require('../src/db/questionPoolHandlers');
 
 let isCandidator = false;
 
@@ -162,19 +163,47 @@ module.exports = (passport) => {
 	router.get('/auth/github', passport.authenticate('github', {scope: 'user:email'}));
 	router.get('/auth/github/callback', passport.authenticate('github', authCallbackObj));
 
+	router.get('/candidator/questions', (req, res) => {
+		questionPoolHandler.getNRandomQuestions(5)
+			.then(questions => {
+				console.log('questions.length', questions.length);
+				console.log('questions', questions);
+				res.send(questions);
+			})
+			.catch(e => {
+				console.log('e', e);
+				res.send(e.message);
+			});
+	});
+
 	router.post('/candidator/validate', cors(), (req, res) => {
-		const post_data = querystring.stringify({
-			'code': req.body.code,
-			"tests": [
-				{"assert": "equal", "input": [2, 3], "expected": 5},
-				{"assert": "equal", "input": [0, 0], "expected": 0},
-				{"assert": "equal", "input": [-1, 2], "expected": 1},
-				{"assert": "equal", "input": [-1, -1], "expected": -2},
-				{"assert": "equal", "input": [1, "hello"], "expected": "1hello"}
-			]
-		});
+		console.log("ppppppppppppp")
+		// const post_data = querystring.stringify({
+		// 	'code': req.body.code,
+		// 	"tests": [
+		// 		{"assert": "equal", "input": [2, 3], "expected": 5},
+		// 		{"assert": "equal", "input": [0, 0], "expected": 0},
+		// 		{"assert": "equal", "input": [-1, 2], "expected": 1},
+		// 		{"assert": "equal", "input": [-1, -1], "expected": -2},
+		// 		{"assert": "equal", "input": [1, "hello"], "expected": "1hello"}
+		// 	]
+		// });
 
 		const codeToTest = req.body.code;
+		// const qid = req.body.qid
+
+
+		questionPoolHandler.getAllQuestions()
+			.then(questions => {
+				console.log('total number of questions chosen', questions.length);
+				res.send(questions);
+			})
+			.catch(e => {
+				console.log('e', e);
+				res.send(e.message);
+			});
+
+
 
 		const baseURL = 'https://72vklh3hn2.execute-api.us-east-1.amazonaws.com';
 
@@ -199,6 +228,7 @@ module.exports = (passport) => {
 			}
 		};
 
+/*
 		axios(options)
 			.then(response => {
 				console.log('response', response.data);
@@ -226,6 +256,7 @@ module.exports = (passport) => {
 				}
 				console.log(error.config);
 			});
+*/
 	});
 
 	function isLoggedIn(req, res, next) {
