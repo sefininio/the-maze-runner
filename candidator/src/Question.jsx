@@ -5,6 +5,7 @@ import {
 	Button
 } from 'reactstrap';
 import AceEditor from 'react-ace';
+import {markdown} from 'markdown';
 
 import './Question.css';
 
@@ -52,8 +53,11 @@ class Question extends Component {
 
 		console.log('this.state', this.state);
 		const {questions} = this.state;
+		console.log('markdown', markdown)
 
 		const firstQuestion = questions ? questions[0] : null;
+
+		firstQuestion && console.log('firstQuestion._id', firstQuestion._id)
 
 		return (
 			<Container className="question">
@@ -63,19 +67,26 @@ class Question extends Component {
 					{
 						firstQuestion ?
 							<div>
-						<p>
-							{firstQuestion.description}
-						</p>
-							<img src={firstQuestion.heroImage} style={{maxWidth: '150px', float: 'right'}}/>
+								<div dangerouslySetInnerHTML={{__html: markdown.toHTML(firstQuestion.description)}} />
+								<p>
+									{firstQuestion.description}
+								</p>
+								<img src={firstQuestion.heroImage} style={{maxWidth: '150px', float: 'right'}}/>
 							</div>
 							:
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mollis, massa in porta aliquam,
-							diam purus condimentum nibh, ac rutrum dolor nunc at elit. Morbi consequat convallis eros sit
-							amet dignissim. Duis aliquet et tellus quis tincidunt. Praesent ultricies nisl ac ultrices
-							rhoncus. Donec scelerisque, nibh a tristique malesuada, nibh metus vehicula turpis, non volutpat
-							ligula orci a justo. Sed arcu metus, lobortis id pretium suscipit, pulvinar rhoncus urna. In hac
-							habitasse platea dictumst. Sed mauris ipsum, finibus posuere odio nec, porttitor lobortis justo.
-							Ut pretium sit amet dolor quis mattis.</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mollis, massa in porta
+								aliquam,
+								diam purus condimentum nibh, ac rutrum dolor nunc at elit. Morbi consequat convallis
+								eros sit
+								amet dignissim. Duis aliquet et tellus quis tincidunt. Praesent ultricies nisl ac
+								ultrices
+								rhoncus. Donec scelerisque, nibh a tristique malesuada, nibh metus vehicula turpis, non
+								volutpat
+								ligula orci a justo. Sed arcu metus, lobortis id pretium suscipit, pulvinar rhoncus
+								urna. In hac
+								habitasse platea dictumst. Sed mauris ipsum, finibus posuere odio nec, porttitor
+								lobortis justo.
+								Ut pretium sit amet dolor quis mattis.</p>
 					}
 
 				</div>
