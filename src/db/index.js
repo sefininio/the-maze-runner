@@ -7,7 +7,23 @@ const state = {
 	collection: null
 };
 
-module.exports.connect = (done) => {
+module.exports.state = state;
+
+module.exports.connect = done => {
+	if (state.db) {
+		return done();
+	}
+
+	mongoClient.connect(bdUrl)
+		.then(database => {
+			// console.log('database', database);
+			state.db = database;
+			done();
+		})
+		.catch(err => done(err));
+};
+
+/*module.exports.connect = (done) => {
 	if (state.db && state.collection) {
 		return done();
 	}
@@ -18,10 +34,11 @@ module.exports.connect = (done) => {
 		}
 
 		state.db = db;
+		console.log('dv', db)
 		state.collection = db.collection('dungeon');
 		done();
 	})
-};
+};*/
 
 module.exports.close = (done) => {
 	if (state.db) {

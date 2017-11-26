@@ -164,10 +164,9 @@ module.exports = (passport) => {
 	router.get('/auth/github/callback', passport.authenticate('github', authCallbackObj));
 
 	router.get('/candidator/questions', (req, res) => {
+		// TODO: When the questions come back, store it under Candidate Document.
 		questionPoolHandler.getNRandomQuestions(5)
 			.then(questions => {
-				console.log('questions.length', questions.length);
-				console.log('questions', questions);
 				res.send(questions);
 			})
 			.catch(e => {
@@ -177,72 +176,50 @@ module.exports = (passport) => {
 	});
 
 	router.post('/candidator/validate', cors(), (req, res) => {
-		console.log("ppppppppppppp")
-		// const post_data = querystring.stringify({
-		// 	'code': req.body.code,
-		// 	"tests": [
-		// 		{"assert": "equal", "input": [2, 3], "expected": 5},
-		// 		{"assert": "equal", "input": [0, 0], "expected": 0},
-		// 		{"assert": "equal", "input": [-1, 2], "expected": 1},
-		// 		{"assert": "equal", "input": [-1, -1], "expected": -2},
-		// 		{"assert": "equal", "input": [1, "hello"], "expected": "1hello"}
-		// 	]
-		// });
+		const {qid, codeToTest} = req.body;
 
-		const codeToTest = req.body.code;
-		// const qid = req.body.qid
-
-
-		questionPoolHandler.getAllQuestions()
-			.then(questions => {
-				console.log('total number of questions chosen', questions.length);
-				res.send(questions);
-			})
-			.catch(e => {
-				console.log('e', e);
-				res.send(e.message);
-			});
-
-
+		let tests;
 
 		const baseURL = 'https://72vklh3hn2.execute-api.us-east-1.amazonaws.com';
 
-		const options = {
-			baseURL,
-			url: '/prod/validator/',
-			method: 'post',
-			headers: {
-				'Content-Type': 'application/json',
-				'Content-Length': 2048,//Buffer.byteLength(post_data)
-			},
-			// data: post_data,
-			data:{
-				"code": "(a,b) => a + b;",
-				"tests": [
-					{ "assert": "equal", "input": [2, 3], "expected": 5},
-					{ "assert": "equal", "input": [0, 0], "expected": 0},
-					{ "assert": "equal", "input": [-1, 2], "expected": 1},
-					{ "assert": "equal", "input": [-1, -1], "expected": -2},
-					{ "assert": "equal", "input": [1, "hello"], "expected": "1hello"}
-				]
-			}
-		};
-
-/*
-		axios(options)
-			.then(response => {
-				console.log('response', response.data);
-				return response.data;
+		questionPoolHandler.getQuestionTests(qid)
+			.then(question => question[0].tests)
+			.then(tests => {
+				return {
+					baseURL,
+					url: '/prod/validator',
+					method: 'post',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					data: {
+						code: codeToTest,
+						tests: tests
+					}
+				}
 			})
-			.then((answer) => res.send(answer))
+			.then(options => {
+				return axios(options)
+			})
+			.then(response => {
+				const result = response.data;
+				const score = questionPoolHandler.convertTestResultsToScore(result.passed, result.total);
+				res.json({
+					score
+				});
+			})
 			.catch(error => {
 				if (error.response) {
 					// The request was made and the server responded with a status code
 					// that falls out of the range of 2xx
 					console.log("response error")
-					console.log(error.response.data);
-					console.log(error.response.status);
-					console.log(error.response.headers);
+					console.log('error.response.data', error.response.data);
+					console.log('error.response.status', error.response.status);
+					console.log('error.response.headers', error.response.headers);
+					// res.json({
+					// 	error: "Something went wrong",
+					// });
+					res.status(500).end();
 				} else if (error.request) {
 					// The request was made but no response was received
 					// `error.request` is an instance of XMLHttpRequest in the browser and an instance of
@@ -256,7 +233,6 @@ module.exports = (passport) => {
 				}
 				console.log(error.config);
 			});
-*/
 	});
 
 	function isLoggedIn(req, res, next) {

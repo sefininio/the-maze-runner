@@ -27,7 +27,11 @@ class Question extends Component {
 	}
 
 	submit() {
-		axios.post('http://localhost:3000/candidator/validate', {code: this.answer})
+		axios.post('http://localhost:3000/candidator/validate',
+			{
+				code: this.answer,
+				qid: this.state.questions[0]._id,
+			})
 			.then(res => {
 				this.setState({score: res.data.score});
 			})
@@ -53,11 +57,11 @@ class Question extends Component {
 
 		console.log('this.state', this.state);
 		const {questions} = this.state;
-		console.log('markdown', markdown)
+		console.log('markdown', markdown);
 
 		const firstQuestion = questions ? questions[0] : null;
 
-		firstQuestion && console.log('firstQuestion._id', firstQuestion._id)
+		firstQuestion && console.log('firstQuestion._id', firstQuestion._id);
 
 		return (
 			<Container className="question">
