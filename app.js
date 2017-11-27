@@ -8,7 +8,8 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const session = require('express-session');
 const promBundle = require("express-prom-bundle");
-const metricsMiddleware = promBundle({includeMethod: true, includePath: true});
+const metricsMiddleware = promBundle({ includeMethod: true, includePath: true });
+const apiRoutes = require('./api/routes/index');
 
 const app = express();
 app.use(cors());
@@ -16,7 +17,16 @@ app.use(metricsMiddleware);
 
 require('./passport')(passport);
 
+
+app.get('/lalala', (req, res) => {
+	res.json({
+		lala: 'works'
+	});
+});
+app.use('/api/v1', apiRoutes);
+
 const index = require('./routes/index')(passport);
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,9 +36,9 @@ app.set('view engine', 'ejs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({secret: 'idrivemycartothemazecenter'}));
+app.use(session({ secret: 'idrivemycartothemazecenter' }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));

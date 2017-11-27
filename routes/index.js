@@ -163,16 +163,10 @@ module.exports = (passport) => {
 	router.get('/auth/github', passport.authenticate('github', {scope: 'user:email'}));
 	router.get('/auth/github/callback', passport.authenticate('github', authCallbackObj));
 
-	router.get('/candidator/questions', (req, res) => {
-		// TODO: When the questions come back, store it under Candidate Document.
-		questionPoolHandler.getNRandomQuestions(5)
-			.then(questions => {
-				res.send(questions);
-			})
-			.catch(e => {
-				console.log('e', e);
-				res.send(e.message);
-			});
+	router.get('/candidator/test', (req, res) => {
+		res.send({
+			hi: 'there',
+		});
 	});
 
 	router.post('/candidator/validate', cors(), (req, res) => {
