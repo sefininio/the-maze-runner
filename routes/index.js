@@ -80,6 +80,10 @@ module.exports = (passport) => {
 			.catch(userErrorHandler(req, res));
 	});
 
+	router.get('/candidator', isLoggedIn, (req, res, next) => {
+		res.render('candidator');
+	});
+
 	router.get('/maze-id', isLoggedIn, (req, res) => {
 		res.send(req.user.tikalId);
 	});
