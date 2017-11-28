@@ -82,6 +82,35 @@ describe("Test questionPool controller", () => {
 		addQuestionsToCollection(7)
 			.then(() => QuestionPoolController.getRandomQuestions(5))
 			.then(questions => {
+				console.log('questions', questions)
+				console.log('questions.length', questions.length);
+				questions.should.have.lengthOf(5);
+				firstTimeQuestions = questions;
+			})
+			.then(() => QuestionPoolController.getRandomQuestions(5))
+			.then(questions => {
+				console.log('questions.length', questions.length);
+				secondTimeQuestions = questions;
+				questions.should.have.lengthOf(5);
+				try {
+					secondTimeQuestions.should.not.eql(firstTimeQuestions);
+				} catch (e) {
+					secondTimeQuestions.should.eql(firstTimeQuestions);
+				}
+				done();
+			})
+			.catch(e => {
+				console.log('e.message', e.message);
+				done()
+			});
+	});
+
+	it("Should pick 5 random questions from the questionPool collection which has less than 5 questions", (done) => {
+		let firstTimeQuestions, secondTimeQuestions;
+
+		addQuestionsToCollection(3)
+			.then(() => QuestionPoolController.getRandomQuestions(5))
+			.then(questions => {
 				questions.should.have.lengthOf(5);
 				firstTimeQuestions = questions;
 			})
@@ -95,27 +124,10 @@ describe("Test questionPool controller", () => {
 					secondTimeQuestions.should.eql(firstTimeQuestions);
 				}
 				done();
-			});
-	});
-
-	it("Should pick 5 random questions from the questionPool collection which has less than 5 questions", (done) => {
-		let firstTimeQuestions, secondTimeQuestions;
-
-		addQuestionsToCollection(3)
-			.then(() => QuestionPoolController.getRandomQuestions(3))
-			.then(questions => {
-				questions.should.have.lengthOf(3);
-				firstTimeQuestions = questions;
 			})
-			.then(() => QuestionPoolController.getRandomQuestions(3))
-			.then(questions => {
-				secondTimeQuestions = questions;
-				questions.should.have.lengthOf(3);
-				try {
-					secondTimeQuestions.should.not.eql(firstTimeQuestions);
-				} catch (e) {
-					secondTimeQuestions.should.eql(firstTimeQuestions);
-				}
+			.catch(e => {
+				console.log('e.message', e.message);
+				e.message.should.equal("Not enough questions to pick from");
 				done();
 			});
 	});
