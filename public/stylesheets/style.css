@@ -1,31 +1,3 @@
-html {
-	height: 100%;
-}
-
-body {
-	font-family: 'Source Code Pro', monospace;
-	font-size: 14px;
-
-	margin: 0;
-	padding: 0;
-	height: 100%;
-	background-color: #001603;
-}
-
-h1, h2, h3, h4, h5 {
-	font-family: 'Source Code Pro', monospace;
-}
-
-a {
-	color: #000;
-}
-
-code {
-	background-color: transparent;
-	border: 1px solid rgba(50, 250, 50, 0.5);
-	color: rgba(50, 250, 50, 0.5);
-}
-
 .content {
 	position: relative;
 	top: 50%;
@@ -37,58 +9,6 @@ code {
 	margin: 100px 30px 30px;
 	top: auto;
 	transform: none;
-}
-
-.content .jumbotron {
-	border-radius: 0;
-	position: relative;
-	z-index: 99;
-	padding: 60px;
-	background-color: rgba(0, 0, 0, .6);
-	color: rgba(255, 255, 255, .7);
-}
-
-.content .jumbotron .row {
-	margin-bottom: 30px;
-}
-
-.content .jumbotron .row.top-scores {
-	border: 1px solid rgba(50, 250, 50, 0.2);
-	background-color: rgba(50, 250, 50, 0.1);
-	margin: auto;
-	text-align: left;
-	padding: 10px;
-	font-size: 14px;
-	display: flex;
-	flex-direction: column;
-}
-
-.content .jumbotron .row.top-scores .top-score-item {
-	flex: 1 0 auto
-}
-
-.content .jumbotron .row.top-scores h3 {
-	font-size: 16px;
-	flex: 1 0 auto;
-	margin: 5px;
-}
-
-.content .jumbotron .row h4 {
-	margin-top: 50px;
-}
-
-.content .jumbotron p,
-.content .jumbotron label,
-.content .jumbotron ul,
-.content .jumbotron code {
-	font-size: 14px;
-	line-height: 1.8;
-}
-
-.content .jumbotron p code {
-	display: inline-block;
-	line-height: 1.4;
-	padding: 0 2px;
 }
 
 .bgterminal {
@@ -121,55 +41,6 @@ code {
 	background: rgba(50, 250, 50, 0.3);
 }
 
-.btn {
-	background-color: rgba(50, 250, 50, 0.2);
-}
-
-.btn:hover {
-	color: rgba(255, 255, 255, 0.2);
-}
-
-.timi {
-	background: url('../assets/timi-green.svg') no-repeat center;
-	background-size: 120px;
-	width: 120px;
-	height: 130px;
-	opacity: 0.2;
-	position: fixed;
-	bottom: -20px;
-	right: -20px;
-	z-index: 99999;
-}
-
-.timi:before {
-	content: "•";
-	position: relative;
-	left: 30px;
-	top: 15px;
-	font-size: 25px;
-	color: #000;
-}
-
-.timi:after {
-	content: "<";
-	position: relative;
-	left: 35px;
-	top: 17px;
-	font-size: 25px;
-	color: #000;
-}
-
-.timi.blink:before {
-	content: "-";
-	top: 17px;
-}
-
-.timi-text {
-	color: rgba(50, 250, 50, 0.3);
-	position: fixed;
-	bottom: 10px;
-	left: 30px;
-}
 
 .documentation .row code {
 	display: block;

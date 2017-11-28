@@ -1,0 +1,94 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
+
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #001603;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Source Code Pro', monospace;
+}
+
+a {
+    color: #000;
+}
+
+code {
+    background-color: transparent;
+    border: 1px solid rgba(50, 250, 50, 0.5);
+    color: rgba(50, 250, 50, 0.5);
+}
+
+.content {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: auto 30px;
+}
+
+.content .jumbotron {
+    border-radius: 0;
+    position: relative;
+    z-index: 99;
+    padding: 60px;
+    background-color: rgba(0, 0, 0, .6);
+    color: rgba(255, 255, 255, .7);
+}
+
+.content .jumbotron .row {
+    margin-bottom: 30px;
+}
+
+.content .jumbotron .row.top-scores {
+    border: 1px solid rgba(50, 250, 50, 0.2);
+    background-color: rgba(50, 250, 50, 0.1);
+    margin: auto;
+    text-align: left;
+    padding: 10px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content .jumbotron .row.top-scores .top-score-item {
+    flex: 1 0 auto
+}
+
+.content .jumbotron .row.top-scores h3 {
+    font-size: 16px;
+    flex: 1 0 auto;
+    margin: 5px;
+}
+
+.content .jumbotron .row h4 {
+    margin-top: 50px;
+}
+
+.content .jumbotron p,
+.content .jumbotron label,
+.content .jumbotron ul,
+.content .jumbotron code {
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.content .jumbotron p code {
+    display: inline-block;
+    line-height: 1.4;
+    padding: 0 2px;
+}
+
+.btn {
+    background-color: rgba(50, 250, 50, 0.2);
+}
+
+.btn:hover {
+    color: rgba(255, 255, 255, 0.2);
+}
