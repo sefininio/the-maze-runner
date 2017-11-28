@@ -7,18 +7,12 @@ module.exports = {
 			status: 'OK'
 		});
 	},
-	getQuestions(req, res) {
-		// TODO: When the questions come back, store it under Candidate Document.
-		res.send({ questions: true });
-/*
-		questionPoolHandler.getNRandomQuestions(5)
-			.then(questions => {
-				res.send(questions);
-			})
-			.catch(e => {
-				console.log('e', e);
-				res.send(e.message);
-			});
-*/
-	}
+
+	assignQuestionsToCandidator(cid, numOfQuestionsToPool) {
+		let questions;
+
+		QuestionPool.getRandomQuestions(numOfQuestionsToPool)
+			.then((questions) => Candidator.findByIdAndUpdate({ _id: cid }, {questions}))
+
+	},
 };

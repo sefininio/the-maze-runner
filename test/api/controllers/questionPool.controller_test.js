@@ -126,7 +126,6 @@ describe("Test questionPool controller", () => {
 				done();
 			})
 			.catch(e => {
-				console.log('e.message', e.message);
 				e.message.should.equal("Not enough questions to pick from");
 				done();
 			});
