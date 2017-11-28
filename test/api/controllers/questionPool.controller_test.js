@@ -82,14 +82,11 @@ describe("Test questionPool controller", () => {
 		addQuestionsToCollection(7)
 			.then(() => QuestionPoolController.getRandomQuestions(5))
 			.then(questions => {
-				console.log('questions', questions)
-				console.log('questions.length', questions.length);
 				questions.should.have.lengthOf(5);
 				firstTimeQuestions = questions;
 			})
 			.then(() => QuestionPoolController.getRandomQuestions(5))
 			.then(questions => {
-				console.log('questions.length', questions.length);
 				secondTimeQuestions = questions;
 				questions.should.have.lengthOf(5);
 				try {
@@ -101,7 +98,7 @@ describe("Test questionPool controller", () => {
 			})
 			.catch(e => {
 				console.log('e.message', e.message);
-				done()
+				done();
 			});
 	});
 
