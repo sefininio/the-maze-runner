@@ -12,10 +12,35 @@ const metricsMiddleware = promBundle({ includeMethod: true, includePath: true })
 const apiRoutes = require('./api/routes/index');
 
 const app = express();
+
+const env = process.env.NODE_ENV;
+
+console.log('env', env);
+
+
 app.use(cors());
 app.use(metricsMiddleware);
 
 require('./passport')(passport);
+
+if (env === 'development') {
+	const webpackDevMiddleware = require('webpack-dev-middleware');
+	const webpackHotMiddleware = require('webpack-hot-middleware');
+	const webpack = require('webpack');
+	const webpackConfig = require('./webpack.config')();
+	const compiler = webpack(webpackConfig);
+	// compiler.apply(new DashboardPlugin({
+	// 	port: port,
+	// }));
+
+
+	app.use(webpackDevMiddleware(compiler, {
+		noInfo: true,
+		publicPath: webpackConfig.output.publicPath // Same as `output.publicPath` in most cases.
+	}));
+	app.use(webpackHotMiddleware(compiler));
+}
+
 
 
 app.get('/lalala', (req, res) => {

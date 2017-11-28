@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev:client": "node ./bin/www",
+    "dev:client": "NODE_ENV=development node ./bin/www",
     "dev:watch": "nodemon ./bin/www",
     "test": "nodemon --exec 'mocha --recursive -R min'"
   },
@@ -23,7 +23,6 @@
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.4",
     "markdown": "^0.5.0",
-    "mocha": "^4.0.1",
     "mongodb": "^2.2.30",
     "mongoose": "^4.13.5",
     "morgan": "~1.7.0",
@@ -33,13 +32,25 @@
     "passport-github": "^1.1.0",
     "passport-google-oauth": "^1.0.0",
     "random-seed": "^0.3.0",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1",
-    "reactstrap": "^4.8.0",
-    "serve-favicon": "~2.3.2"
+    "serve-favicon": "~2.3.2",
+	"react": "^16.1.1",
+	"react-dom": "^16.1.1",
+	"reactstrap": "^4.8.0",
+    "webpack": "^3.8.1"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "chai": "^4.1.2",
-    "chai-http": "^3.0.0"
+    "chai-http": "^3.0.0",
+    "css-loader": "^0.28.7",
+    "file-loader": "^1.1.5",
+    "react-hot-loader": "^3.1.3",
+    "sass-loader": "^6.0.6",
+    "svg-loader": "0.0.2",
+    "webpack-dev-middleware": "^1.12.2",
+    "webpack-hot-middleware": "^2.21.0"
   }
 }
