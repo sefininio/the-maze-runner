@@ -89,15 +89,30 @@ describe("Test of the /api/v1/candidator endpoint", () => {
 			});
 	});
 
-	it.only("Candidator.assignQuestionsToCandidator", (done) => {
+	it.only("Candidator.assignQuestionsToCandidator should add questions to the relevant candidator", (done) => {
+		let _cid;
+
 		createCandidator()
-			.then(() => addQuestionsToCollection(5))
-			.then(() => Candidator.findOne({finalGrade: 10}))
-			.then((cid) => CandidatorController.assignQuestionsToCandidator(cid, 5))
-			.then(() => Candidator.findById({ _id: cid }))
+			.then(() => addQuestionsToCollection(7))
+			.then(() => Candidator.findOne({ finalGrade: 10 }))
+			.then((candi) => {
+				const cid = candi._id;
+				_cid = cid;
+				return CandidatorController.assignQuestionsToCandidator(_cid, 5)
+			})
+			.then(assignQuestionsToCandidatorResponse => {
+				assignQuestionsToCandidatorResponse.should.have.property('success', true);
+			})
+			.then(() => Candidator.findById({ _id: _cid }))
 			.then(candi => {
-				console.log('candi', candi);
+				console.log('@@@@@@@candi', candi);
+				candi.should.have.property('questions');
+				candi.questions.should.have.lengthOf(5);
 				done();
+			})
+			.catch(e => {
+				console.log('e.message', e.message);
+				// done();
 			})
 	})
 });
