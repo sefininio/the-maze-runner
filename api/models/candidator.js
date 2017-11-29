@@ -1,14 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const CandidatorQuestionsSchema = require('./candidatorQuestions');
 
 const CandidatorSchema = new Schema({
-	questions: [{
-		qid: String,
-		tries: [String],
-		score: Number
-	}],
+	questions: [CandidatorQuestionsSchema],
 	finalGrade: Number,
-	remarks: [String],
+	remarks: String,
 	status: String,
 });
 

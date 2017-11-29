@@ -20,10 +20,10 @@ beforeEach((done) => {
 	const { users, candidators, questionpools } = mongoose.connection.collections;
 
 	users.drop(() => {
-		candidators.drop(() => {
-			questionpools.drop(() => {
+		questionpools.drop(() => {
+			// candidators.drop(() => {
 				done();
-			});
+			// });
 		});
 	});
 });

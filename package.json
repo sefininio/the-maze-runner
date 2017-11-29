@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "dev:client": "NODE_ENV=development node ./bin/www",
     "dev:watch": "nodemon ./bin/www",
-    "test": "nodemon --exec 'mocha --recursive -R min'"
+    "test": "nodemon --exec 'mocha --recursive -R min '"
   },
   "dependencies": {
     "apidoc": "^0.17.6",
