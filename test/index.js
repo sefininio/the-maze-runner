@@ -21,9 +21,9 @@ beforeEach((done) => {
 
 	users.drop(() => {
 		questionpools.drop(() => {
-			// candidators.drop(() => {
+			candidators.drop(() => {
 				done();
-			// });
+			});
 		});
 	});
 });

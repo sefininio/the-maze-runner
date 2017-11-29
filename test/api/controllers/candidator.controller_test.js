@@ -89,7 +89,7 @@ describe("Test of the /api/v1/candidator endpoint", () => {
 			});
 	});
 
-	it.only("Candidator.assignQuestionsToCandidator should add questions to the relevant candidator", (done) => {
+	it("Candidator.assignQuestionsToCandidator should add questions to the relevant candidator", (done) => {
 		let _cid;
 
 		createCandidator()
@@ -105,13 +105,11 @@ describe("Test of the /api/v1/candidator endpoint", () => {
 			})
 			.then(() => Candidator.findById({ _id: _cid }))
 			.then(candi => {
-				console.log('@@@@@@@candi', candi);
 				candi.should.have.property('questions');
 				candi.questions.should.have.lengthOf(5);
 				done();
 			})
 			.catch(e => {
-				console.log('e.message', e.message);
 				// done();
 			})
 	})
