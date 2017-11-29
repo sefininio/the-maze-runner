@@ -26,7 +26,7 @@ class Welcome extends Component {
 			wait: 300
 		});
 
-		axios.get('/maze-id', this.updateId.bind(this));
+		axios.get('/maze-id').then(this.updateId.bind(this));
 	}
 
 	updateId(id) {
