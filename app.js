@@ -50,7 +50,7 @@ app.get('/lalala', (req, res) => {
 });
 app.use('/api/v1', apiRoutes);
 
-const index = require('./routes/index')(passport);
+//const index = require('./routes/index')(passport);
 
 
 // view engine setup
@@ -68,8 +68,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-
+// app.use('/', index);
+app.get('/*', (req, res) => {
+	res.render('newIndex');
+})
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
 	let err = new Error('Not Found');

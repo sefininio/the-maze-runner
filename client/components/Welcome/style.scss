@@ -1,0 +1,33 @@
+.welcome {
+	margin: 100px 30px 30px;
+	top: auto;
+	transform: none;
+
+	.jumbotron {
+		.row {
+			h2, h3, h4, ul .ul-title {
+				color: #fff;
+			}
+
+			a, a :visited, a :hover {
+				color: rgba(50, 250, 50, 0.5);
+			}
+		}
+	}
+
+	.documentation {
+		.row {
+			.code-example {
+				display: block;
+				white-space: pre-wrap;
+			}
+
+			p > span.note {
+				display: block;
+				font-style: italic;
+				color: rgba(250, 50, 50, 0.5);
+			}
+		}
+	}
+}
+

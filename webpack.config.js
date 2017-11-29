@@ -21,9 +21,9 @@ const config = (env = {}) => {
 				'./client/index.js'
 			],
 		output: {
-			// path: path.resolve(__dirname, 'dist'),
+			path: path.resolve(__dirname, 'dist'),
 			//ToDO - fix path
-			path: path.resolve(__dirname, 'server/static'),
+			// path: path.resolve(__dirname, 'server/static'),
 			filename: 'bundle.js',
 			publicPath: '/static/'
 		},
@@ -36,32 +36,20 @@ const config = (env = {}) => {
 					use: ['style-loader', 'css-loader'],
 				},
 				{
-					test: /\.styl$/,
-					use: [
-						{
-							loader: 'style-loader',
-						},
-						{
-							loader: 'css-loader'
-						},
-						/* {
-							 loader: 'postcss-loader',
-							 options: {
-								 sourceMap: 'inline',
-							 }
-						 },*/
-						{
-							loader: 'stylus-loader'
-						}
-					]
-				},
-				{
-					test: /\.(woff|woff2|eot|ttf|otf)$/,
+					test: /\.(woff|woff2|eot|ttf|otf|svg)(\?v=\d+\.\d+\.\d+)?$/,
 					use: [
 						'file-loader'
 					]
 				},
-				{ test: /\.svg$/, exclude: /node_modules/, loader: "file-loader" }
+				{ test: /\.(svg)(\?v=\d+\.\d+\.\d+)$/, exclude: /node_modules/, loader: "file-loader" },
+				{
+					test: /\.scss$/,
+					loaders: [
+						require.resolve('style-loader'),
+						require.resolve('css-loader'),
+						require.resolve('sass-loader')
+					]
+				}
 			]
 		},
 		plugins: (() => {

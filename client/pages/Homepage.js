@@ -3,8 +3,6 @@ import createReactClass from 'create-react-class';
 
 import Login from '../components/Login';
 
-// import './style.css';
-
 const Homepage = createReactClass({
 	render() {
 		return (
