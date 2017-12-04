@@ -9,7 +9,8 @@ const passport = require('passport');
 const session = require('express-session');
 const promBundle = require("express-prom-bundle");
 const metricsMiddleware = promBundle({ includeMethod: true, includePath: true });
-const apiRoutes = require('./api/routes/index');
+const apiRoutes = require('./server/api/routes/index');
+// const passport = require('./server/api/auth/passport');
 
 const app = express();
 app.use(cors());
@@ -23,7 +24,9 @@ app.get('/lalala', (req, res) => {
 		lala: 'works'
 	});
 });
-app.use('/api/v1', apiRoutes);
+
+
+
 
 const index = require('./routes/index')(passport);
 
@@ -42,6 +45,9 @@ app.use(session({ secret: 'idrivemycartothemazecenter' }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/api/v1', apiRoutes);
+// app.use('/', )
 
 app.use('/', index);
 

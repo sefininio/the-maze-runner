@@ -5,7 +5,7 @@ const chaiHttp = require('chai-http');
 const mongoose = require('mongoose');
 const QuestionPool = mongoose.model('questionPool');
 const Candidator = mongoose.model('candidator');
-const CandidatorController = require('./../../../api/controllers/candidator.controller');
+const CandidatorController = require('../../../server/api/controllers/candidator.controller');
 
 chai.use(chaiHttp);
 
