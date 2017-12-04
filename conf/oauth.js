@@ -3,6 +3,7 @@ module.exports = {
         "client_id": "783888098632-c2ql2kcjban66frt3ho01mh2tdsjem9k.apps.googleusercontent.com",
         "client_secret": "Uzv4CfQfzY0lU2OTscDyj30U",
         "redirect_uri": "http://127.0.0.1:3000/auth/google/callback"
+        // "redirect_uri": "http://127.0.0.1:3000/api/v1/user/auth/google/callback"
     },
     facebook: {
         "client_id": "220847235068696",

@@ -1,11 +1,14 @@
-// const passport = require('passport');
+const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const GitHubStrategy = require('passport-github').Strategy;
 const config = require('./../../../conf/oauth');
 
 
-module.exports = passport => {
+const passportConfig = (app) => {
+	app.use(passport.initialize());
+	app.use(passport.session());
+
 	passport.serializeUser((user, done) => {
 		done(null, user);
 	});
@@ -21,7 +24,7 @@ module.exports = passport => {
 		},
 		(token, refreshToken, profile, done) => {
 			process.nextTick(() => {
-				return done(null, profile);
+				return done(null, {name: true});
 			});
 		}));
 
@@ -48,6 +51,8 @@ module.exports = passport => {
 		}));
 };
 
+
+module.exports = passportConfig;
 // module.exports = (app) => {
 // 	app.use(passport.initialize());
 // 	app.use(passport.session());

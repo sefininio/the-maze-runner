@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 describe("Testing the user controller functions", () => {
 	it.only("POST to /api/v1/user/auth/google should authenticate against google", (done) => {
 		chai.request(app)
-			.post('/api/v1/user/auth/google')
+			.get('/api/v1/user/auth/google')
 			.set('Content-Type', 'application/json')
 			.send({
 				hello: 'there',

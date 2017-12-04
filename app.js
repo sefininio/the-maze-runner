@@ -10,7 +10,7 @@ const session = require('express-session');
 const promBundle = require("express-prom-bundle");
 const metricsMiddleware = promBundle({ includeMethod: true, includePath: true });
 const apiRoutes = require('./server/api/routes/index');
-// const passport = require('./server/api/auth/passport');
+const initPassport = require('./server/api/auth/passport');
 
 const app = express();
 
@@ -49,11 +49,14 @@ app.get('/lalala', (req, res) => {
 		lala: 'works'
 	});
 });
+// require('./passport')(passport);
 
+// require('./server/api/auth/passport')(app)
 
 
 
 //const index = require('./routes/index')(passport);
+// const index = require('./routes/index')(passport);
 
 
 // view engine setup
@@ -67,9 +70,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({ secret: 'idrivemycartothemazecenter' }));
-app.use(passport.initialize());
-app.use(passport.session());
+
 app.use(express.static(path.join(__dirname, 'public')));
+initPassport(app);
 
 // app.use('/', index);
 app.get('/*', (req, res) => {
@@ -77,6 +80,22 @@ app.get('/*', (req, res) => {
 });
 app.use('/api/v1', apiRoutes);
 // app.use('/', )
+
+app.get('/', (req, res, next) => {
+	isCandidator = req.query.q && req.query.q === '1';
+	res.render('index');
+});
+
+app.use('/auth/:type/callback', (req, res) => res.redirect(`/api/v1/user/auth/${req.params.type}/callback?code=${req.query.code}`));
+
+
+app.get('/start', (req, res, next) => {
+	if (req.isAuthenticated()) {
+		res.render('start');
+	}
+	res.redirect('/');
+});
+// app.use('/', index);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
