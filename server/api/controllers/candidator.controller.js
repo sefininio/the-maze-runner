@@ -1,5 +1,5 @@
 const QuestionPool = require('../models/questionPool');
-const QuestionPoolController = require('../controllers/questionPool.controller');
+const QuestionPoolController = require('./questionPool.controller');
 const Candidator = require('../models/candidator');
 
 module.exports = {

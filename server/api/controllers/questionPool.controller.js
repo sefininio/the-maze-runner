@@ -1,9 +1,10 @@
-const QuestionPool = require('./../models/questionPool');
+const QuestionPool = require('../models/questionPool');
 const { uniqWith, isEqual } = require('lodash');
 
 module.exports = {
 	getRandomQuestions(numOfQuestions) {
 		//todo - make sure that the length of the received array is equal to numOfQuestions and has no duplicates
+
 
 		return QuestionPool.aggregate(
 			[{ $sample: { size: numOfQuestions } }]
@@ -12,6 +13,7 @@ module.exports = {
 				return areQuestionsValid(questions, numOfQuestions) ? questions : Promise.reject({ message: "Not enough questions to pick from" });
 			});
 	}
+
 };
 
 function areQuestionsValid(questions, expectedLength) {

@@ -1,3 +1,4 @@
+// const passport = require('passport');
 const config = require('./conf/oauth');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;

@@ -1,6 +1,6 @@
 const chai = require('chai');
 const should = chai.should();
-const User = require('../../../api/models/user');
+const User = require('../../../server/api/models/user');
 
 describe("Operations on the user collection", () => {
 	let alex;

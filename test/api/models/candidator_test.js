@@ -1,6 +1,6 @@
 const chai = require('chai');
 const should = chai.should();
-const Candidator = require('./../../../api/models/candidator');
+const Candidator = require('../../../server/api/models/candidator');
 
 describe("Test the Candidators collection", () => {
 	let benzi;

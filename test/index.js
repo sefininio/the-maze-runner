@@ -12,7 +12,7 @@ before((done) => {
 			done();
 		})
 		.on('error', (error) => {
-			console.warn("Error", error());
+			console.warn("Error", error);
 		});
 });
 

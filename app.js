@@ -9,7 +9,8 @@ const passport = require('passport');
 const session = require('express-session');
 const promBundle = require("express-prom-bundle");
 const metricsMiddleware = promBundle({ includeMethod: true, includePath: true });
-const apiRoutes = require('./api/routes/index');
+const apiRoutes = require('./server/api/routes/index');
+// const passport = require('./server/api/auth/passport');
 
 const app = express();
 
@@ -48,7 +49,9 @@ app.get('/lalala', (req, res) => {
 		lala: 'works'
 	});
 });
-app.use('/api/v1', apiRoutes);
+
+
+
 
 //const index = require('./routes/index')(passport);
 
@@ -71,7 +74,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/', index);
 app.get('/*', (req, res) => {
 	res.render('newIndex');
-})
+});
+app.use('/api/v1', apiRoutes);
+// app.use('/', )
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
 	let err = new Error('Not Found');

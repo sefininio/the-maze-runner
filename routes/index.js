@@ -154,7 +154,10 @@ module.exports = (passport) => {
 			.catch(userErrorHandler(req, res));
 	});
 
-	router.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+	router.get('/auth/google', ()=> {
+		console.log('routes/index.js passport', passport);
+		passport.authenticate('google', {scope: ['profile', 'email']})
+	});
 	router.get('/auth/google/callback', passport.authenticate('google', authCallbackObj));
 
 	router.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));

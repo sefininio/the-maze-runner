@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const CandidatorController = require('./../controllers/candidator.controller');
+const CandidatorController = require('../controllers/candidator.controller');
 
 router.get('/hc', CandidatorController.hc);
 

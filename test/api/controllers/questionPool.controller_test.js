@@ -1,7 +1,7 @@
 const chai = require('chai');
 const should = chai.should();
-const QuestionPool = require('./../../../api/models/questionPool');
-const QuestionPoolController = require('./../../../api/controllers/questionPool.controller');
+const QuestionPool = require('../../../server/api/models/questionPool');
+const QuestionPoolController = require('../../../server/api/controllers/questionPool.controller');
 
 describe("Test questionPool controller", () => {
 	let question;

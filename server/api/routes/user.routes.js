@@ -1,7 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const UserController = require('./../controllers/users.controller');
+const UserController = require('../controllers/user.controller');
+
+
+const authCallbackObj = {
+	successRedirect: '/start',
+	failureRedirect: '/'
+};
+
 
 router.get('/', (req, res) => {
 	res.send({
