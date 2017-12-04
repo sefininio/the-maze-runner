@@ -50,6 +50,9 @@ app.use('/auth/:type/callback', (req, res) => res.redirect(`/api/v1/user/auth/${
 
 
 app.get('/start', (req, res, next) => {
+	console.log('req.user', req.user);
+	console.log('res.isAuthenticated()', req.isAuthenticated());
+
 	if (req.isAuthenticated()) {
 		res.render('start');
 	}
