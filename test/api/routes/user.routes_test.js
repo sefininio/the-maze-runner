@@ -7,8 +7,9 @@ const app = require('../../../app');
 
 chai.use(chaiHttp);
 
+/*
 describe("Testing the user controller functions", () => {
-	it.only("POST to /api/v1/user/auth/google should authenticate against google", (done) => {
+	xit("POST to /api/v1/user/auth/google should authenticate against google", (done) => {
 		chai.request(app)
 			.get('/api/v1/user/auth/google')
 			.set('Content-Type', 'application/json')
@@ -16,7 +17,7 @@ describe("Testing the user controller functions", () => {
 				hello: 'there',
 			})
 			.then(response => {
-				console.log('response', response);
+				// console.log('response', response);
 				response.should.equal('shit');
 				done();
 			})
@@ -25,4 +26,4 @@ describe("Testing the user controller functions", () => {
 				done();
 			})
 	})
-});
+});*/
