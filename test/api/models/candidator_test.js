@@ -12,7 +12,6 @@ describe("Test the Candidators collection", () => {
 		benzi.save()
 			.then(() => Candidator.findOne({ finalGrade: 10 }))
 			.then(candi => {
-				console.log('candi', candi);
 				candi.should.have.property('finalGrade', 10);
 				done();
 			});

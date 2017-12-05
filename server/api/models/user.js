@@ -4,12 +4,19 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
 	// updatedAt: Date,
 	// createdAt: Date,
+	providerId: String,
 	firstName: String,
 	lastName: String,
-	githubProfile: String,
+	_profile: Object,
+	// githubProfile: String,
 	email: {
 		type: String,
 		required: true,
+		unique: true,
+		// validate: {
+		// 	validator: (email) => name.length > 2,
+		// 	message: 'User already exists'
+		// }
 	},
 	candidator: [{
 		type: Schema.Types.ObjectId,
@@ -19,13 +26,32 @@ const UserSchema = new Schema({
 	// photos: Array,
 });
 
-// UserSchema.post('save', function(next) {
-// 	const User = mongoose.model('user');
-//
-// 	User.createdAt = new Date();
-// 	User.updatedAt = new Date();
-// 	next();
-// });
+
+/*UserSchema.pre('save', true, function (next, done) {
+	// console.log('arguments', arguments);
+	const User = mongoose.model('user');
+	// next();
+
+	// return new Promise((resolve, reject) => {
+	console.log('this.email', this.email)
+	User.findOne({ email: this.email })
+		.then((user) => {
+			if (user) {
+				console.log("User exists");
+				reject({ message: "User email already exists" });
+
+			} else {
+				console.log("No such user");
+				resolve(user);
+			}
+			done();
+		})
+		.catch(e => {
+			if (e.code === 11000) {
+
+			}
+		});
+})*/;
 
 const User = mongoose.model('user', UserSchema);
 

@@ -3,6 +3,7 @@ const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const GitHubStrategy = require('passport-github').Strategy;
 const config = require('./../../../conf/oauth');
+const userController = require('./../../api/controllers/user.controller');
 
 
 const passportConfig = (app) => {
@@ -23,6 +24,9 @@ const passportConfig = (app) => {
 			callbackURL: config.google.redirect_uri,
 		},
 		(token, refreshToken, profile, done) => {
+			console.log('profile', profile);
+			console.log('token', token);
+			console.log('refreshToken', refreshToken);
 			process.nextTick(() => {
 				return done(null, {name: true});
 			});
