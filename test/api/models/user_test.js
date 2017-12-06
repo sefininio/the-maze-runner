@@ -30,37 +30,6 @@ describe("Operations on the user collection", () => {
 			});
 	});
 
-	xit("Can handle saving an existing user situation", (done) => {
-		const profile = {
-			firstName: "Alex",
-			lastName: "Raihelgaus",
-			_profile: "Can handle saving an existing user situation",
-			email: "alexr@tikalk.com"
-		};
-
-		UserController
-
-		alex = new User(profile);
-
-		alex.save()
-			.then(savedAlex => console.log('savedAlex', savedAlex))
-			.then(() => {
-				const user = new User(profile);
-
-				return user.save();
-
-			})
-			.then((what) => {
-				console.log('what', what);
-				done();
-			})
-			.catch(e => {
-				console.log('@@@@@e.message', e);
-				done();
-			})
-
-	});
-
 	it("Can update the _profile prop", (done) => {
 		alex = new User({
 			firstName: "Alex",

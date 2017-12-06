@@ -29,32 +29,15 @@ module.exports = {
 		// Query DB to check that email doesn't exist.
 		return User.findOne({ email })
 			.then(doesEmailExists => {
-				console.log('doesEmailExist', doesEmailExists)
 				if (doesEmailExists) {
-					return Promise.reject({ message: '@User email in DB' })
+					return Promise.reject({ message: 'User email already exists in DB' })
 				}
 			})
 			.then(() => newUser.save());
-
-
-		// return newUser.save();
 	},
 
 	getUserByEmail(email) {
 		return User.findOne({ email });
-	},
-
-	saveUser(user) {
-		const newUser = new User(user);
-
-		return newUser.save()
-			.catch(e => {
-				if (e.code === 11000) {
-					return Promise.reject({ message: "User email already exists" });
-				} else {
-					return Promise.reject(e);
-				}
-			})
 	},
 
 	signUpGoogle(profile) {
@@ -72,7 +55,20 @@ module.exports = {
 			providerId: id,
 		};
 
-		return this.saveUser(userData);
+		return this.createNewUser(userData);
+	},
+
+	signUpGitHub(profile) {
+		const { id, name, username, provider } = profile;
+
+		const userData = {
+			_profile: profile,
+		};
+
+		return this.createNewUser(userData);
+
+
+
 	},
 
 	signUp(type) {
