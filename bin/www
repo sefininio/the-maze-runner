@@ -7,8 +7,8 @@
 var app = require('../app');
 var debug = require('debug')('mazerunnerserver:server');
 var http = require('http');
-var db = require('../src/db');
-
+// var db = require('../src/db');
+const db = require('./../server/mongoose');
 /**
  * Get port from environment and store in Express.
  */
@@ -23,6 +23,19 @@ app.set('port', port);
 var server = http.createServer(app);
 
 // Try to connect to db
+console.log("before db");
+db.connect()
+	.then(() => {
+		server.listen(port);
+		server.on('error', onError);
+		server.on('listening', onListening);
+	})
+	.catch(e => {
+		console.log('e', e)
+		process.exit(1);
+	});
+console.log("after db");
+/*
 db.connect((err) => {
 	if (err) {
 		// failure, exit
@@ -37,6 +50,7 @@ db.connect((err) => {
 		server.on('listening', onListening);
 	}
 });
+*/
 
 
 /**
