@@ -24,11 +24,13 @@ const passportConfig = (app) => {
 			callbackURL: config.google.redirect_uri,
 		},
 		(token, refreshToken, profile, done) => {
-			console.log('profile', profile);
+			console.log("******GoogleStrategy******");
+			console.log('profile', JSON.stringify(profile));
 			console.log('token', token);
 			console.log('refreshToken', refreshToken);
+			console.log("******GoogleStrategy******");
 			process.nextTick(() => {
-				return done(null, {name: true});
+				return done(null, { name: true });
 			});
 		}));
 
@@ -38,6 +40,11 @@ const passportConfig = (app) => {
 			callbackURL: config.facebook.redirect_uri,
 		},
 		(token, refreshToken, profile, done) => {
+			console.log("******FacebookStrategy******");
+			console.log('profile', JSON.stringify(profile));
+			console.log('token', token);
+			console.log('refreshToken', refreshToken);
+			console.log("******FacebookStrategy******");
 			process.nextTick(() => {
 				return done(null, profile);
 			});
@@ -49,6 +56,11 @@ const passportConfig = (app) => {
 			callbackURL: config.github.redirect_uri,
 		},
 		(token, refreshToken, profile, done) => {
+			console.log("******GitHubStrategy******");
+			console.log('profile', JSON.stringify(profile));
+			console.log('token', token);
+			console.log('refreshToken', refreshToken);
+			console.log("******GitHubStrategy******");
 			process.nextTick(() => {
 				return done(null, profile);
 			});

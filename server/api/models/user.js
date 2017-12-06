@@ -7,6 +7,7 @@ const UserSchema = new Schema({
 	providerId: String,
 	firstName: String,
 	lastName: String,
+	username: String,
 	_profile: Object,
 	// githubProfile: String,
 	email: {
