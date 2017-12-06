@@ -62,6 +62,15 @@ describe("Testing the user controller functions", () => {
 	});
 });
 
+const facebookProfileResponseUponSignUpSuccess = {
+	"id": "10154915886545614",
+	"displayName": "Alex Raihelgaus",
+	"name": {},
+	"provider": "facebook",
+	"_raw": "{\"name\":\"Alex Raihelgaus\",\"id\":\"10154915886545614\"}",
+	"_json": { "name": "Alex Raihelgaus", "id": "10154915886545614" }
+};
+
 const googleProfileResponseUponSignUpSuccess = {
 	id: '108074682163950900607',
 	displayName: 'Alex Raihelgaus',

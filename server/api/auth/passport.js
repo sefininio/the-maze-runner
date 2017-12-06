@@ -6,6 +6,7 @@ const config = require('./../../../conf/oauth');
 const userController = require('./../../api/controllers/user.controller');
 
 
+
 const passportConfig = (app) => {
 	app.use(passport.initialize());
 	app.use(passport.session());
@@ -29,9 +30,13 @@ const passportConfig = (app) => {
 			console.log('token', token);
 			console.log('refreshToken', refreshToken);
 			console.log("******GoogleStrategy******");
-			process.nextTick(() => {
-				return done(null, { name: true });
-			});
+			userController.signUpGoogle(profile)
+				.then(() => {
+					done(null, { name: true });
+				})
+			// process.nextTick(() => {
+			// 	return done(null, { name: true });
+			// });
 		}));
 
 	passport.use(new FacebookStrategy({

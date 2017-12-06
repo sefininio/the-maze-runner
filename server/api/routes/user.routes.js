@@ -23,7 +23,7 @@ router.get('/fail', (req, res) => {
 	});
 });
 
-console.log('UserController.auth', UserController.auth)
+// console.log('UserController.auth', UserController.auth)
 
 router.get('/auth/google', UserController.auth('google', { scope: ['profile', 'email'] }));
 router.get('/auth/facebook', UserController.auth('facebook', { scope: 'email' }));

@@ -56,8 +56,9 @@ app.get('/start', (req, res, next) => {
 
 	if (req.isAuthenticated()) {
 		res.render('start');
+	} else {
+		res.redirect('/');
 	}
-	res.redirect('/');
 });
 // app.use('/', index);
 
