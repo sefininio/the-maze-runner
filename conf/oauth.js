@@ -6,9 +6,12 @@ module.exports = {
         // "redirect_uri": "http://127.0.0.1:3000/api/v1/user/auth/google/callback"
     },
     facebook: {
-        "client_id": "220847235068696",
-        "client_secret": "01f3bb043b0a6144897d301ceb6059ec",
-        "redirect_uri": "http://maze-dev.tikal.io/auth/facebook/callback"
+        // "client_id": "220847235068696",
+        // "client_secret": "01f3bb043b0a6144897d301ceb6059ec",
+        // "redirect_uri": "http://maze-dev.tikal.io/auth/facebook/callback"
+        "redirect_uri": "http://localhost:3000/auth/facebook/callback",
+	    "client_id": "302981996863433",
+	    "client_secret": "ad6feb259fa8375f9b8afb9b8f507ebc",
     },
     github: {
         "client_id": "421f8b71254c45dcedd2",
