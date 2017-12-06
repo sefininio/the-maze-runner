@@ -33,7 +33,8 @@ module.exports = {
 					return Promise.reject({ message: 'User email already exists in DB' })
 				}
 			})
-			.then(() => newUser.save());
+			.then(() => newUser.save())
+			.then((savedUser) => console.log('@@@savedUser', savedUser));
 	},
 
 	getUserByEmail(email) {
