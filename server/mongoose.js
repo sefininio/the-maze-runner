@@ -20,6 +20,7 @@ module.exports = {
 				.on('error', error => {
 					console.warn("Error", error);
 					reject(error);
+					process.exit(1);
 					// res.send("Error");
 				});
 		})
