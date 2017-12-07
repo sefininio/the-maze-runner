@@ -1,0 +1,34 @@
+.timi {
+    background: url('../../assets/timi-green.svg') no-repeat center;
+    background-size: 120px;
+    width: 120px;
+    height: 130px;
+    opacity: 0.2;
+    position: fixed;
+    bottom: -20px;
+    right: -20px;
+    z-index: 99999;
+
+    &:before {
+        content: "•";
+        position: relative;
+        left: 30px;
+        top: 15px;
+        font-size: 25px;
+        color: #000;
+    }
+
+    &:after {
+        content: "<";
+        position: relative;
+        left: 35px;
+        top: 17px;
+        font-size: 25px;
+        color: #000;
+    }
+
+    &.blink:before {
+        content: "-";
+        top: 17px;
+    }
+}

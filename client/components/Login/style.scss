@@ -1,0 +1,65 @@
+.login {
+
+    .jumbotron {
+        h1 { font-size: 63px; }
+        h2 { font-size: 30px; }
+        h4 { display: block; }
+
+        .btn {
+            height: 38px;
+            margin: 10px;
+        }
+
+        .row.top-scores {
+            border: 1px solid rgba(50, 250, 50, 0.2);
+            background-color: rgba(50, 250, 50, 0.1);
+            margin: auto;
+            text-align: left;
+            padding: 10px;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+
+            h3 {
+                font-size: 16px;
+                flex: 1 0 auto;
+                margin: 5px;
+            }
+
+            .top-score {
+                padding: 5px 0;
+            }
+        }
+    }
+}
+
+
+.bgterminal {
+    background-color: transparent;
+    background-image: linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .05) 25%, rgba(255, 255, 255, .05) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .05) 75%, rgba(255, 255, 255, .05) 76%, transparent 77%, transparent);
+    height: 100%;
+    background-size: 50px 50px;
+    padding: 30px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    color: rgba(50, 250, 50, 0.3);
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+    font-family: monospace;
+    font-size: 16px;
+    z-index: 0;
+    text-align: left;
+    transition-delay: 0;
+
+    span {
+        line-height: 2;
+    }
+
+    .cursor {
+        background: rgba(50, 250, 50, 0.3);
+    }
+}
