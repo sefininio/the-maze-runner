@@ -34,6 +34,9 @@ const passportConfig = (app) => {
 				.then(() => {
 					done(null, { name: true });
 				})
+				.catch(e => {
+					console.log('e', e);
+				})
 			// process.nextTick(() => {
 			// 	return done(null, { name: true });
 			// });
