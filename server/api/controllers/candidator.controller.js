@@ -4,6 +4,7 @@ const Candidator = require('../models/candidator');
 
 module.exports = {
 	hc(req, res) {
+		console.log('!!!!!!!!!!!');
 		res.send({
 			status: 'OK'
 		});

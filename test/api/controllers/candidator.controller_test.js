@@ -1,6 +1,7 @@
 const chai = require('chai');
 const should = chai.should();
-const app = require('../../../app');
+// const app = require('../../../app');
+const app = require('./../../../server/index');
 const chaiHttp = require('chai-http');
 const mongoose = require('mongoose');
 const QuestionPool = mongoose.model('questionPool');
@@ -86,6 +87,9 @@ describe("Test of the /api/v1/candidator endpoint", () => {
 				res.body.should.have.property('status');
 				res.body.status.should.equal('OK');
 				done();
+			})
+			.catch(e => {
+				console.log('e', e)
 			});
 	});
 
