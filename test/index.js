@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const app = require('./../server/index');
 
 mongoose.Promise = global.Promise;
 
