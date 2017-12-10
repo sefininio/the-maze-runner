@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev:client": "NODE_ENV=development node ./bin/www",
-    "dev:watch": "nodemon ./bin/www",
+    "dev:client": "NODE_ENV=development node ./server/index.js",
+    "dev:watch": "NODE_ENV=development nodemon ./server/index.js",
     "test": "nodemon --exec 'mocha --recursive -R min '"
   },
   "dependencies": {
