@@ -65,6 +65,12 @@ app.get('/start', (req, res, next) => {
 	}
 });
 
+app.use(function (err, req, res, next) {
+	console.log('err', err);
+	console.error(err.stack)
+	res.status(500).send('Something broke!')
+})
+
 // module.parent check is required to support mocha watch
 // src: https://github.com/mochajs/mocha/issues/1912
 if (!module.parent) {

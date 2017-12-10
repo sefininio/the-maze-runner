@@ -25,17 +25,9 @@ router.get('/fail', (req, res) => {
 
 // console.log('UserController.auth', UserController.auth)
 
-router.get('/auth/google', (req, res, next) => {
-	console.log('req.user', req.user);
-	if (!req.user) {
-		UserController.auth('google', { scope: ['profile', 'email'] })
-	} else {
-		console.log("We've got a user!");
-	}
-});
-router.get('/auth/facebook', UserController.auth('facebook', { scope: 'email' }));
-router.get('/auth/github', UserController.auth('github', { scope: 'user:email' }));
-// router.get('/auth/:type', passport.authenticate('google', {scope: ['profile', 'email']}));
+router.get('/auth/google', UserController.auth('google'));
+router.get('/auth/facebook', UserController.auth('facebook'));
+router.get('/auth/github', UserController.auth('github'));
 router.get('/auth/google/callback', UserController.authConfirmation('google'));
 router.get('/auth/facebook/callback', UserController.authConfirmation('facebook'));
 router.get('/auth/github/callback', UserController.authConfirmation('github'));
