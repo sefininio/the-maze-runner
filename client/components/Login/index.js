@@ -54,9 +54,9 @@ class Login extends Component {
 				<Row>
 					<Col sm="12"><h4>Login or Register with:</h4></Col>
 					<Col sm="12">
-						<a href="/auth/google" className="btn btn-normal"><i className="fa fa-google-plus" aria-hidden="true" /> Google</a>
-						<a href="/auth/facebook" className="btn btn-normal"><i className="fa fa-facebook" aria-hidden="true" /> Facebook</a>
-						<a href="/auth/github" className="btn btn-normal"><i className="fa fa-github" aria-hidden="true" /> Github</a>
+						<a href="/api/v1/user/auth/google" className="btn btn-normal"><i className="fa fa-google-plus" aria-hidden="true" /> Google</a>
+						<a href="/api/v1/user/auth/facebook" className="btn btn-normal"><i className="fa fa-facebook" aria-hidden="true" /> Facebook</a>
+						<a href="/api/v1/user/auth/github" className="btn btn-normal"><i className="fa fa-github" aria-hidden="true" /> Github</a>
 					</Col>
 				</Row>
 			</Jumbotron>
