@@ -7,8 +7,16 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
 import './index.css';
 
-if (module.hot) {
-	   module.hot.accept()
-}
+import App from './App';
 
-ReactDOM.render(<Homepage />, document.getElementById('app'));
+const render = Comp => {
+	return (
+		<Comp/>
+	);
+};
+
+ReactDOM.render(render(App), document.getElementById('app'));
+
+if (module.hot) {
+	module.hot.accept();
+}

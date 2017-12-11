@@ -47,10 +47,6 @@ if (env === 'development') {
 }
 
 
-// temporary dev routes -
-app.get('/', (req, res, next) => {
-	res.render('newIndex');
-});
 
 app.use('/auth/:type/callback', (req, res) => res.redirect(`/api/v1/user/auth/${req.params.type}/callback?code=${req.query.code}`));
 
@@ -65,11 +61,17 @@ app.get('/start', (req, res, next) => {
 	}
 });
 
+// temporary dev routes -
+app.get('/*', (req, res, next) => {
+	res.render('newIndex');
+});
+
+
 app.use(function (err, req, res, next) {
 	console.log('err', err);
 	console.error(err.stack)
 	res.status(500).send('Something broke!')
-})
+});
 
 // module.parent check is required to support mocha watch
 // src: https://github.com/mochajs/mocha/issues/1912
