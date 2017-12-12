@@ -1,15 +1,23 @@
 const express = require('express');
 const router = express.Router();
 const CandidatorController = require('../controllers/candidator.controller');
- 
+
 router.get('/hc', CandidatorController.hc);
 
 // router.get('/questions', CandidatorController.getQuestions);
 
 // TODO - make it work with new mechanism -
 
+/*
+router.get('/questions', (req, res) => {
+	const { cid } = req.body;
+
+	CandidatorController.assignQuestionsToCandidator(cid, 5)
+});
+*/
+
 /*router.post('/candidator/validate', cors(), (req, res) => {
-	const {qid, codeToTest} = req.body;
+	const { qid, codeToTest } = req.body;
 
 	let tests;
 
@@ -66,7 +74,7 @@ router.get('/hc', CandidatorController.hc);
 			}
 			console.log(error.config);
 		});
-});*/
+})*/;
 
 
 module.exports = router;

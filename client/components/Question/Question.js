@@ -45,7 +45,8 @@ class Question extends Component {
 	}
 
 	componentWillMount() {
-		axios.get('http://localhost:3000/candidator/questions')
+		// axios.get('http://localhost:3000/candidator/questions')
+		axios.get('http://localhost:3000/api/v1//**/candidator/questions')
 			.then(questions => this.setState({questions: questions.data}))
 	}
 

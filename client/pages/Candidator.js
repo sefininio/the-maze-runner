@@ -1,15 +1,22 @@
 import React from 'react';
-import Question from './../components/Question/Question';
 // import './index.css';
+import Question from './../components/Question/Question';
+import axios from 'axios';
 
 class Candidator extends React.Component {
 	constructor() {
 		super();
 	}
 
+	componentWillMount() {
+		//TODO - make an API call to the server to get the questions from the questionPool
+	}
+
 	render() {
 		return (
-			<h1>Welcome to the mighty Candidator</h1>
+			<div>
+				<Question/>
+			</div>
 		)
 	}
 }
