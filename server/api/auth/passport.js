@@ -24,24 +24,15 @@ const passportConfig = (app) => {
 			callbackURL: config.google.redirect_uri,
 		},
 		(token, refreshToken, profile, done) => {
-			// console.log("******GoogleStrategy******");
-			// console.log('profile', JSON.stringify(profile));
-			// console.log('token', token);
-			// console.log('refreshToken', refreshToken);
-			// console.log("******GoogleStrategy******");
-			// userController.signUpGoogle(profile)
-			userController.lookupGoogle(profile)
+			const { value: email } = profile.emails[0];
+
+			userController.lookupGoogle(email)
 				.then((user) => {
 					if (user) {
-						// done(null, { name: true });
-
-						console.log('user in passport.js', user);
 						done(null, user);
 					} else {
-						console.log("new user");
 						userController.signUpGoogle(profile)
 							.then((newUser) => {
-								console.log('newUser', newUser);
 								done(null, newUser)
 							});
 					}
@@ -49,10 +40,7 @@ const passportConfig = (app) => {
 				.catch(e => {
 					console.log('e', e);
 					done(e);
-				})
-			// process.nextTick(() => {
-			// 	return done(null, { name: true });
-			// });
+				});
 		}));
 
 	passport.use(new FacebookStrategy({
@@ -66,9 +54,24 @@ const passportConfig = (app) => {
 			console.log('token', token);
 			console.log('refreshToken', refreshToken);
 			console.log("******FacebookStrategy******");
-			process.nextTick(() => {
-				return done(null, profile);
-			});
+
+			const { id: fid } = profile;
+
+			userController.lookupFacebook(fid)
+				.then(user => {
+					if (user) {
+						done(null, user);
+					} else {
+						userController.signupFacebook(profile)
+							.then((newUser) => {
+								done(null, newUser);
+							});
+					}
+				})
+				.catch(e => {
+					console.log('e', e);
+					done(e);
+				});
 		}));
 
 	passport.use(new GitHubStrategy({
@@ -82,9 +85,23 @@ const passportConfig = (app) => {
 			console.log('token', token);
 			console.log('refreshToken', refreshToken);
 			console.log("******GitHubStrategy******");
-			process.nextTick(() => {
-				return done(null, profile);
-			});
+			const { username } = profile;
+
+			userController.lookupGithub(username)
+				.then(user => {
+					if (user) {
+						done(null, user);
+					} else {
+						userController.signUpGitHub(profile)
+							.then((newUser) => {
+								done(null, newUser);
+							});
+					}
+				})
+				.catch(e => {
+					console.log('e', e);
+					done(e);
+				});
 		}));
 };
 

@@ -24,19 +24,19 @@ module.exports = {
 	createNewUser(userData) {
 		const newUser = new User(userData);
 
-		const { email } = userData;
+		const { identifier } = userData;
 
 		// Query DB to check that email doesn't exist.
 		return new Promise((resolve, reject) => {
-			User.findOne({ email })
-				.then(doesEmailExists => {
-					if (doesEmailExists) {
+			User.findOne({ identifier })
+				.then(doesUserExist => {
+					if (doesUserExist) {
 						return Promise.reject({ message: 'User email already exists in DB' })
 					}
 				})
 				.then(() => newUser.save())
 				.then((savedUser) => {
-					// console.log('@@@savedUser', savedUser);
+					console.log('@@@savedUser', savedUser);
 					resolve(savedUser);
 				})
 				.catch(e => {
@@ -84,18 +84,14 @@ module.exports = {
 				message: "Can't lookup a google user without an email",
 				emailReceived: email,
 			};
-			return errorl
+			return error;
 		}
 
 		return new Promise((resolve, reject) => {
 			this.getUserByIdentifier(email)
 				.then(user => {
 					// console.log('user in userController.lookupGoogle', user);
-					if (!user) {
-						reject({ message: "No matching email" });
-					} else {
-						resolve(user);
-					}
+					resolve(user);
 				})
 				.catch(e => {
 					console.log('e.in userController.lookupGoogle', e);
@@ -129,11 +125,7 @@ module.exports = {
 			this.getUserByIdentifier(username)
 				.then(user => {
 					// console.log('user in lookupGoogle', user);
-					if (!user) {
-						reject({ message: "No matching username" });
-					} else {
-						resolve(user);
-					}
+					resolve(user);
 				})
 				.catch(e => reject(e));
 
@@ -166,11 +158,7 @@ module.exports = {
 		return new Promise((resolve, reject) => {
 			this.getUserByIdentifier(fid)
 				.then(user => {
-					if (!user) {
-						reject({ message: "No mattching facebook id" });
-					} else {
-						resolve(user);
-					}
+					resolve(user);
 				})
 				.catch(e => reject(e));
 		})
