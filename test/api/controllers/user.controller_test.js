@@ -85,15 +85,73 @@ describe("Testing the user controller functions", () => {
 	});
 
 	describe("GitHub Auth", () => {
-		xit("Should be able to store new signed up github user that has an email", (done) => {
-			UserController.signUpGitHub(githubProfileResponseUponSignUpSuccessWithEmail)
-				.then(() => User.findOne({ providerId: githubProfileResponseUponSignUpSuccessWithEmail.id }))
+		beforeEach(done => {
+			Promise.all([
+				UserController.signUpGitHub(githubProfileResponseUponSignUpSuccessWithEmail),
+				UserController.signUpGitHub(githubProfileResponseUponSignUpSuccessNoEmail)
+			])
+				.then(() => done())
+		});
+
+		it("Should be able to store new signed up github user that has an email", (done) => {
+			// UserController.signUpGitHub(githubProfileResponseUponSignUpSuccessWithEmail)
+			// User.findOne({ providerId: githubProfileResponseUponSignUpSuccessWithEmail.id })
+			User.findOne({ identifier: githubProfileResponseUponSignUpSuccessWithEmail.username })
 				.then(savedUser => {
-					githubProfileResponseUponSignUpSuccessWithEmail.displayName.should.equal(savedUser.firstName + ' @' + savedUser.lastName)
+					savedUser.should.have.property('username', githubProfileResponseUponSignUpSuccessWithEmail.username)
+					done();
 				});
+		});
+
+		it("Should be able to store new signed up github user that has no email", (done) => {
+			// UserController.signUpGitHub(githubProfileResponseUponSignUpSuccessWithEmail)
+			// User.findOne({ providerId: githubProfileResponseUponSignUpSuccessWithEmail.id })
+			User.findOne({ identifier: githubProfileResponseUponSignUpSuccessNoEmail.username })
+				.then(savedUser => {
+					savedUser.should.have.property('username', githubProfileResponseUponSignUpSuccessNoEmail.username)
+					done();
+				});
+		});
+
+		it("Should be able to look up an existing github user", (done) => {
+			const identifier = githubProfileResponseUponSignUpSuccessWithEmail.username;
+
+			UserController.lookupGithub(identifier)
+				.then(lookedUpUser => {
+					lookedUpUser.should.have.property('username', 'ar7casper');
+					done();
+				})
+				.catch(e => console.log('e', e));
 		});
 	});
 
+	describe("Facebook Auth", () => {
+		beforeEach(done => {
+			Promise.all([
+				UserController.signupFacebook(facebookProfileResponseUponSignUpSuccess),
+			])
+				.then(() => done())
+		});
+
+		it("Should be able to store new signed up facebook user", (done) => {
+			User.findOne({ identifier: facebookProfileResponseUponSignUpSuccess.id })
+				.then(savedUser => {
+					savedUser.should.have.property('displayName', facebookProfileResponseUponSignUpSuccess.displayName);
+					done();
+				});
+		});
+
+		it("Should be able to look up an existing facebook user", (done) => {
+			const identifier = facebookProfileResponseUponSignUpSuccess.id;
+
+			UserController.lookupFacebook(identifier)
+				.then(lookedUpUser => {
+					lookedUpUser.should.have.property('displayName', facebookProfileResponseUponSignUpSuccess.displayName);
+					done();
+				})
+				.catch(e => console.log('e', e));
+		});
+	});
 
 });
 

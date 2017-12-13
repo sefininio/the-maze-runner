@@ -6,6 +6,7 @@ const UserSchema = new Schema({
 	// createdAt: Date,
 	identifier: String,  //identifier is the string we look by according to platform.
 	providerId: String,
+	displayName: String,
 	firstName: String,
 	lastName: String,
 	username: String,
