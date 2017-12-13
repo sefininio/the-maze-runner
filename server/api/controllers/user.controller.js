@@ -42,7 +42,6 @@ module.exports = {
 				.catch(e => {
 					console.log('e', e);
 					reject(e);
-					// reject({message: "Couldn't create user in DB"});
 				});
 
 		})
@@ -70,15 +69,33 @@ module.exports = {
 		return this.createNewUser(userData);
 	},
 
-	lookupGoogle(profile) {
-		const { id, emails } = profile;
+	lookupGoogle(userObjOrEmail) {
+		// data could be string or object with emailproanything.
 
-		const email = emails[0].value;
+		const email = userObjOrEmail.email || userObjOrEmail || null;
+		console.log('email in user.controller.lookupGoogle', email);
+		if (!email) {
+			const error = {
+				message: "Can't lookup a google user without an email",
+				emailReceived: email,
+			};
+			return {
+				error
+			};
+		}
+		// const { id, emails } = profile;
+		// console.log('profile', profile);
+		// console.log('emails', emails);
+
+		// const email = emails[0].value;
 
 		return new Promise((resolve, reject) => {
 			this.getUserByEmail(email)
 				.then(user => {
 					console.log('user in userController.lookupGoogle', user);
+					if ( !user ) {
+						reject({ message: "No matching email" });
+					}
 					resolve(user);
 				})
 				.catch(e => {

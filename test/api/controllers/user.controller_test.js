@@ -5,61 +5,96 @@ const User = mongoose.model('user');
 const UserController = require('./../../../server/api/controllers/user.controller');
 
 describe("Testing the user controller functions", () => {
-	it("Should be able to create a user in the users collection", (done) => {
-		const userData = {
-			firstName: "Alex",
-			lastName: "Raihelgaus",
-			email: "alexr@tikalk.com",
-		};
+	describe("Basic", () => {
+		it("Should be able to create a user in the users collection", (done) => {
+			const userData = {
+				firstName: "Alex",
+				lastName: "Raihelgaus",
+				email: "alexr@tikalk.com",
+			};
 
-		const user = new User(userData);
+			const user = new User(userData);
 
 
-		UserController.createNewUser(user)
-			.then(() => UserController.getUserByEmail(userData.email))
-			.then((savedUser) => {
-				savedUser.should.have.property('email', userData.email);
-				done();
-			});
+			UserController.createNewUser(user)
+				.then(() => UserController.getUserByEmail(userData.email))
+				.then((savedUser) => {
+					savedUser.should.have.property('email', userData.email);
+					done();
+				});
 
+		});
+
+		it("Can handle saving an existing user situation", (done) => {
+			const userData = {
+				firstName: "Alex",
+				lastName: "Raihelgaus",
+				_profile: "Can handle saving an existing user situation",
+				email: "alexr@tikalk.com"
+			};
+
+			UserController.createNewUser(userData)
+				.then(() => {
+					return UserController.createNewUser(userData);
+				})
+				.catch(e => {
+					e.message.should.equal("User email already exists in DB");
+					done();
+				});
+		});
 	});
 
-	it("Can handle saving an existing user situation", (done) => {
-		const userData = {
-			firstName: "Alex",
-			lastName: "Raihelgaus",
-			_profile: "Can handle saving an existing user situation",
-			email: "alexr@tikalk.com"
-		};
+	describe("Google Auth", () => {
+		beforeEach(done => {
+			UserController.signUpGoogle(googleProfileResponseUponSignUpSuccess)
+				.then(() => done());
+		});
 
-		UserController.createNewUser(userData)
-			.then(() => {
-				return UserController.createNewUser(userData);
-			})
-			.catch(e => {
-				e.message.should.equal("User email already exists in DB");
-				done();
-			});
+		it("Should be able to store new signed up google user", (done) => {
+			// UserController.signUpGoogle(googleProfileResponseUponSignUpSuccess)
+			// 	.then(() => User.findOne({ providerId: googleProfileResponseUponSignUpSuccess.id }))
+
+			User.findOne({ providerId: googleProfileResponseUponSignUpSuccess.id })
+				.then((savedUser) => {
+					googleProfileResponseUponSignUpSuccess.displayName.should.equal(savedUser.firstName + ' ' + savedUser.lastName);
+					done();
+				});
+		});
+
+		it("Should be able to look up an existing google user", (done) => {
+			const emailToLookFor = 'alexr@tikalk.com';
+
+			UserController.lookupGoogle(emailToLookFor)
+				.then(lookedUpUser => {
+					lookedUpUser.should.have.property('email', emailToLookFor);
+					done();
+				})
+				.catch(e => console.log('e', e));
+		});
+
+		it("lookupGoogle should return an error when no matching email", (done) => {
+			UserController.lookupGoogle("moshe@ben.kipod")
+				.then(user => {
+					done()
+				})
+				.catch(e => {
+					e.should.have.property('message', "No matching email");
+					done();
+				})
+		})
 	});
 
-	it("Should be able to store new signed up google user", (done) => {
-		UserController.signUpGoogle(googleProfileResponseUponSignUpSuccess)
-			.then(() => User.findOne({ providerId: googleProfileResponseUponSignUpSuccess.id }))
-			.then((savedUser) => {
-				googleProfileResponseUponSignUpSuccess.displayName.should.equal(savedUser.firstName + ' ' + savedUser.lastName);
-				done();
-			});
-
+	describe("GitHub Auth", () => {
+		xit("Should be able to store new signed up github user that has an email", (done) => {
+			UserController.signUpGitHub(githubProfileResponseUponSignUpSuccessWithEmail)
+				.then(() => User.findOne({ providerId: githubProfileResponseUponSignUpSuccessWithEmail.id }))
+				.then(savedUser => {
+					githubProfileResponseUponSignUpSuccessWithEmail.displayName.should.equal(savedUser.firstName + ' @' + savedUser.lastName)
+				});
+		});
 	});
 
-	xit("Should be able to store new signed up github user that has an email", (done) => {
-		UserController.signUpGitHub(githubProfileResponseUponSignUpSuccessWithEmail)
-			.then(() => User.findOne({ providerId: githubProfileResponseUponSignUpSuccessWithEmail.id }))
-			.then(savedUser => {
-				console.log('savedUser', savedUser)
-				githubProfileResponseUponSignUpSuccessWithEmail.displayName.should.equal(savedUser.firstName + ' @' + savedUser.lastName)
-			})
-	});
+
 });
 
 const facebookProfileResponseUponSignUpSuccess = {
