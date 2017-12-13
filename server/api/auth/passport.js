@@ -6,7 +6,6 @@ const config = require('./../../../conf/oauth');
 const userController = require('./../../api/controllers/user.controller');
 
 
-
 const passportConfig = (app) => {
 	app.use(passport.initialize());
 	app.use(passport.session());
@@ -25,17 +24,31 @@ const passportConfig = (app) => {
 			callbackURL: config.google.redirect_uri,
 		},
 		(token, refreshToken, profile, done) => {
-			console.log("******GoogleStrategy******");
-			console.log('profile', JSON.stringify(profile));
-			console.log('token', token);
-			console.log('refreshToken', refreshToken);
-			console.log("******GoogleStrategy******");
-			userController.signUpGoogle(profile)
-				.then(() => {
-					done(null, { name: true });
+			// console.log("******GoogleStrategy******");
+			// console.log('profile', JSON.stringify(profile));
+			// console.log('token', token);
+			// console.log('refreshToken', refreshToken);
+			// console.log("******GoogleStrategy******");
+			// userController.signUpGoogle(profile)
+			userController.lookupGoogle(profile)
+				.then((user) => {
+					if (user) {
+						// done(null, { name: true });
+
+						console.log('user in passport.js', user);
+						done(null, user);
+					} else {
+						console.log("new user");
+						userController.signUpGoogle(profile)
+							.then((newUser) => {
+								console.log('newUser', newUser);
+								done(null, newUser)
+							});
+					}
 				})
 				.catch(e => {
 					console.log('e', e);
+					done(e);
 				})
 			// process.nextTick(() => {
 			// 	return done(null, { name: true });

@@ -27,14 +27,25 @@ module.exports = {
 		const { email } = userData;
 
 		// Query DB to check that email doesn't exist.
-		return User.findOne({ email })
-			.then(doesEmailExists => {
-				if (doesEmailExists) {
-					return Promise.reject({ message: 'User email already exists in DB' })
-				}
-			})
-			.then(() => newUser.save())
-			.then((savedUser) => console.log('@@@savedUser', savedUser));
+		return new Promise((resolve, reject) => {
+			User.findOne({ email })
+				.then(doesEmailExists => {
+					if (doesEmailExists) {
+						return Promise.reject({ message: 'User email already exists in DB' })
+					}
+				})
+				.then(() => newUser.save())
+				.then((savedUser) => {
+					console.log('@@@savedUser', savedUser);
+					resolve(savedUser);
+				})
+				.catch(e => {
+					console.log('e', e);
+					reject(e);
+					// reject({message: "Couldn't create user in DB"});
+				});
+
+		})
 	},
 
 	getUserByEmail(email) {
@@ -59,6 +70,24 @@ module.exports = {
 		return this.createNewUser(userData);
 	},
 
+	lookupGoogle(profile) {
+		const { id, emails } = profile;
+
+		const email = emails[0].value;
+
+		return new Promise((resolve, reject) => {
+			this.getUserByEmail(email)
+				.then(user => {
+					console.log('user in userController.lookupGoogle', user);
+					resolve(user);
+				})
+				.catch(e => {
+					console.log('e.in userController.lookupGoogle', e);
+					reject(e);
+				});
+		});
+	},
+
 	signUpGitHub(profile) {
 		const { id, name, username, provider } = profile;
 
@@ -67,7 +96,6 @@ module.exports = {
 		};
 
 		return this.createNewUser(userData);
-
 
 
 	},
