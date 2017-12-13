@@ -4,21 +4,23 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
 	// updatedAt: Date,
 	// createdAt: Date,
+	identifier: String,  //identifier is the string we look by according to platform.
 	providerId: String,
 	firstName: String,
 	lastName: String,
 	username: String,
 	_profile: Object,
 	// githubProfile: String,
-	email: {
-		type: String,
-		required: true,
-		unique: true,
+	email: String,
+	// email: {
+		// type: String,
+		// required: true,
+		// unique: true,
 		// validate: {
 		// 	validator: (email) => name.length > 2,
 		// 	message: 'User already exists'
 		// }
-	},
+	// },
 	candidator: [{
 		type: Schema.Types.ObjectId,
 		ref: 'candidator'

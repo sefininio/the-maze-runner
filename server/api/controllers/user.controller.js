@@ -51,6 +51,10 @@ module.exports = {
 		return User.findOne({ email });
 	},
 
+	getUserByIdentifier(identifier) {
+		return User.findOne({ identifier });
+	},
+
 	signUpGoogle(profile) {
 		const { id, name, emails, provider } = profile;
 
@@ -58,6 +62,7 @@ module.exports = {
 		const email = emails[0].value;
 
 		const userData = {
+			identifier: email,
 			_profile: profile,
 			firstName,
 			lastName,
@@ -90,7 +95,8 @@ module.exports = {
 		// const email = emails[0].value;
 
 		return new Promise((resolve, reject) => {
-			this.getUserByEmail(email)
+			// this.getUserByEmail(email)
+			this.getUserByIdentifier(email)
 				.then(user => {
 					console.log('user in userController.lookupGoogle', user);
 					if ( !user ) {
