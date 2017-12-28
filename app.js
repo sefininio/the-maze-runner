@@ -17,6 +17,7 @@ app.use(metricsMiddleware);
 require('./passport')(passport);
 
 const index = require('./routes/index')(passport);
+const candidator = require('./routes/candidator')();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,6 +35,7 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/candidator', candidator);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
