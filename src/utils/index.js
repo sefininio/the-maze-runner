@@ -1,5 +1,11 @@
 module.exports.getTikalId = (user) => {
-    const tikalId = `${user.provider}-${user.id}`;
+    let tikalId;
+    if (user.provider) {
+        tikalId = `${user.provider}-${user.id}`;
+    } else {
+        tikalId = user.id;
+    }
+
     const encoded = Buffer.from(tikalId, 'utf8');
     return encoded.toString('base64');
 };

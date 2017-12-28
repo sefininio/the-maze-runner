@@ -65,6 +65,18 @@ module.exports = (passport) => {
         });
     });
 
+    router.get('/create-user', (req, res) => {
+        const user = {
+            id: req.body.sub,
+            email: req.body.email,
+            name: req.body.name,
+            pic: req.body.pic,
+        }
+        dGenUtils.createUser(user)
+            .then(() => res.send(getTikalId(user)))
+            .catch(userErrorHandler(req, res));
+    });
+
     router.get('/generate', isLoggedIn, (req, res) => {
         dGenUtils.generate(req.user)
             .then(() => res.render('welcome'))
