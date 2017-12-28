@@ -30,7 +30,7 @@ module.exports.createUser = (user) => {
                 } else {
                     // create new doc
                     if (!user.displayName) {
-                        user.displayName = user.username;
+                        user.displayName = user.username || user.name;
                     }
 
                     const newDoc = {

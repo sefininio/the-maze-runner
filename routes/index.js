@@ -65,9 +65,9 @@ module.exports = (passport) => {
         });
     });
 
-    router.get('/create-user', (req, res) => {
+    router.post('/create-user', (req, res) => {
         const user = {
-            id: req.body.sub,
+            id: req.body.id,
             email: req.body.email,
             name: req.body.name,
             pic: req.body.pic,
