@@ -6,16 +6,17 @@ let next_piece_id = 0;
 
 //base dungeon piece class, to be extended
 class Piece {
-
     constructor(options) {
-
-        options = Object.assign({
-            size: [1, 1],
-            position: [0, 0],
-            parent: null,
-            max_exits: 10,
-            tag: ''
-        }, options);
+        options = Object.assign(
+            {
+                size: [1, 1],
+                position: [0, 0],
+                parent: null,
+                max_exits: 10,
+                tag: '',
+            },
+            options
+        );
 
         Object.assign(this, options);
 
@@ -33,9 +34,11 @@ class Piece {
     }
 
     is_exit([x, y]) {
-        return this.exits.filter(([exit_x, exit_y, ...rest]) => {
+        return (
+            this.exits.filter(([exit_x, exit_y, ...rest]) => {
                 return exit_x === x && exit_y === y;
-            }).length !== 0;
+            }).length !== 0
+        );
     }
 
     get_non_wall_tiles() {
@@ -59,8 +62,8 @@ class Piece {
         // but not an exit;
 
         let retv = [],
-            haswall, exit_adjacent;
-
+            haswall,
+            exit_adjacent;
 
         this.walls.iter((pos, is_wall) => {
             if (!is_wall && !this.is_exit(pos)) {
@@ -166,7 +169,6 @@ class Piece {
     __resetNextPieceId__() {
         next_piece_id = 0;
     }
-
 }
 
 module.exports = Piece;

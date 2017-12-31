@@ -24,7 +24,6 @@ function iter_range(from, to, callback) {
         fx = to[0];
         tx = from[0];
     }
-    ;
     if (from[1] < to[1]) {
         fy = from[1];
         ty = to[1];
@@ -32,7 +31,6 @@ function iter_range(from, to, callback) {
         fy = to[1];
         ty = from[1];
     }
-    ;
     for (var x = fx; x <= tx; x++) {
         for (var y = fy; y <= ty; y++) {
             callback([x, y]);
@@ -41,10 +39,12 @@ function iter_range(from, to, callback) {
 }
 
 function intersects(pos_1, size_1, pos_2, size_2) {
-    return (!pos_2[0] > pos_1[0] + size_1[0] ||
-    pos_2[0] + size_2[0] < pos_1[0] ||
-    pos_2[1] > pos_1[1] + size_1[1] ||
-    pos_2[1] + size_2[1] < size_1[1]);
+    return (
+        !pos_2[0] > pos_1[0] + size_1[0] ||
+        pos_2[0] + size_2[0] < pos_1[0] ||
+        pos_2[1] > pos_1[1] + size_1[1] ||
+        pos_2[1] + size_2[1] < size_1[1]
+    );
 }
 
 function array_test(array, test) {
@@ -81,5 +81,5 @@ module.exports = {
     add: add,
     shift: shift,
     shift_left: shift_left,
-    shift_right: shift_right
+    shift_right: shift_right,
 };

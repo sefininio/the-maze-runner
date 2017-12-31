@@ -4,22 +4,17 @@ const jsQuestions = require('./questions/js-questions');
 const uuid = require('uuid');
 const async = require('async');
 
-
 mongoClient.connect(bdUrl, (err, db) => {
     if (err) {
         return done(err);
     }
 
     const questions = db.collection('questionsPool');
-    const jsQuestions_ = jsQuestions
-        .map(q => {
-            q._id = uuid.v4();
-            return q;
-        });
-    async.series([
-        (done) => questions.deleteMany({}, done),
-        (done) => questions.insertMany(jsQuestions_, done),
-    ], () => {
+    const jsQuestions_ = jsQuestions.map(q => {
+        q._id = uuid.v4();
+        return q;
+    });
+    async.series([done => questions.deleteMany({}, done), done => questions.insertMany(jsQuestions_, done)], () => {
         console.log('done...');
     });
 });

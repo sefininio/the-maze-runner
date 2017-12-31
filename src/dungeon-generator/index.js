@@ -15,18 +15,18 @@ function generateClue() {
     ];
 }
 
-module.exports.createUser = (user) => {
+module.exports.createUser = user => {
     user.tikalId = getTikalId(user);
 
     return new Promise((resolve, reject) => {
-        db.getDungeon(user.tikalId, { clue: 1 })
+        db
+            .getDungeon(user.tikalId, { clue: 1 })
             .then(doc => {
                 if (doc) {
                     // doc already exists, so it must have clue
                     resolve({
                         key: user.tikalId,
                     });
-
                 } else {
                     // create new doc
                     if (!user.displayName) {
@@ -38,20 +38,27 @@ module.exports.createUser = (user) => {
                         clue: generateClue(),
                         user: user,
                     };
-                    return db.saveDungeon(newDoc);
+                    return db
+                        .getRandomQuestions(5, user.language)
+                        .then(questions => {
+                            return Object.assign({}, newDoc, { questions });
+                        })
+                        .then(doc => {
+                            return db.saveDungeon(doc);
+                        });
                 }
-
             })
             .then(res => resolve(res))
             .catch(err => reject(err));
     });
 };
 
-module.exports.getClue = (user) => {
+module.exports.getClue = user => {
     user.tikalId = getTikalId(user);
 
     return new Promise((resolve, reject) => {
-        db.getDungeon(user.tikalId, { clue: 1 })
+        db
+            .getDungeon(user.tikalId, { clue: 1 })
             .then(doc => {
                 if (doc) {
                     // doc already exists, so it must have clue
@@ -59,7 +66,6 @@ module.exports.getClue = (user) => {
                         key: user.tikalId,
                         clue: doc.clue,
                     });
-
                 } else {
                     // create new doc
                     if (!user.displayName) {
@@ -73,19 +79,18 @@ module.exports.getClue = (user) => {
                     };
                     return db.saveDungeon(newDoc);
                 }
-
             })
             .then(res => resolve(res))
             .catch(err => reject(err));
     });
-
 };
 
-module.exports.generate = (user) => {
+module.exports.generate = user => {
     user.tikalId = getTikalId(user);
 
     return new Promise((resolve, reject) => {
-        db.getDungeon(user.tikalId, { challengeStarted: 1, clue: 1, user: 1 })
+        db
+            .getDungeon(user.tikalId, { challengeStarted: 1, clue: 1, user: 1 })
             .then(doc => {
                 if (!doc) {
                     // at this point doc must exist with clue
@@ -95,7 +100,6 @@ module.exports.generate = (user) => {
                 if (doc.challengeStarted) {
                     // if doc already has dungeon, no need to generate - just resolve.
                     resolve();
-
                 } else {
                     // create the dungeon and update db
                     const dungeon = new Dungeon().generate(_.cloneDeep(quests), _.cloneDeep(insults)).persistAndReset();
@@ -126,9 +130,10 @@ module.exports.generate = (user) => {
     });
 };
 
-module.exports.reset = (key) => {
+module.exports.reset = key => {
     return new Promise((resolve, reject) => {
-        db.reset(key)
+        db
+            .reset(key)
             .then(doc => {
                 if (!doc) {
                     reject(new Error(`Dungeon not found for key ${key}`));
@@ -142,35 +147,35 @@ module.exports.reset = (key) => {
 
 module.exports.validate = (key, hash) => {
     return new Promise((resolve, reject) => {
-        db.validate(key, hash)
+        db
+            .validate(key, hash)
             .then(res => resolve(res))
             .catch(err => reject(err));
     });
 };
 
-module.exports.updateApiCount = (key) => {
+module.exports.updateApiCount = key => {
     return new Promise((resolve, reject) => {
-        db.getDungeon(key, { challengeStarted: 1 })
-            .then(doc => {
-                // first check if time limit not exeeded.
-                const elapsed = Date.now() - doc.challengeStarted;
+        db.getDungeon(key, { challengeStarted: 1 }).then(doc => {
+            // first check if time limit not exeeded.
+            const elapsed = Date.now() - doc.challengeStarted;
 
-                if (elapsed > consts.TIME_LIMIT) {
-                    reject(new Error(`Time allocated for solving the challenge has exceeded!`));
-                    return;
-                }
+            if (elapsed > consts.TIME_LIMIT) {
+                reject(new Error(`Time allocated for solving the challenge has exceeded!`));
+                return;
+            }
 
-                db.updateApiCount(key)
-                    .then(number => resolve())
-                    .catch(err => reject(err));
-
-            });
+            db
+                .updateApiCount(key)
+                .then(number => resolve())
+                .catch(err => reject(err));
+        });
     });
 };
 
-module.exports.getInsultResponse = (insult) => {
+module.exports.getInsultResponse = insult => {
     return new Promise((resolve, reject) => {
-        const comeback = _.find(insults, { 'insult': insult });
+        const comeback = _.find(insults, { insult: insult });
         if (comeback) {
             resolve(comeback);
         } else {
@@ -181,74 +186,78 @@ module.exports.getInsultResponse = (insult) => {
 
 module.exports.beatMonster = (key, comeback) => {
     return new Promise((resolve, reject) => {
-        this.getRoom(key).then((doc) => {
+        this.getRoom(key).then(doc => {
             const { room, items } = doc;
 
             if (!room.item || room.item.questId !== consts.QUESTS.INSULT_QUEST) {
                 reject(new Error(`Room ${room.id} is not part of the insults quest.`));
-            }
-
-            else if (room.item.endOfQuest) {
+            } else if (room.item.endOfQuest) {
                 // todo: figure out a way not to destroy the original room conf, so it'll be easier on reset.
                 const { step, queenInsults } = room.item;
 
                 if (queenInsults.length === step) {
                     // quest is already complete.
-                    this.getRoomDescription(key).then((desc) => {
+                    this.getRoomDescription(key).then(desc => {
                         desc.description.quest.pickedUpItem = true;
                         desc.description.hashLetter = room.tikalTag;
                         resolve(desc);
                     });
-
                 } else if (queenInsults[step].comeback === comeback) {
                     // update room item with new step and action
                     room.item.step = step + 1;
                     if (room.item.step < queenInsults.length) {
                         room.item.action = queenInsults[room.item.step].insult;
                     } else {
-                        room.item.action = `You have insulted the Insults Queen beyond retort! She runs away weeping...`
+                        room.item.action = `You have insulted the Insults Queen beyond retort! She runs away weeping...`;
                     }
-                    db.updateRoom(key, room).then(() => {
-                        //resolve with new desc
-                        return this.getRoomDescription(key);
-                    }).then((desc) => {
-                        if (room.item.step >= queenInsults.length) {
-                            //resolve with hash
-                            desc.description.quest.pickedUpItem = true;
-                            desc.description.hashLetter = room.tikalTag;
-                        }
+                    db
+                        .updateRoom(key, room)
+                        .then(() => {
+                            //resolve with new desc
+                            return this.getRoomDescription(key);
+                        })
+                        .then(desc => {
+                            if (room.item.step >= queenInsults.length) {
+                                //resolve with hash
+                                desc.description.quest.pickedUpItem = true;
+                                desc.description.hashLetter = room.tikalTag;
+                            }
 
-                        resolve(desc);
-                    });
+                            resolve(desc);
+                        });
                 } else {
-                    reject(new Error(`'${comeback}' is not the correct comeback for the insult '${queenInsults[step].insult}'`));
+                    reject(
+                        new Error(
+                            `'${comeback}' is not the correct comeback for the insult '${queenInsults[step].insult}'`
+                        )
+                    );
                 }
-
             } else {
                 const insult = room.item.action;
-                const correctComeback = _.find(insults, { 'insult': insult }).comeback;
+                const correctComeback = _.find(insults, { insult: insult }).comeback;
 
                 if (comeback === correctComeback) {
                     // update dungeon items
-                    if (!_.find(items, { 'itemId': room.item.itemId })) {
-                        db.updateItem(key, room.item).then((items) => {
-                            return this.getRoomDescription(key);
-                        }).then((desc) => {
-                            //resolve with hash
-                            desc.description.quest.pickedUpItem = true;
-                            desc.description.hashLetter = room.tikalTag;
-                            resolve(desc);
-                        });
-
+                    if (!_.find(items, { itemId: room.item.itemId })) {
+                        db
+                            .updateItem(key, room.item)
+                            .then(items => {
+                                return this.getRoomDescription(key);
+                            })
+                            .then(desc => {
+                                //resolve with hash
+                                desc.description.quest.pickedUpItem = true;
+                                desc.description.hashLetter = room.tikalTag;
+                                resolve(desc);
+                            });
                     } else {
-                        this.getRoomDescription(key).then((desc) => {
+                        this.getRoomDescription(key).then(desc => {
                             //resolve with hash
                             desc.description.quest.pickedUpItem = true;
                             desc.description.hashLetter = room.tikalTag;
                             resolve(desc);
                         });
                     }
-
                 } else {
                     reject(new Error(`'${comeback}' is not the correct comeback for the insult '${insult}'`));
                 }
@@ -257,9 +266,10 @@ module.exports.beatMonster = (key, comeback) => {
     });
 };
 
-module.exports.getRoom = (key) => {
+module.exports.getRoom = key => {
     return new Promise((resolve, reject) => {
-        db.getDungeon(key, { currentRoom: 1, items: 1, visitedRoomIds: 1 })
+        db
+            .getDungeon(key, { currentRoom: 1, items: 1, visitedRoomIds: 1 })
             .then(doc => {
                 if (!doc) {
                     reject(new Error(`Dungeon not found for key ${key}`));
@@ -296,7 +306,7 @@ function doActionPrereq(desc, room) {
     };
 }
 
-module.exports.getRoomDescription = (key) => {
+module.exports.getRoomDescription = key => {
     // auto pick up -> update db that player collected the item
     // if it is the last item in the quest and all prereqs are valid, also return the tikalTag
     return new Promise((resolve, reject) => {
@@ -322,15 +332,13 @@ module.exports.getRoomDescription = (key) => {
                             action: room.item.action,
                         };
 
-                        if (room.item.prereqObj && !_.find(items, { 'itemId': room.item.prereqObj.prereqId })) {
+                        if (room.item.prereqObj && !_.find(items, { itemId: room.item.prereqObj.prereqId })) {
                             // prereq not met
                             desc.quest.action = room.item.actionPrereqNotMet;
                         }
 
                         resolve({ description: desc });
-
                     } else {
-
                         if (!room.item.prereqObj) {
                             // no prereq, just do the item action (update db) and give the hash.
                             doAction(desc, room);
@@ -339,8 +347,8 @@ module.exports.getRoomDescription = (key) => {
                                 delete desc.hashLetter;
                             }
 
-                            if (!_.find(items, { 'itemId': room.item.itemId })) {
-                                db.updateItem(key, room.item).then((items) => {
+                            if (!_.find(items, { itemId: room.item.itemId })) {
+                                db.updateItem(key, room.item).then(items => {
                                     resolve({ description: desc });
                                 });
                             } else {
@@ -356,8 +364,8 @@ module.exports.getRoomDescription = (key) => {
                                     // prereq met, pick it up and give hash.
                                     doAction(desc, room);
 
-                                    if (!_.find(items, { 'itemId': room.item.itemId })) {
-                                        db.updateItem(key, room.item).then((items) => {
+                                    if (!_.find(items, { itemId: room.item.itemId })) {
+                                        db.updateItem(key, room.item).then(items => {
                                             resolve({ description: desc });
                                         });
                                     } else {
@@ -374,18 +382,17 @@ module.exports.getRoomDescription = (key) => {
                             if (room.item.prereqObj.prereqId) {
                                 // if prereq, check if prereq already done.
                                 // yes? do action. no? do actionPrereqNotMet
-                                if (_.find(items, { 'itemId': room.item.prereqObj.prereqId })) {
+                                if (_.find(items, { itemId: room.item.prereqObj.prereqId })) {
                                     // prereq met, pick it up and give hash.
                                     doAction(desc, room);
 
-                                    if (!_.find(items, { 'itemId': room.item.itemId })) {
-                                        db.updateItem(key, room.item).then((items) => {
+                                    if (!_.find(items, { itemId: room.item.itemId })) {
+                                        db.updateItem(key, room.item).then(items => {
                                             resolve({ description: desc });
                                         });
                                     } else {
                                         resolve({ description: desc });
                                     }
-
                                 } else {
                                     // prereq not met, do actionPrereqNotMet and remove hash
                                     doActionPrereq(desc, room);
@@ -393,24 +400,21 @@ module.exports.getRoomDescription = (key) => {
                                     resolve({ description: desc });
                                 }
                             }
-
                         }
                     }
-
                 } else {
                     resolve({ description: desc });
                 }
-
             })
             .catch(err => reject(err));
     });
 };
 
-module.exports.getRoomExits = (key) => {
+module.exports.getRoomExits = key => {
     return new Promise((resolve, reject) => {
         this.getRoom(key)
             .then(doc => {
-                const exits = doc.room.exits.map((exit) => {
+                const exits = doc.room.exits.map(exit => {
                     return exit.direction;
                 });
 
@@ -430,10 +434,8 @@ module.exports.exitRoom = (key, direction) => {
 
                 if (nextRoomIds.length !== 1) {
                     reject(new Error(`Room ${doc.room.id} does not have an exit at direction ${direction}`));
-
                 } else {
                     return db.updateLastVisitedRoom(key, nextRoomIds[0]);
-
                 }
             })
             .then(newRoomId => resolve({ newRoomId: newRoomId }))
@@ -441,6 +443,6 @@ module.exports.exitRoom = (key, direction) => {
     });
 };
 
-module.exports.topScores = (limit) => {
+module.exports.topScores = limit => {
     return db.topScores(limit);
 };

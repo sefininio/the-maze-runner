@@ -1,15 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const cors = require('cors');
+const db = require('../src/db');
 
 module.exports = () => {
-    router.get('/questions', cors(), (req, res) => {
-        res.send([
-            {
-                description: 'question1',
-                heroImage: 'http://www.dccomics.com/sites/default/files/GalleryChar_1920x1080_BM_Cv38_54b5d0d1ada864.04916624.jpg',
-            }
-        ]);
+    router.get('/questions/:tikalId', cors(), (req, res) => {
+        db.getUserQuestions(req.params.tikalId).then(questions => {
+            res.send(questions);
+        });
     });
 
     return router;

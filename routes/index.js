@@ -5,7 +5,7 @@ const cors = require('cors');
 const dGenUtils = require('../src/dungeon-generator');
 const getTikalId = require('../src/utils').getTikalId;
 
-module.exports = (passport) => {
+module.exports = passport => {
     /* GET home page. */
 
     const userErrorHandler = (req, res) => err => {
@@ -23,7 +23,8 @@ module.exports = (passport) => {
     });
 
     router.get('/top-scores', (req, res) => {
-        dGenUtils.topScores(5)
+        dGenUtils
+            .topScores(5)
             .then(doc => res.send(doc))
             .catch(userErrorHandler(req, res));
     });
@@ -33,52 +34,57 @@ module.exports = (passport) => {
     });
 
     router.get('/timi', isLoggedIn, (req, res, next) => {
-        dGenUtils.getClue(req.user)
-            .then((resClue) => {
+        dGenUtils
+            .getClue(req.user)
+            .then(resClue => {
                 res.send(resClue.clue[1]);
             })
             .catch(userErrorHandler(req, res));
     });
 
     router.get('/start-clue', isLoggedIn, (req, res, next) => {
-        dGenUtils.getClue(req.user)
-            .then((resClue) => {
+        dGenUtils
+            .getClue(req.user)
+            .then(resClue => {
                 res.send(resClue.clue[2]);
             })
             .catch(userErrorHandler(req, res));
     });
 
     router.get('/text/:name', isLoggedIn, (req, res, next) => {
-        fs.readFile('src/static/' + req.params.name + '.txt', 'utf8', function (err, data) {
+        fs.readFile('src/static/' + req.params.name + '.txt', 'utf8', function(err, data) {
             if (err) res.sendStatus(404);
             if (req.params.name === 'start') {
-                dGenUtils.getClue(req.user)
-                    .then((resClue) => {
+                dGenUtils
+                    .getClue(req.user)
+                    .then(resClue => {
                         data = data.replace('<CLUE>', resClue.clue[0]);
                         res.send(data);
                     })
                     .catch(userErrorHandler(req, res));
-
             } else {
                 res.send(data);
             }
         });
     });
 
-    router.get('/create-user', (req, res) => {
+    router.post('/create-user', (req, res) => {
         const user = {
-            id: req.body.sub,
+            id: req.body.id,
             email: req.body.email,
             name: req.body.name,
             pic: req.body.pic,
-        }
-        dGenUtils.createUser(user)
+            language: req.body.language,
+        };
+        dGenUtils
+            .createUser(user)
             .then(() => res.send(getTikalId(user)))
             .catch(userErrorHandler(req, res));
     });
 
     router.get('/generate', isLoggedIn, (req, res) => {
-        dGenUtils.generate(req.user)
+        dGenUtils
+            .generate(req.user)
             .then(() => res.render('welcome'))
             .catch(userErrorHandler(req, res));
     });
@@ -88,48 +94,55 @@ module.exports = (passport) => {
     });
 
     router.get('/maze/:mazeId/reset', cors(), updateApiCount, (req, res) => {
-        dGenUtils.reset(req.params.mazeId)
+        dGenUtils
+            .reset(req.params.mazeId)
             .then(description => res.send(description))
             .catch(mazeErrorHandler(req, res));
     });
 
     router.get('/maze/:mazeId/describe', cors(), updateApiCount, (req, res) => {
-        dGenUtils.getRoomDescription(req.params.mazeId)
+        dGenUtils
+            .getRoomDescription(req.params.mazeId)
             .then(description => res.send(description))
             .catch(mazeErrorHandler(req, res));
     });
 
     router.get('/maze/:mazeId/exits', cors(), updateApiCount, (req, res) => {
-        dGenUtils.getRoomExits(req.params.mazeId)
+        dGenUtils
+            .getRoomExits(req.params.mazeId)
             .then(exits => res.send(exits))
             .catch(mazeErrorHandler(req, res));
     });
 
     router.get('/maze/:mazeId/exit/:direction', cors(), updateApiCount, (req, res) => {
-        dGenUtils.exitRoom(req.params.mazeId, req.params.direction)
+        dGenUtils
+            .exitRoom(req.params.mazeId, req.params.direction)
             .then(newRoomId => res.send(newRoomId))
             .catch(mazeErrorHandler(req, res));
     });
 
     router.get('/maze/:mazeId/validate/:hash', cors(), updateApiCount, (req, res) => {
-        dGenUtils.validate(req.params.mazeId, req.params.hash)
+        dGenUtils
+            .validate(req.params.mazeId, req.params.hash)
             .then(verified => res.send(verified))
             .catch(mazeErrorHandler(req, res));
     });
 
     router.get('/maze/:mazeId/beat-monster/:comeback', cors(), updateApiCount, (req, res) => {
-        dGenUtils.beatMonster(req.params.mazeId, req.params.comeback)
+        dGenUtils
+            .beatMonster(req.params.mazeId, req.params.comeback)
             .then(desc => res.send(desc))
             .catch(mazeErrorHandler(req, res));
     });
 
     router.get('/insult/:insult', cors(), (req, res) => {
-        dGenUtils.getInsultResponse(req.params.insult)
+        dGenUtils
+            .getInsultResponse(req.params.insult)
             .then(response => res.send(response))
             .catch(mazeErrorHandler(req, res));
     });
 
-    router.get('/logout', function (req, res) {
+    router.get('/logout', function(req, res) {
         req.logout();
         res.redirect('/');
     });
@@ -139,7 +152,8 @@ module.exports = (passport) => {
         // this MUST be the last route defined, otherwise it'll override other routes.
         // it will either redirect to '/generate' if the clue is correct
         // or redirect back to '/start' since the clue is incorrect
-        dGenUtils.getClue(req.user)
+        dGenUtils
+            .getClue(req.user)
             .then(resClue => {
                 if (req.params.clue === resClue.clue.join('')) {
                     res.redirect('/generate');
@@ -173,7 +187,8 @@ module.exports = (passport) => {
     }
 
     function updateApiCount(req, res, next) {
-        dGenUtils.updateApiCount(req.params.mazeId)
+        dGenUtils
+            .updateApiCount(req.params.mazeId)
             .then(() => next())
             .catch(mazeErrorHandler(req, res));
     }

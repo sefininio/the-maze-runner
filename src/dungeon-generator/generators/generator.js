@@ -4,7 +4,6 @@ const Rectangle = require('../utils/rectangle');
 const consts = require('../const');
 
 class Generator extends Piece {
-
     constructor(options) {
         super(options);
 
@@ -88,10 +87,7 @@ class Generator extends Piece {
         let piece2_exit_pos = piece1.parent_pos(piece1_exit[0]);
 
         //figure out piece2 position
-        let piece2_pos = [
-            piece2_exit_pos[0] - piece2_exit[0][0],
-            piece2_exit_pos[1] - piece2_exit[0][1]
-        ];
+        let piece2_pos = [piece2_exit_pos[0] - piece2_exit[0][0], piece2_exit_pos[1] - piece2_exit[0][1]];
 
         if (!this.fits(piece2, piece2_pos)) {
             return false;

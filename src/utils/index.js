@@ -1,4 +1,4 @@
-module.exports.getTikalId = (user) => {
+module.exports.getTikalId = user => {
     let tikalId;
     if (user.provider) {
         tikalId = `${user.provider}-${user.id}`;
@@ -9,4 +9,3 @@ module.exports.getTikalId = (user) => {
     const encoded = Buffer.from(tikalId, 'utf8');
     return encoded.toString('base64');
 };
-

@@ -30,7 +30,6 @@
  * @module EaselJS
  */
 
-
 // constructor:
 /**
  * Represents a rectangle as defined by the points (x, y) and (x+width, y+height).
@@ -53,8 +52,7 @@ function Rectangle(x, y, width, height) {
     }
     this.setValues(x, y, width, height);
 
-
-// public properties:
+    // public properties:
     // assigned in the setValues method.
     /**
      * X position.
@@ -95,7 +93,6 @@ var p = Rectangle.prototype;
  */
 // p.initialize = function() {}; // searchable for devs wondering where it is.
 
-
 // public methods:
 /**
  * Sets the specified values on this instance.
@@ -107,7 +104,7 @@ var p = Rectangle.prototype;
  * @return {Rectangle} This instance. Useful for chaining method calls.
  * @chainable
  */
-p.setValues = function (x, y, width, height) {
+p.setValues = function(x, y, width, height) {
     // don't forget to update docs in the constructor if these change:
     this.x = x || 0;
     this.y = y || 0;
@@ -126,7 +123,7 @@ p.setValues = function (x, y, width, height) {
  * @return {Rectangle} This instance. Useful for chaining method calls.
  * @chainable
  */
-p.extend = function (x, y, width, height) {
+p.extend = function(x, y, width, height) {
     width = width || 0;
     height = height || 0;
     if (x + width > this.x + this.width) {
@@ -156,7 +153,7 @@ p.extend = function (x, y, width, height) {
  * @return {Rectangle} This instance. Useful for chaining method calls.
  * @chainable
  */
-p.pad = function (top, left, bottom, right) {
+p.pad = function(top, left, bottom, right) {
     this.x -= left;
     this.y -= top;
     this.width += left + right;
@@ -171,7 +168,7 @@ p.pad = function (top, left, bottom, right) {
  * @return {Rectangle} This rectangle. Useful for chaining method calls.
  * @chainable
  */
-p.copy = function (rectangle) {
+p.copy = function(rectangle) {
     return this.setValues(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
 };
 
@@ -184,10 +181,10 @@ p.copy = function (rectangle) {
  * @param {Number} [height=0] The height of the rectangle.
  * @return {Boolean} True if the described point or rectangle is contained within this rectangle.
  */
-p.contains = function (x, y, width, height) {
+p.contains = function(x, y, width, height) {
     width = width || 0;
     height = height || 0;
-    return (x >= this.x && x + width <= this.x + this.width && y >= this.y && y + height <= this.y + this.height);
+    return x >= this.x && x + width <= this.x + this.width && y >= this.y && y + height <= this.y + this.height;
 };
 
 /**
@@ -196,7 +193,7 @@ p.contains = function (x, y, width, height) {
  * @param {Rectangle} rect The rectangle to calculate a union with.
  * @return {Rectangle} A new rectangle describing the union.
  */
-p.union = function (rect) {
+p.union = function(rect) {
     return this.clone().extend(rect.x, rect.y, rect.width, rect.height);
 };
 
@@ -207,8 +204,11 @@ p.union = function (rect) {
  * @param {Rectangle} rect The rectangle to calculate an intersection with.
  * @return {Rectangle} A new rectangle describing the intersection or null.
  */
-p.intersection = function (rect) {
-    var x1 = rect.x, y1 = rect.y, x2 = x1 + rect.width, y2 = y1 + rect.height;
+p.intersection = function(rect) {
+    var x1 = rect.x,
+        y1 = rect.y,
+        x2 = x1 + rect.width,
+        y2 = y1 + rect.height;
     if (this.x > x1) {
         x1 = this.x;
     }
@@ -221,7 +221,7 @@ p.intersection = function (rect) {
     if (this.y + this.height < y2) {
         y2 = this.y + this.height;
     }
-    return (x2 <= x1 || y2 <= y1) ? null : new Rectangle(x1, y1, x2 - x1, y2 - y1);
+    return x2 <= x1 || y2 <= y1 ? null : new Rectangle(x1, y1, x2 - x1, y2 - y1);
 };
 
 /**
@@ -230,8 +230,13 @@ p.intersection = function (rect) {
  * @param {Rectangle} rect The rectangle to compare.
  * @return {Boolean} True if the rectangles intersect.
  */
-p.intersects = function (rect) {
-    return (rect.x <= this.x + this.width && this.x <= rect.x + rect.width && rect.y <= this.y + this.height && this.y <= rect.y + rect.height);
+p.intersects = function(rect) {
+    return (
+        rect.x <= this.x + this.width &&
+        this.x <= rect.x + rect.width &&
+        rect.y <= this.y + this.height &&
+        this.y <= rect.y + rect.height
+    );
 };
 
 /**
@@ -239,7 +244,7 @@ p.intersects = function (rect) {
  * @method isEmpty
  * @return {Boolean} True if the rectangle is empty.
  */
-p.isEmpty = function () {
+p.isEmpty = function() {
     return this.width <= 0 || this.height <= 0;
 };
 
@@ -248,7 +253,7 @@ p.isEmpty = function () {
  * @method clone
  * @return {Rectangle} a clone of the Rectangle instance.
  **/
-p.clone = function () {
+p.clone = function() {
     return new Rectangle(this.x, this.y, this.width, this.height);
 };
 
@@ -257,8 +262,8 @@ p.clone = function () {
  * @method toString
  * @return {String} a string representation of the instance.
  **/
-p.toString = function () {
-    return "[Rectangle (x=" + this.x + " y=" + this.y + " width=" + this.width + " height=" + this.height + ")]";
+p.toString = function() {
+    return '[Rectangle (x=' + this.x + ' y=' + this.y + ' width=' + this.width + ' height=' + this.height + ')]';
 };
 
 module.exports = Rectangle;
