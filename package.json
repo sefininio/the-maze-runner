@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "PORT=3000 nodemon ./bin/www",
+    "start": "nodemon ./bin/www",
     "prettier": "prettier --single-quote --print-width=120 --trailing-comma es5 --tab-width 4",
     "format": "npm run prettier -- --write '{,!(build)/**/}*.js'"
   },
@@ -13,6 +13,7 @@
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.4",
     "debug": "~2.6.0",
+    "dotenv": "^4.0.0",
     "ejs": "~2.5.5",
     "express": "~4.14.1",
     "express-prom-bundle": "^3.1.0",

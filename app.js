@@ -9,6 +9,7 @@ const passport = require('passport');
 const session = require('express-session');
 const promBundle = require('express-prom-bundle');
 const metricsMiddleware = promBundle({ includeMethod: true, includePath: true });
+require('dotenv').config();
 
 const app = express();
 app.use(cors());

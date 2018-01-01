@@ -43,3 +43,5 @@ site-roles/ansible-role-maze-runner/tasks/
 site-roles/ansible-role-maze-runner/tests/
 site-roles/ansible-role-maze-runner/vars/
 site-roles/key.pub
+
+.env*
