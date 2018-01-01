@@ -52,7 +52,7 @@ module.exports = passport => {
     });
 
     router.get('/text/:name', isLoggedIn, (req, res, next) => {
-        fs.readFile('src/static/' + req.params.name + '.txt', 'utf8', function(err, data) {
+        fs.readFile('src/static/' + req.params.name + '.txt', 'utf8', function (err, data) {
             if (err) res.sendStatus(404);
             if (req.params.name === 'start') {
                 dGenUtils
@@ -142,7 +142,7 @@ module.exports = passport => {
             .catch(mazeErrorHandler(req, res));
     });
 
-    router.get('/logout', function(req, res) {
+    router.get('/logout', function (req, res) {
         req.logout();
         res.redirect('/');
     });
@@ -166,9 +166,6 @@ module.exports = passport => {
 
     router.get('/auth/google', cors(), passport.authenticate('google', { scope: ['profile', 'email'] }));
     router.get('/auth/google/callback', cors(), passport.authenticate('google'), handleLoginSuccess);
-
-    router.get('/auth/facebook', cors(), passport.authenticate('facebook', { scope: 'email' }));
-    router.get('/auth/facebook/callback', cors(), passport.authenticate('facebook'), handleLoginSuccess);
 
     router.get('/auth/github', cors(), passport.authenticate('github', { scope: 'user:email' }));
     router.get('/auth/github/callback', cors(), passport.authenticate('github'), handleLoginSuccess);
