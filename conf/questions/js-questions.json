@@ -1,10 +1,106 @@
 [
-    {
-        "tags": ["javascript"],
-        "level": 1,
-        "tests": ["test1 = () => { const array = [4, 3, 5, 1]; const newArray = main(array); expect(newArray).toEqual([1, 3, 4, 5])}"],
-        "description":"Implement a function that accepts an array of numbers and returns a new array where the numbers are sorted in ascending order",
-        "heroImage": "http://siliconvalleyism.com/characters/big-head-small.jpg",
-        "codeTemplate": "function sort(arr){\n\n    //Code goes here\n\n}"
-    }
+  {
+    "tags": ["javascript"],
+    "level": 1,
+    "tests": ["test1 = () => { const array = [4, 3, 5, 1]; const newArray = main(array); expect(newArray).toEqual([1, 3, 4, 5])}"],
+    "description": "Implement a function that accepts an array of numbers and returns a new array where the numbers are sorted in ascending order",
+    "heroImage": "http://siliconvalleyism.com/characters/big-head-small.jpg",
+    "codeTemplate": "function sort(arr){\n\n    //Code goes here\n\n}"
+  },
+  {
+    "tags": ["javascript"],
+    "level": 1,
+    "tests": ["test1 = () => { const array = [4, 3, 5, 1]; const newArray = main(array); expect(newArray).toEqual([1, 3, 4, 5])}"],
+    "description": "2 Implement a function that accepts an array of numbers and returns a new array where the numbers are sorted in ascending order",
+    "heroImage": "http://siliconvalleyism.com/characters/big-head-small.jpg",
+    "codeTemplate": "function sort(arr){\n\n    //Code goes here\n\n}"
+  },
+  {
+    "tags": ["javascript"],
+    "level": 1,
+    "tests": ["test1 = () => { const array = [4, 3, 5, 1]; const newArray = main(array); expect(newArray).toEqual([1, 3, 4, 5])}"],
+    "description": "3 Implement a function that accepts an array of numbers and returns a new array where the numbers are sorted in ascending order",
+    "heroImage": "http://siliconvalleyism.com/characters/big-head-small.jpg",
+    "codeTemplate": "function sort(arr){\n\n    //Code goes here\n\n}"
+  },
+  {
+    "tags": ["javascript"],
+    "level": 1,
+    "tests": ["test1 = () => { const array = [4, 3, 5, 1]; const newArray = main(array); expect(newArray).toEqual([1, 3, 4, 5])}"],
+    "description": "4 Implement a function that accepts an array of numbers and returns a new array where the numbers are sorted in ascending order",
+    "heroImage": "http://siliconvalleyism.com/characters/big-head-small.jpg",
+    "codeTemplate": "function sort(arr){\n\n    //Code goes here\n\n}"
+  },
+  {
+    "tags": ["javascript"],
+    "level": 1,
+    "tests": ["test1 = () => { const array = [4, 3, 5, 1]; const newArray = main(array); expect(newArray).toEqual([1, 3, 4, 5])}"],
+    "description": "5 Implement a function that accepts an array of numbers and returns a new array where the numbers are sorted in ascending order",
+    "heroImage": "http://siliconvalleyism.com/characters/big-head-small.jpg",
+    "codeTemplate": "function sort(arr){\n\n    //Code goes here\n\n}"
+  },
+  {
+    "tags": ["javascript"],
+    "level": 1,
+    "tests": ["test1 = () => { const array = [4, 3, 5, 1]; const newArray = main(array); expect(newArray).toEqual([1, 3, 4, 5])}"],
+    "description": "6 Implement a function that accepts an array of numbers and returns a new array where the numbers are sorted in ascending order",
+    "heroImage": "http://siliconvalleyism.com/characters/big-head-small.jpg",
+    "codeTemplate": "function sort(arr){\n\n    //Code goes here\n\n}"
+  },
+  {
+    "tags": ["javascript"],
+    "level": 1,
+    "tests": ["test1 = () => { const array = [4, 3, 5, 1]; const newArray = main(array); expect(newArray).toEqual([1, 3, 4, 5])}"],
+    "description": "7 Implement a function that accepts an array of numbers and returns a new array where the numbers are sorted in ascending order",
+    "heroImage": "http://siliconvalleyism.com/characters/big-head-small.jpg",
+    "codeTemplate": "function sort(arr){\n\n    //Code goes here\n\n}"
+  },
+  {
+    "tags": ["javascript"],
+    "level": 1,
+    "tests": ["test1 = () => { const array = [4, 3, 5, 1]; const newArray = main(array); expect(newArray).toEqual([1, 3, 4, 5])}"],
+    "description": "8 Implement a function that accepts an array of numbers and returns a new array where the numbers are sorted in ascending order",
+    "heroImage": "http://siliconvalleyism.com/characters/big-head-small.jpg",
+    "codeTemplate": "function sort(arr){\n\n    //Code goes here\n\n}"
+  },
+  {
+    "tags": ["javascript"],
+    "level": 1,
+    "tests": ["test1 = () => { const array = [4, 3, 5, 1]; const newArray = main(array); expect(newArray).toEqual([1, 3, 4, 5])}"],
+    "description": "9 Implement a function that accepts an array of numbers and returns a new array where the numbers are sorted in ascending order",
+    "heroImage": "http://siliconvalleyism.com/characters/big-head-small.jpg",
+    "codeTemplate": "function sort(arr){\n\n    //Code goes here\n\n}"
+  },
+  {
+    "tags": ["javascript"],
+    "level": 1,
+    "tests": ["test1 = () => { const array = [4, 3, 5, 1]; const newArray = main(array); expect(newArray).toEqual([1, 3, 4, 5])}"],
+    "description": "10 Implement a function that accepts an array of numbers and returns a new array where the numbers are sorted in ascending order",
+    "heroImage": "http://siliconvalleyism.com/characters/big-head-small.jpg",
+    "codeTemplate": "function sort(arr){\n\n    //Code goes here\n\n}"
+  },
+  {
+    "tags": ["javascript"],
+    "level": 1,
+    "tests": ["test1 = () => { const array = [4, 3, 5, 1]; const newArray = main(array); expect(newArray).toEqual([1, 3, 4, 5])}"],
+    "description": "11 Implement a function that accepts an array of numbers and returns a new array where the numbers are sorted in ascending order",
+    "heroImage": "http://siliconvalleyism.com/characters/big-head-small.jpg",
+    "codeTemplate": "function sort(arr){\n\n    //Code goes here\n\n}"
+  },
+  {
+    "tags": ["javascript"],
+    "level": 1,
+    "tests": ["test1 = () => { const array = [4, 3, 5, 1]; const newArray = main(array); expect(newArray).toEqual([1, 3, 4, 5])}"],
+    "description": "12 Implement a function that accepts an array of numbers and returns a new array where the numbers are sorted in ascending order",
+    "heroImage": "http://siliconvalleyism.com/characters/big-head-small.jpg",
+    "codeTemplate": "function sort(arr){\n\n    //Code goes here\n\n}"
+  },
+  {
+    "tags": ["javascript"],
+    "level": 1,
+    "tests": ["test1 = () => { const array = [4, 3, 5, 1]; const newArray = main(array); expect(newArray).toEqual([1, 3, 4, 5])}"],
+    "description": "13 Implement a function that accepts an array of numbers and returns a new array where the numbers are sorted in ascending order",
+    "heroImage": "http://siliconvalleyism.com/characters/big-head-small.jpg",
+    "codeTemplate": "function sort(arr){\n\n    //Code goes here\n\n}"
+  }
 ]
