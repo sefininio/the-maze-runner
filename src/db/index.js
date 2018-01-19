@@ -22,8 +22,14 @@ module.exports.connect = done => {
         state.db = _db;
         state.dungeon = _db.collection('dungeon');
         state.questionsPool = _db.collection('questionsPool');
-        _db.collection('dungeon').createIndexes('key');
-        done();
+        _db.collection('dungeon').createIndexes(
+            {
+                key: 'hashed',
+            },
+            () => {
+                done();
+            }
+        );
     });
 };
 
@@ -131,7 +137,7 @@ module.exports.updateLastVisitedRoom = (key, roomId) => {
                         }
 
                         resolve(roomId);
-                    },
+                    }
                 );
             })
             .catch(err => reject(err));
@@ -158,7 +164,7 @@ module.exports.reset = key => {
                     }
 
                     resolve({ currentRoomId: 0 });
-                },
+                }
             );
         });
     });
@@ -213,7 +219,7 @@ module.exports.validate = (key, hashCandidate) => {
                     }
 
                     resolve({ validated: validated, score: metrics.score });
-                },
+                }
             );
         });
     });
@@ -235,7 +241,7 @@ module.exports.updateApiCount = key => {
                 }
 
                 resolve(r.value.metrics.numOfApiCalls);
-            },
+            }
         );
     });
 };
@@ -290,7 +296,7 @@ module.exports.updateItem = (key, item) => {
                 }
 
                 resolve(r.value.items);
-            },
+            }
         );
     });
 };
@@ -317,13 +323,9 @@ module.exports.topScores = limit => {
 
 module.exports.getRandomQuestions = (num = 5, tag) => {
     const queryTag = tag.toLowerCase();
-    console.log(`num = ${num}, tag = ${queryTag}`);
     return new Promise((resolve, reject) => {
         state.questionsPool
-            .aggregate([
-                { $match: { tags: { $elemMatch: { $eq: 'javascript' } } } },
-                { $sample: { size: 5 } },
-            ])
+            .aggregate([{ $match: { tags: { $elemMatch: { $eq: queryTag } } } }, { $sample: { size: num } }])
             .toArray((err, doc) => {
                 if (err) {
                     reject(err);
@@ -345,7 +347,7 @@ module.exports.getUserQuestions = tikalId => {
                 }
 
                 resolve(doc.questions);
-            },
+            }
         );
     });
 };

@@ -14,7 +14,11 @@ mongoClient.connect(bdUrl, (err, db) => {
         q._id = uuid.v4();
         return q;
     });
-    async.series([done => questions.deleteMany({}, done), done => questions.insertMany(jsQuestions_, done)], () => {
+
+    async.series([done => questions.deleteMany({}, done), done => questions.insertMany(jsQuestions_, done)], error => {
+        if (error) {
+            console.log(error);
+        }
         console.log('done...');
     });
 });

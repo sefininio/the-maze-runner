@@ -52,7 +52,7 @@ module.exports = passport => {
     });
 
     router.get('/text/:name', isLoggedIn, (req, res, next) => {
-        fs.readFile('src/static/' + req.params.name + '.txt', 'utf8', function (err, data) {
+        fs.readFile('src/static/' + req.params.name + '.txt', 'utf8', function(err, data) {
             if (err) res.sendStatus(404);
             if (req.params.name === 'start') {
                 dGenUtils
@@ -142,7 +142,7 @@ module.exports = passport => {
             .catch(mazeErrorHandler(req, res));
     });
 
-    router.get('/logout', function (req, res) {
+    router.get('/logout', function(req, res) {
         req.logout();
         res.redirect('/');
     });
