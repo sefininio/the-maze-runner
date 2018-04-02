@@ -8,7 +8,7 @@ const state = {
     questionsPool: null,
 };
 
-module.exports.connect = done => {
+const connect = done => {
     const { db, dungeon, questionsPool } = state;
     if (db && dungeon && questionsPool) {
         return done();
@@ -21,19 +21,17 @@ module.exports.connect = done => {
 
         state.db = _db;
         state.dungeon = _db.collection('dungeon');
+        state.candidatoreResponses = _db.collection('candidatoreResponses');
         state.questionsPool = _db.collection('questionsPool');
-        _db.collection('dungeon').createIndexes(
-            {
-                key: 'hashed',
-            },
-            () => {
+        _db.collection('dungeon').createIndexes({ key: 'hashed' }, () => {
+            _db.collection('candidatoreResponses').createIndex({ session: 1, tikalId: 1 }, () => {
                 done();
-            }
-        );
+            });
+        });
     });
 };
 
-module.exports.close = done => {
+const close = done => {
     if (state.db) {
         state.db.close((err, result) => {
             state.db = null;
@@ -43,7 +41,7 @@ module.exports.close = done => {
     }
 };
 
-module.exports.getDungeon = (key, projection) => {
+const getDungeon = (key, projection) => {
     return new Promise((resolve, reject) => {
         state.dungeon
             .find({ key: key }, projection)
@@ -58,7 +56,7 @@ module.exports.getDungeon = (key, projection) => {
     });
 };
 
-module.exports.saveDungeon = doc => {
+const saveDungeon = doc => {
     return new Promise((resolve, reject) => {
         state.dungeon.insertOne(doc, (err, r) => {
             if (err) {
@@ -73,7 +71,7 @@ module.exports.saveDungeon = doc => {
     });
 };
 
-module.exports.updateDungeon = dungeon => {
+const updateDungeon = dungeon => {
     return new Promise((resolve, reject) => {
         state.dungeon.updateOne({ key: dungeon.key }, dungeon, {}, (err, r) => {
             if (err) {
@@ -89,7 +87,7 @@ module.exports.updateDungeon = dungeon => {
     });
 };
 
-module.exports.getRoomById = (key, roomId) => {
+const getRoomById = (key, roomId) => {
     return new Promise((resolve, reject) => {
         state.dungeon
             .find({ key: key }, { rooms: { $elemMatch: { id: roomId } }, visitedRoomIds: 1 })
@@ -110,7 +108,7 @@ module.exports.getRoomById = (key, roomId) => {
     });
 };
 
-module.exports.updateLastVisitedRoom = (key, roomId) => {
+const updateLastVisitedRoom = (key, roomId) => {
     return new Promise((resolve, reject) => {
         this.getRoomById(key, roomId)
             .then(doc => {
@@ -144,7 +142,7 @@ module.exports.updateLastVisitedRoom = (key, roomId) => {
     });
 };
 
-module.exports.reset = key => {
+const reset = key => {
     return new Promise((resolve, reject) => {
         this.getRoomById(key, 0).then(doc => {
             state.dungeon.findOneAndUpdate(
@@ -188,7 +186,7 @@ function calculateScore(metrics) {
     return score;
 }
 
-module.exports.validate = (key, hashCandidate) => {
+const validate = (key, hashCandidate) => {
     return new Promise((resolve, reject) => {
         this.getDungeon(key, { metrics: 1, hash: 1, challengeStarted: 1 }).then(doc => {
             if (!doc) {
@@ -225,7 +223,7 @@ module.exports.validate = (key, hashCandidate) => {
     });
 };
 
-module.exports.updateApiCount = key => {
+const updateApiCount = key => {
     return new Promise((resolve, reject) => {
         state.dungeon.findOneAndUpdate(
             { key: key },
@@ -246,7 +244,7 @@ module.exports.updateApiCount = key => {
     });
 };
 
-module.exports.updateRoom = (key, room) => {
+const updateRoom = (key, room) => {
     return new Promise((resolve, reject) => {
         // state.collection.updateOne(
         // 	{key: key, rooms: {$elemMatch: {id: room.id}}},
@@ -280,7 +278,7 @@ module.exports.updateRoom = (key, room) => {
     });
 };
 
-module.exports.updateItem = (key, item) => {
+const updateItem = (key, item) => {
     return new Promise((resolve, reject) => {
         state.dungeon.findOneAndUpdate(
             { key: key },
@@ -301,7 +299,7 @@ module.exports.updateItem = (key, item) => {
     });
 };
 
-module.exports.topScores = limit => {
+const topScores = limit => {
     return new Promise((resolve, reject) => {
         state.dungeon
             .aggregate([
@@ -321,7 +319,7 @@ module.exports.topScores = limit => {
     });
 };
 
-module.exports.getRandomQuestions = (num = 5, tag) => {
+const getRandomQuestions = (num = 5, tag) => {
     const queryTag = tag.toLowerCase();
     return new Promise((resolve, reject) => {
         state.questionsPool
@@ -335,7 +333,7 @@ module.exports.getRandomQuestions = (num = 5, tag) => {
     });
 };
 
-module.exports.getUserQuestions = tikalId => {
+const getUserQuestions = tikalId => {
     return new Promise((resolve, reject) => {
         state.dungeon.findOne(
             {
@@ -350,4 +348,44 @@ module.exports.getUserQuestions = tikalId => {
             }
         );
     });
+};
+
+const countAttempts = (tikalId, questionId) =>
+    new Promise((resolve, reject) => {
+        state.candidatoreResponses.find({ tikalId, 'question._id': questionId }).count((err, num) => {
+            if (err) {
+                return reject(err);
+            }
+            return resolve({ attempts: num });
+        });
+    });
+
+const saveCandidatorResponse = answer =>
+    new Promise((resolve, reject) => {
+        state.candidatoreResponses.insertOne(answer, err => {
+            if (err) {
+                return reject(err);
+            }
+            return resolve();
+        });
+    });
+
+module.exports = {
+    connect,
+    close,
+    getDungeon,
+    saveDungeon,
+    updateDungeon,
+    getRoomById,
+    updateLastVisitedRoom,
+    reset,
+    validate,
+    updateApiCount,
+    updateRoom,
+    updateItem,
+    topScores,
+    getRandomQuestions,
+    getUserQuestions,
+    saveCandidatorResponse,
+    countAttempts,
 };

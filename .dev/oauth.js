@@ -5,7 +5,7 @@ module.exports = {
         auth_uri: 'https://accounts.google.com/o/oauth2/auth',
         token_uri: 'https://accounts.google.com/o/oauth2/token',
         auth_provider_x509_cert_url: 'https://www.googleapis.com/oauth2/v1/certs',
-        client_secret: 'l0eb-G2ZxO_EZraHR4j5xF_R',
+        client_secret: process.env.GOOGLE_CLIENT_SECRET,
         redirect_uri: 'http://127.0.0.1:3000/auth/google/callback',
     },
     facebook: {
@@ -14,7 +14,7 @@ module.exports = {
         auth_uri: 'https://accounts.google.com/o/oauth2/auth',
         token_uri: 'https://accounts.google.com/o/oauth2/token',
         auth_provider_x509_cert_url: 'https://www.googleapis.com/oauth2/v1/certs',
-        client_secret: 'l0eb-G2ZxO_EZraHR4j5xF_R',
+        client_secret: process.env.FACEBOOK_CLIENT_SECRET,
         redirect_uri: 'http://127.0.0.1:3000/auth/google/callback',
     },
     github: {
@@ -23,7 +23,7 @@ module.exports = {
         auth_uri: 'https://accounts.google.com/o/oauth2/auth',
         token_uri: 'https://accounts.google.com/o/oauth2/token',
         auth_provider_x509_cert_url: 'https://www.googleapis.com/oauth2/v1/certs',
-        client_secret: 'l0eb-G2ZxO_EZraHR4j5xF_R',
+        client_secret: process.env.GITHUB_CLIENT_SECRET,
         redirect_uri: 'http://127.0.0.1:3000/auth/google/callback',
     },
 };
