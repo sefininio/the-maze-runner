@@ -31,5 +31,16 @@
     },
     "heroImage": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-stacks.png",
     "codeTemplate": "function aggregate(source){\n\n    //Code goes here\n\n}"
+  },
+  {
+    "tags": ["javascript"],
+    "name": "minimum-absolute-difference",
+    "level": 1,
+    "attempts": 3,
+    "time": {
+      "minutes": 10
+    },
+    "heroImage": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-stacks.png",
+    "codeTemplate": "function minAbsDiff(source){\n\n    //Code goes here\n\n}"
   }
 ]
