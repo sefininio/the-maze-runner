@@ -5,7 +5,7 @@
     "name": "sort-array",
     "attempts": 3,
     "time": {
-      "minutes": 10
+      "minutes": 4
     },
     "heroImage": "http://siliconvalleyism.com/characters/big-head-small.jpg",
     "codeTemplate": "function sort(arr){\n\n    //Code goes here\n\n}"
@@ -16,7 +16,7 @@
     "level": 1,
     "attempts": 3,
     "time": {
-      "minutes": 10
+      "minutes": 5
     },
     "heroImage": "http://icons.iconarchive.com/icons/icons8/ios7/512/Healthcare-Clone-icon.png",
     "codeTemplate": "function clone(source){\n\n    //Code goes here\n\n}"
@@ -27,13 +27,56 @@
     "level": 1,
     "attempts": 3,
     "time": {
-      "minutes": 10
+      "minutes": 5
     },
     "heroImage": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-stacks.png",
     "codeTemplate": "function aggregate(source){\n\n    //Code goes here\n\n}"
   },
   {
     "tags": ["javascript"],
+    "name": "timeout-clusure",
+    "level": 1,
+    "attempts": 3,
+    "time": {
+      "minutes": 2
+    },
+    "heroImage": "http://www.druckerinstitute.com/wp-content/uploads/2014/10/time-management.png",
+    "codeTemplate": "function aggregate(source){\n\n    //Code goes here\n\n}"
+  },
+  {
+    "tags": ["javascript"],
+    "name": "string-permutations",
+    "level": 1,
+    "attempts": 3,
+    "time": {
+      "minutes": 12
+    },
+    "heroImage": "https://www.pinterest.com/pin/392939136229880487/",
+    "codeTemplate": "function aggregate(source){\n\n    //Code goes here\n\n}"
+  },
+  {
+    "tags": ["javascript"],
+    "name": "unique-array",
+    "level": 1,
+    "attempts": 3,
+    "time": {
+      "minutes": 5
+    },
+    "heroImage": "https://blog.sourced.tech/post/minhashcuda/benders.jpg",
+    "codeTemplate": "function unique(source){\n\n    //Code goes here\n\n}"
+  },
+  {
+    "tags": ["javascript"],
+    "name": "binary-tree-depth",
+    "level": 2,
+    "attempts": 5,
+    "time": {
+      "minutes": 15
+    },
+    "heroImage": "https://en.wikipedia.org/wiki/Binary_tree",
+    "codeTemplate": "function findDepth(source){\n\n    //Code goes here\n\n}"
+  },
+  {
     "name": "minimum-absolute-difference",
     "level": 1,
     "attempts": 3,

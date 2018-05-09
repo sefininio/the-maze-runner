@@ -32,6 +32,8 @@ jspm_packages
 .node_repl_history
 
 .idea
+.vscode/
+
 dungeon.db
 galaxy-roles/simple-docker-daemon/
 site-roles/ansible-role-maze-runner/.travis.yml
@@ -45,3 +47,4 @@ site-roles/ansible-role-maze-runner/vars/
 site-roles/key.pub
 
 .env*
+
