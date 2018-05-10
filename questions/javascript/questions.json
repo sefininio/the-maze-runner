@@ -85,5 +85,15 @@
     },
     "heroImage": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-stacks.png",
     "codeTemplate": "function minAbsDiff(source){\n\n    //Code goes here\n\n}"
+  },
+  {
+    "name": "is-palindrome",
+    "level": 1,
+    "attempts": 3,
+    "time": {
+      "minutes": 10
+    },
+    "heroImage": "https://rose-xx-15412.deviantart.com/art/Palindrome-Cow-364640478",
+    "codeTemplate": "function isPalindrome(source){\n\n    //Code goes here\n\n}"
   }
 ]
