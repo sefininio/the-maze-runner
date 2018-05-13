@@ -91,7 +91,7 @@
     "level": 1,
     "attempts": 3,
     "time": {
-      "minutes": 10
+      "minutes": 7
     },
     "heroImage": "https://rose-xx-15412.deviantart.com/art/Palindrome-Cow-364640478",
     "codeTemplate": "function isPalindrome(source){\n\n    //Code goes here\n\n}"
