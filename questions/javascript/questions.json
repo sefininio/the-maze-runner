@@ -95,5 +95,25 @@
     },
     "heroImage": "https://rose-xx-15412.deviantart.com/art/Palindrome-Cow-364640478",
     "codeTemplate": "function isPalindrome(source){\n\n    //Code goes here\n\n}"
+  },
+  {
+    "name": "sum",
+    "level": 1,
+    "attempts": 3,
+    "time": {
+      "minutes": 5
+    },
+    "heroImage": "https://cdn.pixabay.com/photo/2012/05/07/18/46/math-48969_960_720.png",
+    "codeTemplate": "function sum(a, b){\n\n    //Code goes here\n\n}"
+  },
+  {
+    "name": "regex-syntax",
+    "level": 1,
+    "attempts": 3,
+    "time": {
+      "minutes": 5
+    },
+    "heroImage": "https://cdn.pixabay.com/photo/2012/05/07/18/46/math-48969_960_720.png",
+    "codeTemplate": "function correctAnswer(){\n\n    //return the letter representing the correct answer\n\n}"
   }
 ]
