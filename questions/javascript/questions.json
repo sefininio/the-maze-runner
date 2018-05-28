@@ -107,6 +107,16 @@
     "codeTemplate": "function sum(a, b){\n\n    //Code goes here\n\n}"
   },
   {
+    "name": "text-length",
+    "level": 3,
+    "attempts": 3,
+    "time": {
+      "minutes": 15
+    },
+    "heroImage": "https://cdn.pixabay.com/photo/2012/05/07/18/46/math-48969_960_720.png",
+    "codeTemplate": "function calculateTextLength(arr, maxWordLength){\n\n    //Code goes here\n\n}"
+  },
+  {
     "name": "regex-syntax",
     "level": 1,
     "attempts": 3,
