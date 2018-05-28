@@ -24,9 +24,11 @@ const connect = done => {
         state.candidatoreResponses = _db.collection('candidatoreResponses');
         state.questionsPool = _db.collection('questionsPool');
         _db.collection('dungeon').createIndexes({ key: 'hashed' }, () => {
-            _db.collection('candidatoreResponses').createIndex({ session: 1, tikalId: 1 }, () => {
-                done();
-            });
+            _db
+                .collection('candidatoreResponses')
+                .createIndex({ session: 1, tikalId: 1 }, () => {
+                    done();
+                });
         });
     });
 };
@@ -90,7 +92,10 @@ const updateDungeon = dungeon => {
 const getRoomById = (key, roomId) => {
     return new Promise((resolve, reject) => {
         state.dungeon
-            .find({ key: key }, { rooms: { $elemMatch: { id: roomId } }, visitedRoomIds: 1 })
+            .find(
+                { key: key },
+                { rooms: { $elemMatch: { id: roomId } }, visitedRoomIds: 1 }
+            )
             .next((err, doc) => {
                 if (err) {
                     reject(err);
@@ -131,7 +136,11 @@ const updateLastVisitedRoom = (key, roomId) => {
                         }
 
                         if (r.modifiedCount !== 1) {
-                            reject(new Error(`Key + RoomId combination not unique!`));
+                            reject(
+                                new Error(
+                                    `Key + RoomId combination not unique!`
+                                )
+                            );
                         }
 
                         resolve(roomId);
@@ -149,7 +158,11 @@ const reset = key => {
                 { key: key },
                 {
                     $inc: { 'metrics.numOfResets': 1 },
-                    $set: { items: [], visitedRoomIds: [0], currentRoom: doc.room },
+                    $set: {
+                        items: [],
+                        visitedRoomIds: [0],
+                        currentRoom: doc.room,
+                    },
                 },
                 { returnNewDocument: true },
                 (err, r) => {
@@ -158,7 +171,9 @@ const reset = key => {
                     }
 
                     if (r.ok !== 1) {
-                        reject(new Error(`Key + RoomId combination not unique!`));
+                        reject(
+                            new Error(`Key + RoomId combination not unique!`)
+                        );
                     }
 
                     resolve({ currentRoomId: 0 });
@@ -188,38 +203,42 @@ function calculateScore(metrics) {
 
 const validate = (key, hashCandidate) => {
     return new Promise((resolve, reject) => {
-        this.getDungeon(key, { metrics: 1, hash: 1, challengeStarted: 1 }).then(doc => {
-            if (!doc) {
-                reject(new Error(`Dungeon not found for key ${key}`));
-            }
-
-            let { metrics } = doc;
-            const validated = hashCandidate === doc.hash;
-
-            metrics.numOfValidationTries += 1;
-
-            if (validated) {
-                metrics.timeToSolve = Date.now() - doc.challengeStarted;
-                metrics.score = calculateScore(metrics);
-            }
-
-            state.dungeon.findOneAndUpdate(
-                { key: key },
-                { $set: { metrics: metrics } },
-                { returnOriginal: false },
-                (err, r) => {
-                    if (err) {
-                        reject(err);
-                    }
-
-                    if (r.ok !== 1) {
-                        reject(new Error(`Number of tries not incremented`));
-                    }
-
-                    resolve({ validated: validated, score: metrics.score });
+        this.getDungeon(key, { metrics: 1, hash: 1, challengeStarted: 1 }).then(
+            doc => {
+                if (!doc) {
+                    reject(new Error(`Dungeon not found for key ${key}`));
                 }
-            );
-        });
+
+                let { metrics } = doc;
+                const validated = hashCandidate === doc.hash;
+
+                metrics.numOfValidationTries += 1;
+
+                if (validated) {
+                    metrics.timeToSolve = Date.now() - doc.challengeStarted;
+                    metrics.score = calculateScore(metrics);
+                }
+
+                state.dungeon.findOneAndUpdate(
+                    { key: key },
+                    { $set: { metrics: metrics } },
+                    { returnOriginal: false },
+                    (err, r) => {
+                        if (err) {
+                            reject(err);
+                        }
+
+                        if (r.ok !== 1) {
+                            reject(
+                                new Error(`Number of tries not incremented`)
+                            );
+                        }
+
+                        resolve({ validated: validated, score: metrics.score });
+                    }
+                );
+            }
+        );
     });
 };
 
@@ -323,7 +342,10 @@ const getRandomQuestions = (num = 5, tag) => {
     const queryTag = tag.toLowerCase();
     return new Promise((resolve, reject) => {
         state.questionsPool
-            .aggregate([{ $match: { tags: { $elemMatch: { $eq: queryTag } } } }, { $sample: { size: num } }])
+            .aggregate([
+                { $match: { tags: { $elemMatch: { $eq: queryTag } } } },
+                { $sample: { size: num } },
+            ])
             .toArray((err, doc) => {
                 if (err) {
                     reject(err);
@@ -352,12 +374,14 @@ const getUserQuestions = tikalId => {
 
 const countAttempts = (tikalId, questionId) =>
     new Promise((resolve, reject) => {
-        state.candidatoreResponses.find({ tikalId, 'question._id': questionId }).count((err, num) => {
-            if (err) {
-                return reject(err);
-            }
-            return resolve({ attempts: num });
-        });
+        state.candidatoreResponses
+            .find({ tikalId, 'question._id': questionId })
+            .count((err, num) => {
+                if (err) {
+                    return reject(err);
+                }
+                return resolve({ attempts: num });
+            });
     });
 
 const saveCandidatorResponse = answer =>
@@ -367,6 +391,16 @@ const saveCandidatorResponse = answer =>
                 return reject(err);
             }
             return resolve();
+        });
+    });
+
+const getSession = tikalId =>
+    new Promise((resolve, reject) => {
+        state.candidatoreResponses.findOne({ tikalId }, (err, res) => {
+            if (err) {
+                return reject(err);
+            }
+            return resolve(res ? res.session : null);
         });
     });
 
@@ -388,4 +422,5 @@ module.exports = {
     getUserQuestions,
     saveCandidatorResponse,
     countAttempts,
+    getSession,
 };

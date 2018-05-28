@@ -11,26 +11,48 @@ const hash = require('hash.js');
 
 const checkScopes = jwtAuthz(['read:questions']);
 
-module.exports = () => {
-    router.get('/questions/:tikalId', cors(), checkJwt, checkScopes, (req, res) => {
-        db.getUserQuestions(req.params.tikalId).then(questions => {
-            res.send(questions);
-        });
-    });
+const sessionId = token =>
+    hash
+        .sha256()
+        .update(token)
+        .digest('hex');
 
-    router.get('/attempts/:tikalId/:questionId', cors(), checkJwt, checkScopes, (req, res) => {
-        db.countAttempts(req.params.tikalId, req.params.questionId)
-            .then(attempts => {
-                res.send(attempts);
+module.exports = () => {
+    router.get(
+        '/questions/:tikalId',
+        cors(),
+        checkJwt,
+        checkScopes,
+        (req, res) => {
+            const session = sessionId(req.headers.authorization);
+            db.getSession(req.params.tikalId).then(prevSession => {
+                if (prevSession && prevSession !== session) {
+                    return res.send(400); //don't allow second login after an answer was submitted
+                }
+                db.getUserQuestions(req.params.tikalId).then(questions => {
+                    res.send(questions);
+                });
             });
-    });
+        }
+    );
+
+    router.get(
+        '/attempts/:tikalId/:questionId',
+        cors(),
+        checkJwt,
+        checkScopes,
+        (req, res) => {
+            db
+                .countAttempts(req.params.tikalId, req.params.questionId)
+                .then(attempts => {
+                    res.send(attempts);
+                });
+        }
+    );
 
     router.post('/submit-code', cors(), checkJwt, checkScopes, (req, res) => {
         const { code, questionId, tikalId, time } = req.body;
-        const session = hash
-            .sha256()
-            .update(req.headers.authorization)
-            .digest('hex');
+        const session = sessionId(req.headers.authorization);
 
         db
             .getUserQuestions(tikalId)
@@ -47,7 +69,13 @@ module.exports = () => {
                     .then(attempts => {
                         const f = safeEval(code);
                         // TODO - support different question subjects
-                        const { test } = require(path.join('..', 'questions', 'javascript', question.name, 'test'));
+                        const { test } = require(path.join(
+                            '..',
+                            'questions',
+                            'javascript',
+                            question.name,
+                            'test'
+                        ));
                         const testResult = {};
                         try {
                             test(f, chai);
@@ -56,7 +84,14 @@ module.exports = () => {
                             testResult.pass = false;
                             testResult.error = err;
                         }
-                        const answer = { tikalId, code, question, time, session, testResult };
+                        const answer = {
+                            tikalId,
+                            code,
+                            question,
+                            time,
+                            session,
+                            testResult,
+                        };
                         db.saveCandidatorResponse(answer).then(() => {
                             testResult.attempts = attempts + 1;
                             res.send(testResult);
@@ -64,7 +99,7 @@ module.exports = () => {
                     })
                     .catch(err => {
                         res.status(400);
-                        res.send(err.message)
+                        res.send(err.message);
                     });
             });
     });
